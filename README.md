@@ -12,7 +12,7 @@
   <a href="https://github.com/TOM88812/xiaozhi-android-client/releases/latest">
     <img src="https://img.shields.io/github/downloads/TOM88812/xiaozhi-android-client/total?style=flat-square&logo=github&color=52c41a1&maxAge=86400" alt="Download"/>
   </a>
-  <a href="https://wiki.lhht.cc/welcome">
+  <a href="https://wiki.lhht.cc">
     <img src="https://img.shields.io/badge/文档-Wiki-yellow?logo=wikipedia">
   </a>
 
