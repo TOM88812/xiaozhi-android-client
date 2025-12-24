@@ -1,3 +1,9 @@
+<div align="center">
+  <a href="./README.md">中文</a> | 
+  <a href="./README_EN.md">English</a> | 
+  <a href="./README_VI.md">Tiếng Việt</a>
+</div>
+
 # 小智AI助手 Android IOS 客户端
 <p align="center">
   <a href="https://github.com/TOM88812/xiaozhi-android-client/releases/latest">
