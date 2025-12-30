@@ -125,9 +125,6 @@ Mỗi ngôi sao⭐ hoặc sự ủng hộ💖 của bạn là động lực đ�
 
 [![ko-fi](https://ko-fi.com/img/githubbutton_sm.svg)](https://ko-fi.com/V7V71I0TE0)
 
-# Danh sách ủng hộ
-- ### ***Shanghai WoOu Culture Media Co., Ltd.***
-
 ## Star History
 
 [![Star History Chart](https://api.star-history.com/svg?repos=TOM88812/xiaozhi-android-client&type=Date)](https://star-history.com/#TOM88812/xiaozhi-android-client&Date)
