@@ -126,9 +126,6 @@
 
 [![ko-fi](https://ko-fi.com/img/githubbutton_sm.svg)](https://ko-fi.com/V7V71I0TE0)
 
-# 赞助榜
-- ### ***上海沃欧文化传媒有限公司***
-
 ## Star History
 
 [![Star History Chart](https://api.star-history.com/svg?repos=TOM88812/xiaozhi-android-client&type=Date)](https://star-history.com/#TOM88812/xiaozhi-android-client&Date)
