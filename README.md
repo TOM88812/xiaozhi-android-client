@@ -1,7 +1,8 @@
 <div align="center">
   <a href="./README.md">中文</a> | 
   <a href="./README_EN.md">English</a> | 
-  <a href="./README_VI.md">Tiếng Việt</a>
+  <a href="./README_VI.md">Tiếng Việt</a> |
+  <a href="./yuandan-update.md">元旦更新</a>
 </div>
 
 # 小智AI助手 Android IOS 客户端
