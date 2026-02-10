@@ -2,7 +2,8 @@
   <a href="./README.md">中文</a> | 
   <a href="./README_EN.md">English</a> | 
   <a href="./README_VI.md">Tiếng Việt</a> |
-  <a href="./yuandan-update.md">元旦更新</a>
+  <a href="./yuandan-update.md">元旦更新</a> |
+  <a href="https://wiki.lhht.cc/node/019c4553-8f62-777c-b4c7-99efe3837325">春节放假通知</a>
 </div>
 
 # 小智AI助手 Android IOS 客户端
