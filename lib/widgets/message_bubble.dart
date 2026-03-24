@@ -99,13 +99,23 @@ class MessageBubble extends StatelessWidget {
     }
 
     final isDify = conversationType == ConversationType.dify;
+    final isMinimax = conversationType == ConversationType.minimax;
 
     return CircleAvatar(
       radius: 16,
-      backgroundColor: isDify ? Colors.blue.shade400 : Colors.grey.shade700,
+      backgroundColor:
+          isMinimax
+              ? Colors.teal.shade400
+              : isDify
+                  ? Colors.blue.shade400
+                  : Colors.grey.shade700,
       child: Icon(
-        isDify ? Icons.chat_bubble_outline : Icons.mic,
-        size: isDify ? 16 : 18,
+        isMinimax
+            ? Icons.auto_awesome
+            : isDify
+                ? Icons.chat_bubble_outline
+                : Icons.mic,
+        size: isMinimax ? 16 : isDify ? 16 : 18,
         color: Colors.white,
       ),
     );

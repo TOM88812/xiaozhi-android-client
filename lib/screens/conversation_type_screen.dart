@@ -5,6 +5,7 @@ import 'package:ai_assistant/providers/conversation_provider.dart';
 import 'package:ai_assistant/models/conversation.dart';
 import 'package:ai_assistant/models/xiaozhi_config.dart';
 import 'package:ai_assistant/models/dify_config.dart';
+import 'package:ai_assistant/models/minimax_config.dart';
 import 'package:ai_assistant/screens/chat_screen.dart';
 
 class ConversationTypeScreen extends StatefulWidget {
@@ -18,8 +19,10 @@ class _ConversationTypeScreenState extends State<ConversationTypeScreen> {
   ConversationType? _selectedType;
   XiaozhiConfig? _selectedXiaozhiConfig;
   DifyConfig? _selectedDifyConfig;
+  MiniMaxConfig? _selectedMiniMaxConfig;
   bool _showXiaozhiSelector = false;
   bool _showDifySelector = false;
+  bool _showMiniMaxSelector = false;
 
   @override
   Widget build(BuildContext context) {
@@ -59,6 +62,10 @@ class _ConversationTypeScreenState extends State<ConversationTypeScreen> {
                     if (_showDifySelector) ...[
                       const SizedBox(height: 16),
                       _buildDifySelectionCard(),
+                    ],
+                    if (_showMiniMaxSelector) ...[
+                      const SizedBox(height: 16),
+                      _buildMiniMaxSelectionCard(),
                     ],
                   ],
                 ),
@@ -131,7 +138,7 @@ class _ConversationTypeScreenState extends State<ConversationTypeScreen> {
                       _selectedType = ConversationType.dify;
                       _showXiaozhiSelector = false;
                       _showDifySelector = true;
-                      // 默认选择第一个Dify配置
+                      _showMiniMaxSelector = false;
                       _selectedDifyConfig =
                           difyConfigs.isNotEmpty ? difyConfigs.first : null;
                     });
@@ -236,7 +243,7 @@ class _ConversationTypeScreenState extends State<ConversationTypeScreen> {
                       _selectedType = ConversationType.xiaozhi;
                       _showXiaozhiSelector = true;
                       _showDifySelector = false;
-                      // 默认选择第一个小智配置
+                      _showMiniMaxSelector = false;
                       _selectedXiaozhiConfig =
                           xiaozhiConfigs.isNotEmpty
                               ? xiaozhiConfigs.first
@@ -325,6 +332,114 @@ class _ConversationTypeScreenState extends State<ConversationTypeScreen> {
                 ),
               ),
             ],
+          ),
+          // MiniMax AI 对话选项
+          InkWell(
+            onTap: () {
+              final minimaxConfigs =
+                  Provider.of<ConfigProvider>(
+                    context,
+                    listen: false,
+                  ).minimaxConfigs;
+
+              if (minimaxConfigs.isEmpty) {
+                ScaffoldMessenger.of(context).showSnackBar(
+                  const SnackBar(content: Text('请先在设置中添加MiniMax配置')),
+                );
+                return;
+              }
+
+              setState(() {
+                _selectedType = ConversationType.minimax;
+                _showXiaozhiSelector = false;
+                _showDifySelector = false;
+                _showMiniMaxSelector = true;
+                _selectedMiniMaxConfig =
+                    minimaxConfigs.isNotEmpty ? minimaxConfigs.first : null;
+              });
+            },
+            child: Container(
+              margin: const EdgeInsets.only(
+                left: 20,
+                right: 20,
+                bottom: 20,
+              ),
+              padding: const EdgeInsets.all(20),
+              decoration: BoxDecoration(
+                color:
+                    _selectedType == ConversationType.minimax
+                        ? const Color(0xFFF5F5F5)
+                        : Colors.white,
+                borderRadius: BorderRadius.circular(16),
+                border: Border.all(
+                  color:
+                      _selectedType == ConversationType.minimax
+                          ? Colors.black
+                          : Colors.grey.shade300,
+                  width: _selectedType == ConversationType.minimax ? 2 : 1,
+                ),
+                boxShadow: [
+                  BoxShadow(
+                    color: Colors.black.withOpacity(
+                      _selectedType == ConversationType.minimax ? 0.08 : 0.03,
+                    ),
+                    blurRadius:
+                        _selectedType == ConversationType.minimax ? 6 : 3,
+                    spreadRadius: 0,
+                    offset: const Offset(0, 2),
+                  ),
+                ],
+              ),
+              child: Row(
+                children: [
+                  Container(
+                    decoration: BoxDecoration(
+                      shape: BoxShape.circle,
+                      boxShadow: [
+                        BoxShadow(
+                          color: Colors.teal.withOpacity(0.3),
+                          blurRadius: 10,
+                          spreadRadius: 0,
+                          offset: const Offset(0, 4),
+                        ),
+                      ],
+                    ),
+                    child: CircleAvatar(
+                      radius: 28,
+                      backgroundColor: Colors.teal.shade400,
+                      child: const Icon(
+                        Icons.auto_awesome,
+                        color: Colors.white,
+                        size: 28,
+                      ),
+                    ),
+                  ),
+                  const SizedBox(width: 20),
+                  Expanded(
+                    child: Column(
+                      crossAxisAlignment: CrossAxisAlignment.start,
+                      children: [
+                        const Text(
+                          'MiniMax AI 对话',
+                          style: TextStyle(
+                            fontWeight: FontWeight.bold,
+                            fontSize: 18,
+                          ),
+                        ),
+                        const SizedBox(height: 4),
+                        Text(
+                          'MiniMax大模型，支持多轮对话',
+                          style: TextStyle(
+                            color: Colors.grey.shade600,
+                            fontSize: 14,
+                          ),
+                        ),
+                      ],
+                    ),
+                  ),
+                ],
+              ),
+            ),
           ),
         ],
       ),
@@ -908,12 +1023,279 @@ class _ConversationTypeScreenState extends State<ConversationTypeScreen> {
     );
   }
 
+  Widget _buildMiniMaxSelectionCard() {
+    final minimaxConfigs = Provider.of<ConfigProvider>(context).minimaxConfigs;
+
+    return Container(
+      width: double.infinity,
+      margin: const EdgeInsets.only(bottom: 20),
+      decoration: BoxDecoration(
+        color: Colors.white,
+        borderRadius: BorderRadius.circular(16),
+        boxShadow: [
+          BoxShadow(
+            color: Colors.black.withOpacity(0.06),
+            blurRadius: 8,
+            spreadRadius: 0,
+            offset: const Offset(0, 3),
+          ),
+        ],
+      ),
+      child: Column(
+        crossAxisAlignment: CrossAxisAlignment.start,
+        children: [
+          Padding(
+            padding: const EdgeInsets.all(20),
+            child: Column(
+              crossAxisAlignment: CrossAxisAlignment.start,
+              children: [
+                const Text(
+                  '选择MiniMax配置',
+                  style: TextStyle(fontSize: 22, fontWeight: FontWeight.bold),
+                ),
+                const SizedBox(height: 6),
+                Text(
+                  '请选择要使用的MiniMax API服务',
+                  style: TextStyle(fontSize: 15, color: Colors.grey.shade600),
+                ),
+              ],
+            ),
+          ),
+          const Divider(height: 1, color: Color(0xFFEEEEEE)),
+          const SizedBox(height: 16),
+          _buildMiniMaxDropdown(minimaxConfigs),
+          const SizedBox(height: 16),
+          if (_selectedMiniMaxConfig != null)
+            _buildMiniMaxDetailsPanel(_selectedMiniMaxConfig!),
+        ],
+      ),
+    );
+  }
+
+  Widget _buildMiniMaxDropdown(List<MiniMaxConfig> configs) {
+    return Container(
+      margin: const EdgeInsets.symmetric(horizontal: 20),
+      decoration: BoxDecoration(
+        color: Colors.white,
+        borderRadius: BorderRadius.circular(16),
+        boxShadow: [
+          BoxShadow(
+            color: Colors.black.withOpacity(0.08),
+            blurRadius: 8,
+            spreadRadius: 0,
+            offset: const Offset(0, 3),
+          ),
+          BoxShadow(
+            color: Colors.teal.withOpacity(0.04),
+            blurRadius: 12,
+            spreadRadius: -2,
+            offset: const Offset(0, 6),
+          ),
+        ],
+        border: Border.all(color: Colors.grey.shade200, width: 1.5),
+      ),
+      child: Padding(
+        padding: const EdgeInsets.only(left: 16, right: 8),
+        child: DropdownButtonHideUnderline(
+          child: DropdownButton<MiniMaxConfig>(
+            value: _selectedMiniMaxConfig,
+            isExpanded: true,
+            icon: Container(
+              padding: const EdgeInsets.all(8),
+              decoration: BoxDecoration(
+                color: Colors.teal.withOpacity(0.05),
+                borderRadius: BorderRadius.circular(8),
+              ),
+              child: const Icon(
+                Icons.keyboard_arrow_down,
+                color: Colors.teal,
+                size: 24,
+              ),
+            ),
+            iconSize: 24,
+            itemHeight: 60,
+            dropdownColor: Colors.white,
+            borderRadius: BorderRadius.circular(16),
+            style: const TextStyle(
+              fontSize: 16,
+              fontWeight: FontWeight.w500,
+              color: Colors.black,
+            ),
+            items:
+                configs.map((MiniMaxConfig config) {
+                  return DropdownMenuItem<MiniMaxConfig>(
+                    value: config,
+                    child: Container(
+                      margin: const EdgeInsets.symmetric(vertical: 8.0),
+                      child: Row(
+                        children: [
+                          Container(
+                            padding: const EdgeInsets.all(8),
+                            decoration: BoxDecoration(
+                              color: Colors.teal.withOpacity(0.1),
+                              borderRadius: BorderRadius.circular(8),
+                            ),
+                            child: const Icon(
+                              Icons.auto_awesome,
+                              color: Colors.teal,
+                              size: 20,
+                            ),
+                          ),
+                          const SizedBox(width: 12),
+                          Column(
+                            crossAxisAlignment: CrossAxisAlignment.start,
+                            mainAxisAlignment: MainAxisAlignment.center,
+                            children: [
+                              Text(
+                                config.name,
+                                style: const TextStyle(
+                                  fontSize: 16,
+                                  fontWeight: FontWeight.w600,
+                                  color: Colors.black,
+                                ),
+                              ),
+                              Text(
+                                config.model,
+                                style: TextStyle(
+                                  fontSize: 12,
+                                  color: Colors.grey.shade600,
+                                ),
+                                overflow: TextOverflow.ellipsis,
+                              ),
+                            ],
+                          ),
+                        ],
+                      ),
+                    ),
+                  );
+                }).toList(),
+            onChanged: (MiniMaxConfig? newValue) {
+              setState(() {
+                _selectedMiniMaxConfig = newValue;
+              });
+            },
+          ),
+        ),
+      ),
+    );
+  }
+
+  Widget _buildMiniMaxDetailsPanel(MiniMaxConfig config) {
+    return Container(
+      margin: const EdgeInsets.fromLTRB(20, 0, 20, 20),
+      padding: const EdgeInsets.all(24),
+      decoration: BoxDecoration(
+        color: Colors.white,
+        borderRadius: BorderRadius.circular(16),
+        boxShadow: [
+          BoxShadow(
+            color: Colors.black.withOpacity(0.06),
+            blurRadius: 8,
+            spreadRadius: 0,
+            offset: const Offset(0, 3),
+          ),
+          BoxShadow(
+            color: Colors.teal.withOpacity(0.04),
+            blurRadius: 12,
+            spreadRadius: -2,
+            offset: const Offset(0, 6),
+          ),
+        ],
+        border: Border.all(color: Colors.grey.shade100),
+      ),
+      child: Column(
+        crossAxisAlignment: CrossAxisAlignment.start,
+        children: [
+          Row(
+            children: [
+              Container(
+                padding: const EdgeInsets.all(12),
+                decoration: BoxDecoration(
+                  color: Colors.teal.withOpacity(0.1),
+                  borderRadius: BorderRadius.circular(12),
+                  boxShadow: [
+                    BoxShadow(
+                      color: Colors.teal.withOpacity(0.1),
+                      blurRadius: 8,
+                      spreadRadius: 0,
+                      offset: const Offset(0, 2),
+                    ),
+                  ],
+                ),
+                child: Icon(
+                  Icons.info_outline,
+                  color: Colors.teal.shade400,
+                  size: 22,
+                ),
+              ),
+              const SizedBox(width: 16),
+              const Text(
+                '服务详情',
+                style: TextStyle(fontWeight: FontWeight.bold, fontSize: 18),
+              ),
+            ],
+          ),
+          const SizedBox(height: 20),
+          _buildDetailItemMiniMax('模型', config.model),
+          const SizedBox(height: 12),
+          _buildDetailItemMiniMax(
+            'API Key',
+            '${config.apiKey.substring(0, 5)}...',
+          ),
+        ],
+      ),
+    );
+  }
+
+  Widget _buildDetailItemMiniMax(String label, String value) {
+    return Container(
+      padding: const EdgeInsets.all(12),
+      decoration: BoxDecoration(
+        color: Colors.grey.shade50,
+        borderRadius: BorderRadius.circular(12),
+        border: Border.all(color: Colors.grey.shade100),
+      ),
+      child: Row(
+        crossAxisAlignment: CrossAxisAlignment.start,
+        children: [
+          Container(
+            padding: const EdgeInsets.all(6),
+            decoration: BoxDecoration(
+              color: Colors.teal.withOpacity(0.05),
+              borderRadius: BorderRadius.circular(8),
+            ),
+            child: Text(
+              label,
+              style: TextStyle(
+                fontSize: 14,
+                fontWeight: FontWeight.w600,
+                color: Colors.teal.shade700,
+              ),
+            ),
+          ),
+          const SizedBox(width: 12),
+          Expanded(
+            child: Text(
+              value,
+              style: const TextStyle(fontSize: 14, fontWeight: FontWeight.w500),
+              overflow: TextOverflow.ellipsis,
+              maxLines: 2,
+            ),
+          ),
+        ],
+      ),
+    );
+  }
+
   void _createConversation() async {
     if (_selectedType == ConversationType.dify && _selectedDifyConfig != null) {
       _createDifyConversation(_selectedDifyConfig!);
     } else if (_selectedType == ConversationType.xiaozhi &&
         _selectedXiaozhiConfig != null) {
       _createXiaozhiConversation(_selectedXiaozhiConfig!);
+    } else if (_selectedType == ConversationType.minimax &&
+        _selectedMiniMaxConfig != null) {
+      _createMiniMaxConversation(_selectedMiniMaxConfig!);
     }
   }
 
@@ -944,6 +1326,26 @@ class _ConversationTypeScreenState extends State<ConversationTypeScreen> {
     ).createConversation(
       title: '与 ${config.name} 的对话',
       type: ConversationType.xiaozhi,
+      configId: config.id,
+    );
+
+    if (context.mounted) {
+      Navigator.pushReplacement(
+        context,
+        MaterialPageRoute(
+          builder: (context) => ChatScreen(conversation: conversation),
+        ),
+      );
+    }
+  }
+
+  void _createMiniMaxConversation(MiniMaxConfig config) async {
+    final conversation = await Provider.of<ConversationProvider>(
+      context,
+      listen: false,
+    ).createConversation(
+      title: '与 ${config.name} 的对话',
+      type: ConversationType.minimax,
       configId: config.id,
     );
 
