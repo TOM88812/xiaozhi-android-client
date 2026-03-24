@@ -1,4 +1,4 @@
-enum ConversationType { dify, xiaozhi }
+enum ConversationType { dify, xiaozhi, minimax }
 
 class Conversation {
   final String id;

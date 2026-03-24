@@ -7,14 +7,17 @@ import 'package:crypto/crypto.dart';
 import 'package:uuid/uuid.dart';
 import 'package:ai_assistant/models/xiaozhi_config.dart';
 import 'package:ai_assistant/models/dify_config.dart';
+import 'package:ai_assistant/models/minimax_config.dart';
 
 class ConfigProvider extends ChangeNotifier {
   List<XiaozhiConfig> _xiaozhiConfigs = [];
   List<DifyConfig> _difyConfigs = [];
+  List<MiniMaxConfig> _minimaxConfigs = [];
   bool _isLoaded = false;
 
   List<XiaozhiConfig> get xiaozhiConfigs => _xiaozhiConfigs;
   List<DifyConfig> get difyConfigs => _difyConfigs;
+  List<MiniMaxConfig> get minimaxConfigs => _minimaxConfigs;
   DifyConfig? get difyConfig =>
       _difyConfigs.isNotEmpty ? _difyConfigs.first : null;
   bool get isLoaded => _isLoaded;
@@ -38,6 +41,13 @@ class ConfigProvider extends ChangeNotifier {
     _difyConfigs =
         difyConfigsJson
             .map((json) => DifyConfig.fromJson(jsonDecode(json)))
+            .toList();
+
+    // Load MiniMax configs
+    final minimaxConfigsJson = prefs.getStringList('minimaxConfigs') ?? [];
+    _minimaxConfigs =
+        minimaxConfigsJson
+            .map((json) => MiniMaxConfig.fromJson(jsonDecode(json)))
             .toList();
 
     // 向后兼容：加载旧版单个Dify配置
@@ -74,6 +84,11 @@ class ConfigProvider extends ChangeNotifier {
     final difyConfigsJson =
         _difyConfigs.map((config) => jsonEncode(config.toJson())).toList();
     await prefs.setStringList('difyConfigs', difyConfigsJson);
+
+    // Save MiniMax configs
+    final minimaxConfigsJson =
+        _minimaxConfigs.map((config) => jsonEncode(config.toJson())).toList();
+    await prefs.setStringList('minimaxConfigs', minimaxConfigsJson);
   }
 
   Future<void> addXiaozhiConfig(
@@ -143,6 +158,43 @@ class ConfigProvider extends ChangeNotifier {
   // 删除Dify配置
   Future<void> deleteDifyConfig(String id) async {
     _difyConfigs.removeWhere((config) => config.id == id);
+    await _saveConfigs();
+    notifyListeners();
+  }
+
+  // 添加MiniMax配置
+  Future<void> addMiniMaxConfig(
+    String name,
+    String apiKey, {
+    String model = 'MiniMax-M2.7',
+  }) async {
+    final newConfig = MiniMaxConfig(
+      id: const Uuid().v4(),
+      name: name,
+      apiKey: apiKey,
+      model: model,
+    );
+
+    _minimaxConfigs.add(newConfig);
+    await _saveConfigs();
+    notifyListeners();
+  }
+
+  // 更新MiniMax配置
+  Future<void> updateMiniMaxConfig(MiniMaxConfig updatedConfig) async {
+    final index = _minimaxConfigs.indexWhere(
+      (config) => config.id == updatedConfig.id,
+    );
+    if (index != -1) {
+      _minimaxConfigs[index] = updatedConfig;
+      await _saveConfigs();
+      notifyListeners();
+    }
+  }
+
+  // 删除MiniMax配置
+  Future<void> deleteMiniMaxConfig(String id) async {
+    _minimaxConfigs.removeWhere((config) => config.id == id);
     await _saveConfigs();
     notifyListeners();
   }

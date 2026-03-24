@@ -11,8 +11,10 @@ import 'package:ai_assistant/models/xiaozhi_config.dart';
 import 'package:ai_assistant/models/dify_config.dart';
 import 'package:ai_assistant/providers/conversation_provider.dart';
 import 'package:ai_assistant/providers/config_provider.dart';
+import 'package:ai_assistant/models/minimax_config.dart';
 import 'package:ai_assistant/services/dify_service.dart';
 import 'package:ai_assistant/services/xiaozhi_service.dart';
+import 'package:ai_assistant/services/minimax_service.dart';
 import 'package:ai_assistant/widgets/message_bubble.dart';
 import 'package:ai_assistant/screens/voice_call_screen.dart';
 import 'dart:convert';
@@ -34,6 +36,7 @@ class _ChatScreenState extends State<ChatScreen> {
   bool _isLoading = false;
   XiaozhiService? _xiaozhiService; // 保持XiaozhiService实例
   DifyService? _difyService; // 保持DifyService实例
+  MiniMaxService? _minimaxService; // 保持MiniMaxService实例
   Timer? _connectionCheckTimer; // 添加定时器检查连接状态
   Timer? _autoReconnectTimer; // 自动重连定时器
 
@@ -113,6 +116,9 @@ class _ChatScreenState extends State<ChatScreen> {
       } else if (widget.conversation.type == ConversationType.dify) {
         // 初始化 DifyService
         _initDifyService();
+      } else if (widget.conversation.type == ConversationType.minimax) {
+        // 初始化 MiniMaxService
+        _initMiniMaxService();
       }
     });
   }
@@ -263,6 +269,32 @@ class _ChatScreenState extends State<ChatScreen> {
     );
   }
 
+  // 初始化 MiniMaxService
+  void _initMiniMaxService() {
+    final configProvider = Provider.of<ConfigProvider>(context, listen: false);
+    final String? configId = widget.conversation.configId;
+    MiniMaxConfig? minimaxConfig;
+
+    if (configId != null && configId.isNotEmpty) {
+      minimaxConfig =
+          configProvider.minimaxConfigs
+              .where((config) => config.id == configId)
+              .firstOrNull;
+    }
+
+    if (minimaxConfig == null) {
+      if (configProvider.minimaxConfigs.isEmpty) {
+        throw Exception("未设置MiniMax配置，请先在设置中配置MiniMax API");
+      }
+      minimaxConfig = configProvider.minimaxConfigs.first;
+    }
+
+    _minimaxService = MiniMaxService(
+      apiKey: minimaxConfig.apiKey,
+      model: minimaxConfig.model,
+    );
+  }
+
   @override
   Widget build(BuildContext context) {
     // 确保状态栏设置正确
@@ -289,7 +321,8 @@ class _ChatScreenState extends State<ChatScreen> {
           statusBarBrightness: Brightness.light,
         ),
         actions: [
-          if (widget.conversation.type == ConversationType.dify)
+          if (widget.conversation.type == ConversationType.dify ||
+              widget.conversation.type == ConversationType.minimax)
             IconButton(
               icon: const Icon(Icons.refresh, color: Colors.black, size: 24),
               tooltip: '开始新对话',
@@ -402,19 +435,31 @@ class _ChatScreenState extends State<ChatScreen> {
                 )
                 : Consumer<ConfigProvider>(
                   builder: (context, configProvider, child) {
-                    // 查找此会话对应的Dify配置
                     final String? configId = widget.conversation.configId;
                     String configName = widget.conversation.title;
+                    final bool isMinimax =
+                        widget.conversation.type == ConversationType.minimax;
+                    final MaterialColor themeColor =
+                        isMinimax ? Colors.teal : Colors.blue;
 
-                    // 如果配置ID存在，则从中获取名称
+                    // 查找此会话对应的配置
                     if (configId != null && configId.isNotEmpty) {
-                      final difyConfig =
-                          configProvider.difyConfigs
-                              .where((config) => config.id == configId)
-                              .firstOrNull;
-
-                      if (difyConfig != null) {
-                        configName = difyConfig.name;
+                      if (isMinimax) {
+                        final minimaxConfig =
+                            configProvider.minimaxConfigs
+                                .where((config) => config.id == configId)
+                                .firstOrNull;
+                        if (minimaxConfig != null) {
+                          configName = minimaxConfig.name;
+                        }
+                      } else {
+                        final difyConfig =
+                            configProvider.difyConfigs
+                                .where((config) => config.id == configId)
+                                .firstOrNull;
+                        if (difyConfig != null) {
+                          configName = difyConfig.name;
+                        }
                       }
                     }
 
@@ -425,7 +470,7 @@ class _ChatScreenState extends State<ChatScreen> {
                             shape: BoxShape.circle,
                             boxShadow: [
                               BoxShadow(
-                                color: Colors.blue.withOpacity(0.3),
+                                color: themeColor.withOpacity(0.3),
                                 blurRadius: 8,
                                 spreadRadius: 0,
                                 offset: const Offset(0, 3),
@@ -434,9 +479,11 @@ class _ChatScreenState extends State<ChatScreen> {
                           ),
                           child: CircleAvatar(
                             radius: 20,
-                            backgroundColor: Colors.blue.shade400,
-                            child: const Icon(
-                              Icons.chat_bubble_outline,
+                            backgroundColor: themeColor.shade400,
+                            child: Icon(
+                              isMinimax
+                                  ? Icons.auto_awesome
+                                  : Icons.chat_bubble_outline,
                               color: Colors.white,
                               size: 20,
                             ),
@@ -460,7 +507,7 @@ class _ChatScreenState extends State<ChatScreen> {
                                 vertical: 2,
                               ),
                               decoration: BoxDecoration(
-                                color: Colors.blue.shade50,
+                                color: themeColor.shade50,
                                 borderRadius: BorderRadius.circular(10),
                                 boxShadow: [
                                   BoxShadow(
@@ -471,10 +518,10 @@ class _ChatScreenState extends State<ChatScreen> {
                                   ),
                                 ],
                               ),
-                              child: const Text(
-                                '文本',
+                              child: Text(
+                                isMinimax ? 'MiniMax' : '文本',
                                 style: TextStyle(
-                                  color: Colors.blue,
+                                  color: themeColor,
                                   fontSize: 12,
                                 ),
                               ),
@@ -1112,7 +1159,18 @@ class _ChatScreenState extends State<ChatScreen> {
       listen: false,
     );
 
-    if (_difyService != null) {
+    if (widget.conversation.type == ConversationType.minimax) {
+      final sessionId = widget.conversation.id;
+      _minimaxService?.clearConversation(sessionId);
+
+      await conversationProvider.addMessage(
+        conversationId: widget.conversation.id,
+        role: MessageRole.system,
+        content: '--- 开始新对话 ---',
+      );
+
+      _showCustomSnackbar('已开始新对话');
+    } else if (_difyService != null) {
       // 使用会话的ID作为sessionId，确保与发送消息时使用相同的标识符
       final sessionId = widget.conversation.id;
 
@@ -1128,7 +1186,7 @@ class _ChatScreenState extends State<ChatScreen> {
 
       _showCustomSnackbar('已开始新对话');
     } else {
-      _showCustomSnackbar('Dify配置未设置，无法重置对话');
+      _showCustomSnackbar('配置未设置，无法重置对话');
     }
   }
 
@@ -1159,7 +1217,31 @@ class _ChatScreenState extends State<ChatScreen> {
     _scrollToBottom();
 
     try {
-      if (widget.conversation.type == ConversationType.dify) {
+      if (widget.conversation.type == ConversationType.minimax) {
+        if (_minimaxService == null) {
+          _initMiniMaxService();
+        }
+
+        if (_minimaxService == null) {
+          throw Exception("未设置MiniMax配置，请先在设置中配置MiniMax API");
+        }
+
+        final sessionId = widget.conversation.id;
+
+        final response = await _minimaxService!.sendMessage(
+          message,
+          sessionId: sessionId,
+          forceNewConversation: false,
+        );
+
+        if (!mounted) return;
+
+        await conversationProvider.addMessage(
+          conversationId: widget.conversation.id,
+          role: MessageRole.assistant,
+          content: response,
+        );
+      } else if (widget.conversation.type == ConversationType.dify) {
         if (_difyService == null) {
           await _initDifyService();
         }
