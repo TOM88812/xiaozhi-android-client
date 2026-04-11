@@ -1,6 +1,6 @@
 import 'dart:convert';
 import 'dart:async';
-import 'dart:math' as math;
+import 'dart:io';
 import 'package:http/http.dart' as http;
 
 /// MiniMax AI service using OpenAI-compatible Chat Completions API.
@@ -16,10 +16,10 @@ class MiniMaxService {
   // Store conversation history per session for multi-turn support
   final Map<String, List<Map<String, String>>> _sessionHistory = {};
 
-  MiniMaxService({
-    required this.apiKey,
-    required this.model,
-  });
+  MiniMaxService({required this.apiKey, required this.model});
+
+  static const String _networkErrorMessage =
+      '无法连接到 MiniMax 服务，请检查网络连接或 macOS App 网络权限后重试。';
 
   /// Send a message and get a blocking response.
   Future<String> sendMessage(
@@ -42,9 +42,6 @@ class MiniMaxService {
       final requestUrl = '$_baseUrl/chat/completions';
 
       print('MiniMaxService: 发送请求到 $requestUrl');
-      print(
-        'MiniMaxService: API Key = ${apiKey.substring(0, math.min(5, apiKey.length))}...',
-      );
       print('MiniMaxService: 模型 = $model');
       print('MiniMaxService: 会话 ID = $sessionId');
 
@@ -88,6 +85,12 @@ class MiniMaxService {
           'API 请求失败: ${response.statusCode}, 响应: ${response.body}',
         );
       }
+    } on SocketException catch (e) {
+      print('MiniMaxService 网络错误: $e');
+      throw MiniMaxNetworkException(_networkErrorMessage);
+    } on http.ClientException catch (e) {
+      print('MiniMaxService 客户端错误: $e');
+      throw MiniMaxNetworkException(_networkErrorMessage);
     } catch (e) {
       print('MiniMaxService 错误: $e');
       throw Exception('发送消息失败: $e');
@@ -115,9 +118,6 @@ class MiniMaxService {
       final requestUrl = '$_baseUrl/chat/completions';
 
       print('MiniMaxService Stream: 发送请求到 $requestUrl');
-      print(
-        'MiniMaxService Stream: API Key = ${apiKey.substring(0, math.min(5, apiKey.length))}...',
-      );
       print('MiniMaxService Stream: 模型 = $model');
       print('MiniMaxService Stream: 会话 ID = $sessionId');
 
@@ -138,9 +138,7 @@ class MiniMaxService {
       request.body = requestBody;
 
       final streamedResponse = await http.Client().send(request);
-      print(
-        'MiniMaxService Stream: 响应状态码 = ${streamedResponse.statusCode}',
-      );
+      print('MiniMaxService Stream: 响应状态码 = ${streamedResponse.statusCode}');
 
       if (streamedResponse.statusCode != 200) {
         final responseBody = await streamedResponse.stream.bytesToString();
@@ -186,6 +184,12 @@ class MiniMaxService {
       // Strip thinking tags from full content and add to history
       final cleanContent = _stripThinkingTags(fullContent.toString());
       history.add({'role': 'assistant', 'content': cleanContent});
+    } on SocketException catch (e) {
+      print('MiniMaxService Stream 网络错误: $e');
+      yield '【$_networkErrorMessage】';
+    } on http.ClientException catch (e) {
+      print('MiniMaxService Stream 客户端错误: $e');
+      yield '【$_networkErrorMessage】';
     } catch (e) {
       print('MiniMaxService Stream 错误: $e');
       yield '【服务响应异常】';
@@ -208,4 +212,13 @@ class MiniMaxService {
   String _stripThinkingTags(String content) {
     return content.replaceAll(RegExp(r'<think>[\s\S]*?</think>'), '').trim();
   }
+}
+
+class MiniMaxNetworkException implements Exception {
+  final String message;
+
+  const MiniMaxNetworkException(this.message);
+
+  @override
+  String toString() => message;
 }

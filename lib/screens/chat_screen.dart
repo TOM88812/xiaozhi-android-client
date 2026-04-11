@@ -1299,7 +1299,7 @@ class _ChatScreenState extends State<ChatScreen> {
       await conversationProvider.addMessage(
         conversationId: widget.conversation.id,
         role: MessageRole.assistant,
-        content: '发生错误: ${e.toString()}',
+        content: _buildSendErrorMessage(e),
       );
     } finally {
       if (!mounted) return;
@@ -1310,6 +1310,14 @@ class _ChatScreenState extends State<ChatScreen> {
 
       _scrollToBottom();
     }
+  }
+
+  String _buildSendErrorMessage(Object error) {
+    if (error is MiniMaxNetworkException) {
+      return error.message;
+    }
+
+    return '发生错误: ${error.toString()}';
   }
 
   void _scrollToBottom() {

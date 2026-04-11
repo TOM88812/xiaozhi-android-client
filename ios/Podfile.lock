@@ -87,7 +87,7 @@ SPEC CHECKSUMS:
   audio_session: 9bb7f6c970f21241b19f5a3658097ae459681ba0
   audio_streamer: 2e472b9f81cec5e381c4cf7667afa3055dcb45a4
   device_info_plus: 71ffc6ab7634ade6267c7a93088ed7e4f74e5896
-  Flutter: e0871f40cf51350855a761d2e70bf5af5b9b5de7
+  Flutter: cabc95a1d2626b1b06e7179b784ebcf0c0cde467
   flutter_blue_plus_darwin: 09444a26fb6bdef523e55b68fc1c59af5a877ea6
   flutter_pcm_player: ecac44cb13707ee54eb4e31252717e36acb29272
   flutter_sound: 52bc351d9035fede9085cbf99c296c62897ceadd

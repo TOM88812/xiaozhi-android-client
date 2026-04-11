@@ -1,0 +1,437 @@
+{
+  "@@locale": "en",
+  "settings": "Settings",
+  "@settings": {
+    "description": "Settings screen title"
+  },
+  "general": "General",
+  "@general": {
+    "description": "General settings tab"
+  },
+  "darkMode": "Dark Mode",
+  "@darkMode": {
+    "description": "Dark mode toggle"
+  },
+  "addConfig": "Add Config",
+  "@addConfig": {
+    "description": "Add configuration button"
+  },
+  "dify": "Dify",
+  "@dify": {
+    "description": "Dify tab label"
+  },
+  "minimax": "MiniMax",
+  "@minimax": {
+    "description": "MiniMax tab label"
+  },
+  "xiaozhi": "Xiaozhi",
+  "@xiaozhi": {
+    "description": "Xiaozhi tab label"
+  },
+  "cancel": "Cancel",
+  "@cancel": {
+    "description": "Cancel button"
+  },
+  "confirm": "Confirm",
+  "@confirm": {
+    "description": "Confirm button"
+  },
+  "delete": "Delete",
+  "@delete": {
+    "description": "Delete button"
+  },
+  "edit": "Edit",
+  "@edit": {
+    "description": "Edit button"
+  },
+  "save": "Save",
+  "@save": {
+    "description": "Save button"
+  },
+  "messages": "Messages",
+  "@messages": {
+    "description": "Messages tab"
+  },
+  "discover": "Discover",
+  "@discover": {
+    "description": "Discover tab"
+  },
+  "searchConversations": "Search conversations",
+  "@searchConversations": {
+    "description": "Search conversations placeholder"
+  },
+  "pinConversation": "Pin Conversation",
+  "@pinConversation": {
+    "description": "Pin conversation action"
+  },
+  "allConversations": "All Conversations",
+  "@allConversations": {
+    "description": "All conversations label"
+  },
+  "noConversations": "No Conversations",
+  "@noConversations": {
+    "description": "No conversations empty state"
+  },
+  "discovery": "Discover",
+  "@discovery": {
+    "description": "Discovery screen title"
+  },
+  "text": "Text",
+  "@text": {
+    "description": "Text message type"
+  },
+  "voice": "Voice",
+  "@voice": {
+    "description": "Voice message type"
+  },
+  "yesterday": "Yesterday",
+  "@yesterday": {
+    "description": "Yesterday label"
+  },
+  "language": "Language",
+  "@language": {
+    "description": "Language selector label"
+  },
+  "createNewConversation": "Tap + to create new conversation",
+  "@createNewConversation": {
+    "description": "Empty state instruction to create new conversation"
+  },
+  "deleted": "deleted",
+  "@deleted": {
+    "description": "Deleted confirmation suffix"
+  },
+  "undo": "Undo",
+  "@undo": {
+    "description": "Undo action"
+  },
+  "unpinConversation": "Unpin conversation",
+  "@unpinConversation": {
+    "description": "Unpin conversation action"
+  },
+  "deleteConversation": "Delete conversation",
+  "@deleteConversation": {
+    "description": "Delete conversation action"
+  },
+  "weekday1": "Mon",
+  "@weekday1": {
+    "description": "Monday"
+  },
+  "weekday2": "Tue",
+  "@weekday2": {
+    "description": "Tuesday"
+  },
+  "weekday3": "Wed",
+  "@weekday3": {
+    "description": "Wednesday"
+  },
+  "weekday4": "Thu",
+  "@weekday4": {
+    "description": "Thursday"
+  },
+  "weekday5": "Fri",
+  "@weekday5": {
+    "description": "Friday"
+  },
+  "weekday6": "Sat",
+  "@weekday6": {
+    "description": "Saturday"
+  },
+  "weekday7": "Sun",
+  "@weekday7": {
+    "description": "Sunday"
+  },
+  "practicalTools": "Practical Tools",
+  "@practicalTools": {
+    "description": "Practical tools section header"
+  },
+  "featuredRecommendations": "Featured Recommendations",
+  "@featuredRecommendations": {
+    "description": "Featured recommendations section header"
+  },
+  "readingAssistant": "Reading Assistant",
+  "@readingAssistant": {
+    "description": "Reading assistant card title"
+  },
+  "readingAssistantDesc": "Efficiently understand and summarize articles",
+  "@readingAssistantDesc": {
+    "description": "Reading assistant description"
+  },
+  "translationTool": "Translation Tool",
+  "@translationTool": {
+    "description": "Translation tool card title"
+  },
+  "translationToolDesc": "Real-time multilingual translation",
+  "@translationToolDesc": {
+    "description": "Translation tool description"
+  },
+  "voiceAssistant": "Voice Assistant",
+  "@voiceAssistant": {
+    "description": "Voice assistant card title"
+  },
+  "voiceAssistantDesc": "Intelligent voice interaction",
+  "@voiceAssistantDesc": {
+    "description": "Voice assistant description"
+  },
+  "documentParser": "Document Parser",
+  "@documentParser": {
+    "description": "Document parser card title"
+  },
+  "documentParserDesc": "Intelligent document content analysis",
+  "@documentParserDesc": {
+    "description": "Document parser description"
+  },
+  "aiWritingAssistant": "AI Writing Assistant",
+  "@aiWritingAssistant": {
+    "description": "AI writing assistant card title"
+  },
+  "aiWritingAssistantDesc": "Make your articles more professional",
+  "@aiWritingAssistantDesc": {
+    "description": "AI writing assistant description"
+  },
+  "smartReminder": "Smart Reminder",
+  "@smartReminder": {
+    "description": "Smart reminder card title"
+  },
+  "smartReminderDesc": "Do not miss important matters",
+  "@smartReminderDesc": {
+    "description": "Smart reminder description"
+  },
+  "voiceNotes": "Voice Notes",
+  "@voiceNotes": {
+    "description": "Voice notes card title"
+  },
+  "voiceNotesDesc": "Capture inspiration anytime, anywhere",
+  "@voiceNotesDesc": {
+    "description": "Voice notes description"
+  },
+  "underDevelopment": "Under Development",
+  "@underDevelopment": {
+    "description": "Under development suffix for feature cards"
+  },
+  "appearance": "Appearance",
+  "@appearance": {
+    "description": "appearance string"
+  },
+  "appearanceSettingsSubtitle": "Adjust app appearance settings",
+  "@appearanceSettingsSubtitle": {
+    "description": "appearanceSettingsSubtitle string"
+  },
+  "fillAllFields": "Please fill all fields",
+  "@fillAllFields": {
+    "description": "fillAllFields string"
+  },
+  "difyConfigAdded": "Dify config added",
+  "@difyConfigAdded": {
+    "description": "difyConfigAdded string"
+  },
+  "addNewDifyConfig": "Add new Dify API config",
+  "@addNewDifyConfig": {
+    "description": "addNewDifyConfig string"
+  },
+  "editDifyConfig": "Edit Dify config",
+  "@editDifyConfig": {
+    "description": "editDifyConfig string"
+  },
+  "apiAddress": "API Address",
+  "@apiAddress": {
+    "description": "apiAddress string"
+  },
+  "apiKey": "API Key",
+  "@apiKey": {
+    "description": "apiKey string"
+  },
+  "configName": "Config Name",
+  "@configName": {
+    "description": "configName string"
+  },
+  "inputConfigName": "Input config name",
+  "@inputConfigName": {
+    "description": "inputConfigName string"
+  },
+  "difyConfigUpdated": "Dify config updated",
+  "@difyConfigUpdated": {
+    "description": "difyConfigUpdated string"
+  },
+  "deleteDifyConfig": "Delete Dify config",
+  "@deleteDifyConfig": {
+    "description": "deleteDifyConfig string"
+  },
+  "confirmDeleteDify": "Delete this config? This action cannot be undone.",
+  "@confirmDeleteDify": {
+    "description": "confirmDeleteDify string"
+  },
+  "configDeleted": "Config deleted",
+  "@configDeleted": {
+    "description": "configDeleted string"
+  },
+  "noDifyConfig": "No Dify config, tap + to add",
+  "@noDifyConfig": {
+    "description": "noDifyConfig string"
+  },
+  "minimaxConfigAdded": "MiniMax config added",
+  "@minimaxConfigAdded": {
+    "description": "minimaxConfigAdded string"
+  },
+  "addNewMinimaxConfig": "Add new MiniMax AI config",
+  "@addNewMinimaxConfig": {
+    "description": "addNewMinimaxConfig string"
+  },
+  "editMinimaxConfig": "Edit MiniMax config",
+  "@editMinimaxConfig": {
+    "description": "editMinimaxConfig string"
+  },
+  "minimaxConfigUpdated": "MiniMax config updated",
+  "@minimaxConfigUpdated": {
+    "description": "minimaxConfigUpdated string"
+  },
+  "deleteMinimaxConfig": "Delete MiniMax config",
+  "@deleteMinimaxConfig": {
+    "description": "deleteMinimaxConfig string"
+  },
+  "confirmDeleteMinimax": "Delete this config?",
+  "@confirmDeleteMinimax": {
+    "description": "confirmDeleteMinimax string"
+  },
+  "noMinimaxConfig": "No MiniMax config, tap + to add",
+  "@noMinimaxConfig": {
+    "description": "noMinimaxConfig string"
+  },
+  "model": "Model",
+  "@model": {
+    "description": "model string"
+  },
+  "xiaozhiServiceConfig": "Xiaozhi Service Config",
+  "@xiaozhiServiceConfig": {
+    "description": "xiaozhiServiceConfig string"
+  },
+  "xiaozhiServiceConfigSubtitle": "Manage Xiaozhi voice service config",
+  "@xiaozhiServiceConfigSubtitle": {
+    "description": "xiaozhiServiceConfigSubtitle string"
+  },
+  "addXiaozhiService": "Add Xiaozhi service",
+  "@addXiaozhiService": {
+    "description": "addXiaozhiService string"
+  },
+  "addNewXiaozhiServiceConfig": "Add new Xiaozhi voice service config",
+  "@addNewXiaozhiServiceConfig": {
+    "description": "addNewXiaozhiServiceConfig string"
+  },
+  "editXiaozhiService": "Edit Xiaozhi service",
+  "@editXiaozhiService": {
+    "description": "editXiaozhiService string"
+  },
+  "modifyXiaozhiServiceConfig": "Modify Xiaozhi voice service config",
+  "@modifyXiaozhiServiceConfig": {
+    "description": "modifyXiaozhiServiceConfig string"
+  },
+  "serviceName": "Service Name",
+  "@serviceName": {
+    "description": "serviceName string"
+  },
+  "inputServiceName": "e.g. Home Xiaozhi",
+  "@inputServiceName": {
+    "description": "inputServiceName string"
+  },
+  "websocketAddress": "WebSocket Address",
+  "@websocketAddress": {
+    "description": "websocketAddress string"
+  },
+  "inputWebsocketAddress": "e.g. wss://example.com",
+  "@inputWebsocketAddress": {
+    "description": "inputWebsocketAddress string"
+  },
+  "macAddress": "MAC Address",
+  "@macAddress": {
+    "description": "macAddress string"
+  },
+  "macAddressOptional": "MAC Address (optional)",
+  "@macAddressOptional": {
+    "description": "macAddressOptional string"
+  },
+  "autoGenerate": "Leave empty to auto-generate",
+  "@autoGenerate": {
+    "description": "autoGenerate string"
+  },
+  "autoGenerateDesc": "Auto-generated from device ID if empty",
+  "@autoGenerateDesc": {
+    "description": "autoGenerateDesc string"
+  },
+  "token": "Token",
+  "@token": {
+    "description": "token string"
+  },
+  "enabledByDefault": "Enabled by default",
+  "@enabledByDefault": {
+    "description": "enabledByDefault string"
+  },
+  "fillRequiredFields": "Please fill all required fields",
+  "@fillRequiredFields": {
+    "description": "fillRequiredFields string"
+  },
+  "xiaozhiServiceAdded": "Xiaozhi service added",
+  "@xiaozhiServiceAdded": {
+    "description": "xiaozhiServiceAdded string"
+  },
+  "xiaozhiServiceUpdated": "Xiaozhi service updated",
+  "@xiaozhiServiceUpdated": {
+    "description": "xiaozhiServiceUpdated string"
+  },
+  "deleteXiaozhiService": "Delete Xiaozhi service",
+  "@deleteXiaozhiService": {
+    "description": "deleteXiaozhiService string"
+  },
+  "confirmDeleteXiaozhi": "Delete this service?",
+  "@confirmDeleteXiaozhi": {
+    "description": "confirmDeleteXiaozhi string"
+  },
+  "xiaozhiServiceDeleted": "Xiaozhi service deleted",
+  "@xiaozhiServiceDeleted": {
+    "description": "xiaozhiServiceDeleted string"
+  },
+  "addService": "Add service",
+  "@addService": {
+    "description": "addService string"
+  },
+  "noXiaozhiService": "No Xiaozhi service, tap + to add",
+  "@noXiaozhiService": {
+    "description": "noXiaozhiService string"
+  },
+  "unconfigured": "Not configured",
+  "@unconfigured": {
+    "description": "unconfigured string"
+  },
+  "difyApiConfig": "Dify API Config",
+  "@difyApiConfig": {
+    "description": "difyApiConfig string"
+  },
+  "difyApiConfigSubtitle": "Configure and manage multiple Dify API services",
+  "@difyApiConfigSubtitle": {
+    "description": "difyApiConfigSubtitle string"
+  },
+  "minimaxAiConfig": "MiniMax AI Config",
+  "@minimaxAiConfig": {
+    "description": "minimaxAiConfig string"
+  },
+  "minimaxAiConfigSubtitle": "Configure and manage MiniMax API services",
+  "@minimaxAiConfigSubtitle": {
+    "description": "minimaxAiConfigSubtitle string"
+  },
+  "add": "Add",
+  "@add": {
+    "description": "Add button"
+  },
+  "addDifyConfig": "Add Dify Config",
+  "@addDifyConfig": {
+    "description": "addDifyConfig string"
+  },
+  "addMinimaxConfig": "Add MiniMax Config",
+  "@addMinimaxConfig": {
+    "description": "addMinimaxConfig string"
+  },
+  "enterApiKey": "Enter API Key",
+  "@enterApiKey": {"description": "Hint text for API Key input field"},
+  "enterMinimaxApiKey": "Enter MiniMax API Key",
+  "@enterMinimaxApiKey": {"description": "Hint text for MiniMax API Key input"},
+  "wsExample": "e.g. wss://example.com",
+  "@wsExample": {"description": "Example WebSocket address hint"}
+}
