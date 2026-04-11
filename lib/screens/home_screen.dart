@@ -10,6 +10,7 @@ import 'package:ai_assistant/widgets/conversation_tile.dart';
 import 'package:ai_assistant/widgets/slidable_delete_tile.dart';
 import 'package:ai_assistant/widgets/discovery_screen.dart';
 import 'package:flutter/rendering.dart';
+import 'package:ai_assistant/l10n/app_localizations.dart';
 
 class HomeScreen extends StatefulWidget {
   const HomeScreen({super.key});
@@ -45,8 +46,8 @@ class _HomeScreenState extends State<HomeScreen> {
             _selectedIndex == 1
                 ? null
                 : AppBar(
-                  title: const Text(
-                    '消息',
+                  title: Text(
+                    S.of(context)!.messages,
                     style: TextStyle(
                       fontWeight: FontWeight.bold,
                       fontSize: 28,
@@ -225,7 +226,7 @@ class _HomeScreenState extends State<HomeScreen> {
                           ),
                         ),
                       ),
-                      label: '消息',
+                      label: S.of(context)!.messages,
                     ),
                     BottomNavigationBarItem(
                       icon: Material(
@@ -257,7 +258,7 @@ class _HomeScreenState extends State<HomeScreen> {
                           ),
                         ),
                       ),
-                      label: '发现',
+                      label: S.of(context)!.discover,
                     ),
                   ],
                 ),
@@ -295,7 +296,7 @@ class _HomeScreenState extends State<HomeScreen> {
           child: TextField(
             focusNode: _searchFocusNode,
             decoration: InputDecoration(
-              hintText: '搜索对话',
+              hintText: S.of(context)!.searchConversations,
               hintStyle: TextStyle(color: Colors.grey.shade400, fontSize: 16),
               prefixIcon: Container(
                 padding: const EdgeInsets.all(12),
@@ -342,7 +343,7 @@ class _HomeScreenState extends State<HomeScreen> {
           ),
           children: [
             if (pinnedConversations.isNotEmpty) ...[
-              const Padding(
+              Padding(
                 padding: EdgeInsets.only(
                   left: 20,
                   right: 20,
@@ -350,7 +351,7 @@ class _HomeScreenState extends State<HomeScreen> {
                   bottom: 8,
                 ),
                 child: Text(
-                  '置顶对话',
+                  S.of(context)!.pinConversation,
                   style: TextStyle(
                     fontWeight: FontWeight.w500,
                     color: Colors.grey,
@@ -378,8 +379,8 @@ class _HomeScreenState extends State<HomeScreen> {
                   top: pinnedConversations.isEmpty ? 8 : 16,
                   bottom: 8,
                 ),
-                child: const Text(
-                  '全部对话',
+                child: Text(
+                  S.of(context)!.allConversations,
                   style: TextStyle(
                     fontWeight: FontWeight.w500,
                     color: Colors.grey,
@@ -428,7 +429,7 @@ class _HomeScreenState extends State<HomeScreen> {
                       ),
                       const SizedBox(height: 24),
                       Text(
-                        '没有对话',
+                        S.of(context)!.noConversations,
                         style: TextStyle(
                           fontSize: 18,
                           fontWeight: FontWeight.w500,
@@ -470,7 +471,7 @@ class _HomeScreenState extends State<HomeScreen> {
                             ),
                             const SizedBox(width: 8),
                             Text(
-                              '点击 + 创建新对话',
+                              S.of(context)!.createNewConversation,
                               style: TextStyle(
                                 fontSize: 14,
                                 color: Colors.grey.shade500,
@@ -503,7 +504,7 @@ class _HomeScreenState extends State<HomeScreen> {
         ScaffoldMessenger.of(context).clearSnackBars();
         ScaffoldMessenger.of(context).showSnackBar(
           SnackBar(
-            content: Text('${conversation.title} 已删除'),
+            content: Text('${conversation.title} ${S.of(context)!.deleted}'),
             backgroundColor: Colors.grey.shade800,
             behavior: SnackBarBehavior.floating,
             duration: const Duration(seconds: 3),
@@ -512,7 +513,7 @@ class _HomeScreenState extends State<HomeScreen> {
               borderRadius: BorderRadius.circular(10),
             ),
             action: SnackBarAction(
-              label: '撤销',
+              label: S.of(context)!.undo,
               textColor: Colors.white,
               onPressed: () {
                 // 恢复被删除的对话
@@ -626,7 +627,9 @@ class _HomeScreenState extends State<HomeScreen> {
                         ),
                       ),
                       title: Text(
-                        conversation.isPinned ? '取消置顶' : '置顶对话',
+                        conversation.isPinned
+                            ? S.of(context)!.unpinConversation
+                            : S.of(context)!.pinConversation,
                         style: const TextStyle(
                           fontSize: 16,
                           fontWeight: FontWeight.w600,
@@ -692,8 +695,8 @@ class _HomeScreenState extends State<HomeScreen> {
                           size: 24,
                         ),
                       ),
-                      title: const Text(
-                        '删除对话',
+                      title: Text(
+                        S.of(context)!.deleteConversation,
                         style: TextStyle(
                           fontSize: 16,
                           fontWeight: FontWeight.w600,
@@ -711,7 +714,9 @@ class _HomeScreenState extends State<HomeScreen> {
                         ).deleteConversation(conversation.id);
                         ScaffoldMessenger.of(context).showSnackBar(
                           SnackBar(
-                            content: Text('${conversation.title} 已删除'),
+                            content: Text(
+                              '${conversation.title} ${S.of(context)!.deleted}',
+                            ),
                             backgroundColor: Colors.grey.shade800,
                             behavior: SnackBarBehavior.floating,
                             shape: RoundedRectangleBorder(

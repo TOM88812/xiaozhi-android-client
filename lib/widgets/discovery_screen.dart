@@ -1,3 +1,4 @@
+import 'package:ai_assistant/l10n/app_localizations.dart';
 import 'package:flutter/material.dart';
 
 class DiscoveryScreen extends StatelessWidget {
@@ -5,12 +6,13 @@ class DiscoveryScreen extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final s = S.of(context)!;
     return Column(
       children: [
         AppBar(
-          title: const Text(
-            '发现',
-            style: TextStyle(
+          title: Text(
+            s.discover,
+            style: const TextStyle(
               fontWeight: FontWeight.bold,
               fontSize: 28,
               color: Colors.black,
@@ -29,11 +31,11 @@ class DiscoveryScreen extends StatelessWidget {
             child: Column(
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
-                const Padding(
-                  padding: EdgeInsets.fromLTRB(20, 16, 20, 16),
+                Padding(
+                  padding: const EdgeInsets.fromLTRB(20, 16, 20, 16),
                   child: Text(
-                    '实用工具',
-                    style: TextStyle(
+                    s.practicalTools,
+                    style: const TextStyle(
                       fontSize: 18,
                       fontWeight: FontWeight.bold,
                       color: Colors.black87,
@@ -43,11 +45,11 @@ class DiscoveryScreen extends StatelessWidget {
                 _buildFeaturesGrid(context),
                 const SizedBox(height: 24),
 
-                const Padding(
-                  padding: EdgeInsets.fromLTRB(20, 16, 20, 16),
+                Padding(
+                  padding: const EdgeInsets.fromLTRB(20, 16, 20, 16),
                   child: Text(
-                    '精选推荐',
-                    style: TextStyle(
+                    s.featuredRecommendations,
+                    style: const TextStyle(
                       fontSize: 18,
                       fontWeight: FontWeight.bold,
                       color: Colors.black87,
@@ -55,7 +57,6 @@ class DiscoveryScreen extends StatelessWidget {
                   ),
                 ),
                 _buildRecommendations(context),
-                // 添加底部间距，避免内容被底部导航栏遮挡
                 SizedBox(height: MediaQuery.of(context).padding.bottom + 80),
               ],
             ),
@@ -66,6 +67,7 @@ class DiscoveryScreen extends StatelessWidget {
   }
 
   Widget _buildFeaturesGrid(BuildContext context) {
+    final s = S.of(context)!;
     return GridView.count(
       crossAxisCount: 2,
       shrinkWrap: true,
@@ -77,60 +79,60 @@ class DiscoveryScreen extends StatelessWidget {
       children: [
         _buildFeatureCard(
           context,
-          '阅读助手',
-          '高效理解和总结文章',
+          s.readingAssistant,
+          s.readingAssistantDesc,
           Icons.menu_book_outlined,
           const Color(0xFFFF6D00),
           onTap: () {
             ScaffoldMessenger.of(context).showSnackBar(
-              const SnackBar(
-                content: Text('阅读助手功能开发中...'),
-                duration: Duration(seconds: 2),
+              SnackBar(
+                content: Text('${s.readingAssistant}${s.underDevelopment}'),
+                duration: const Duration(seconds: 2),
               ),
             );
           },
         ),
         _buildFeatureCard(
           context,
-          '翻译工具',
-          '多语言实时翻译',
+          s.translationTool,
+          s.translationToolDesc,
           Icons.translate_outlined,
           const Color(0xFF2979FF),
           onTap: () {
             ScaffoldMessenger.of(context).showSnackBar(
-              const SnackBar(
-                content: Text('翻译工具功能开发中...'),
-                duration: Duration(seconds: 2),
+              SnackBar(
+                content: Text('${s.translationTool}${s.underDevelopment}'),
+                duration: const Duration(seconds: 2),
               ),
             );
           },
         ),
         _buildFeatureCard(
           context,
-          '语音助手',
-          '智能语音交互',
+          s.voiceAssistant,
+          s.voiceAssistantDesc,
           Icons.mic_outlined,
           const Color(0xFF6200EA),
           onTap: () {
             ScaffoldMessenger.of(context).showSnackBar(
-              const SnackBar(
-                content: Text('语音助手功能开发中...'),
-                duration: Duration(seconds: 2),
+              SnackBar(
+                content: Text('${s.voiceAssistant}${s.underDevelopment}'),
+                duration: const Duration(seconds: 2),
               ),
             );
           },
         ),
         _buildFeatureCard(
           context,
-          '文档解析',
-          '智能分析文档内容',
+          s.documentParser,
+          s.documentParserDesc,
           Icons.description_outlined,
           const Color(0xFF00BFA5),
           onTap: () {
             ScaffoldMessenger.of(context).showSnackBar(
-              const SnackBar(
-                content: Text('文档解析功能开发中...'),
-                duration: Duration(seconds: 2),
+              SnackBar(
+                content: Text('${s.documentParser}${s.underDevelopment}'),
+                duration: const Duration(seconds: 2),
               ),
             );
           },
@@ -210,6 +212,7 @@ class DiscoveryScreen extends StatelessWidget {
   }
 
   Widget _buildRecommendations(BuildContext context) {
+    final s = S.of(context)!;
     return SizedBox(
       height: 180,
       child: ListView(
@@ -219,22 +222,22 @@ class DiscoveryScreen extends StatelessWidget {
         children: [
           _buildRecommendationCard(
             context,
-            'AI写作助手',
-            '让你的文章更专业',
+            s.aiWritingAssistant,
+            s.aiWritingAssistantDesc,
             'assets/images/writing.png',
             const Color(0xFFE91E63),
           ),
           _buildRecommendationCard(
             context,
-            '智能提醒',
-            '不错过重要事项',
+            s.smartReminder,
+            s.smartReminderDesc,
             'assets/images/reminder.png',
             const Color(0xFF4CAF50),
           ),
           _buildRecommendationCard(
             context,
-            '语音笔记',
-            '随时随地记录灵感',
+            s.voiceNotes,
+            s.voiceNotesDesc,
             'assets/images/voice_note.png',
             const Color(0xFF3F51B5),
           ),
@@ -250,6 +253,7 @@ class DiscoveryScreen extends StatelessWidget {
     String imagePath,
     Color color,
   ) {
+    final s = S.of(context)!;
     return Container(
       width: 200,
       margin: const EdgeInsets.only(right: 16),
@@ -273,7 +277,7 @@ class DiscoveryScreen extends StatelessWidget {
             onTap: () {
               ScaffoldMessenger.of(context).showSnackBar(
                 SnackBar(
-                  content: Text('$title 功能开发中...'),
+                  content: Text('$title ${s.underDevelopment}'),
                   duration: const Duration(seconds: 2),
                 ),
               );

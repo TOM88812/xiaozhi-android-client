@@ -17,6 +17,9 @@ import 'dart:io';
 import 'dart:ui';
 import 'package:ai_assistant/utils/audio_util.dart';
 import 'package:flutter_displaymode/flutter_displaymode.dart';
+import 'package:ai_assistant/providers/locale_provider.dart';
+import 'package:ai_assistant/l10n/app_localizations.dart';
+import 'package:flutter_localizations/flutter_localizations.dart';
 
 // 是否启用调试工具
 const bool enableDebugTools = true;
@@ -55,9 +58,10 @@ void main() async {
     ].request();
   }
 
-  // 添加中文本地化支持
+  // 添加本地化支持 (英语/中文/俄语)
+  timeago.setLocaleMessages('en', timeago.EnMessages());
   timeago.setLocaleMessages('zh', timeago.ZhMessages());
-  timeago.setDefaultLocale('zh');
+  timeago.setLocaleMessages('ru', timeago.RuMessages());
 
   // 在Android上设置高刷新率
   if (Platform.isAndroid) {
@@ -102,14 +106,19 @@ void main() async {
   // 初始化配置管理
   final configProvider = ConfigProvider();
 
+  // 初始化LocaleProvider
+  final localeProvider = LocaleProvider();
+  await localeProvider.loadLocale();
+
   runApp(
     MultiProvider(
       providers: [
+        ChangeNotifierProvider.value(value: localeProvider),
         ChangeNotifierProvider(create: (_) => ThemeProvider()),
         ChangeNotifierProvider.value(value: configProvider),
         ChangeNotifierProvider(create: (_) => ConversationProvider()),
       ],
-      child: const MyApp(),
+      child: MyApp(localeProvider: localeProvider),
     ),
   );
 }
@@ -140,14 +149,62 @@ Future<void> _setupSystemUI() async {
   }
 }
 
-class MyApp extends StatelessWidget {
-  const MyApp({super.key});
+class MyApp extends StatefulWidget {
+  final LocaleProvider localeProvider;
+  const MyApp({super.key, required this.localeProvider});
+
+  @override
+  State<MyApp> createState() => _MyAppState();
+}
+
+class _MyAppState extends State<MyApp> with WidgetsBindingObserver {
+  @override
+  void initState() {
+    super.initState();
+    WidgetsBinding.instance.addObserver(this);
+    _updateTimeagoLocale();
+  }
+
+  @override
+  void dispose() {
+    WidgetsBinding.instance.removeObserver(this);
+    super.dispose();
+  }
+
+  @override
+  void didChangeDependencies() {
+    super.didChangeDependencies();
+    _updateTimeagoLocale();
+  }
+
+  void _updateTimeagoLocale() {
+    final locale = widget.localeProvider.locale.languageCode;
+    timeago.setDefaultLocale(locale);
+  }
 
   @override
   Widget build(BuildContext context) {
     final themeProvider = Provider.of<ThemeProvider>(context);
-
     return MaterialApp(
+      locale: widget.localeProvider.locale,
+      localizationsDelegates: [
+        S.delegate,
+        GlobalMaterialLocalizations.delegate,
+        GlobalWidgetsLocalizations.delegate,
+        GlobalCupertinoLocalizations.delegate,
+      ],
+      supportedLocales: const [
+        Locale('en'),
+        Locale('zh'),
+        Locale('ru'),
+      ],
+      localeResolutionCallback: (locale, supportedLocales) {
+        if (locale == null) return const Locale('en');
+        if (supportedLocales.any((s) => s.languageCode == locale.languageCode)) {
+          return locale;
+        }
+        return const Locale('en');
+      },
       title: 'AI-LHHT',
       debugShowCheckedModeBanner: false,
       theme: AppTheme.lightTheme,
@@ -155,16 +212,12 @@ class MyApp extends StatelessWidget {
       themeMode: themeProvider.themeMode,
       home: const HomeScreen(),
       routes: {
-        // 添加测试界面路由
         '/test': (context) => const TestScreen(),
       },
-      // 添加平滑滚动设置
       scrollBehavior: const MaterialScrollBehavior().copyWith(
-        // 启用物理滚动
         physics: const BouncingScrollPhysics(
           parent: AlwaysScrollableScrollPhysics(),
         ),
-        // 确保所有平台都有滚动条和弹性效果
         dragDevices: {
           PointerDeviceKind.touch,
           PointerDeviceKind.mouse,

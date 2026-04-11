@@ -1,0 +1,437 @@
+{
+  "@@locale": "ru",
+  "settings": "Настройки",
+  "@settings": {
+    "description": "Settings screen title"
+  },
+  "general": "Общие",
+  "@general": {
+    "description": "General settings tab"
+  },
+  "darkMode": "Тёмный режим",
+  "@darkMode": {
+    "description": "Dark mode toggle"
+  },
+  "addConfig": "Добавить конфиг",
+  "@addConfig": {
+    "description": "Add configuration button"
+  },
+  "dify": "Dify",
+  "@dify": {
+    "description": "Dify tab label"
+  },
+  "minimax": "MiniMax",
+  "@minimax": {
+    "description": "MiniMax tab label"
+  },
+  "xiaozhi": "Xiaozhi",
+  "@xiaozhi": {
+    "description": "Xiaozhi tab label"
+  },
+  "cancel": "Отмена",
+  "@cancel": {
+    "description": "Cancel button"
+  },
+  "confirm": "Подтвердить",
+  "@confirm": {
+    "description": "Confirm button"
+  },
+  "delete": "Удалить",
+  "@delete": {
+    "description": "Delete button"
+  },
+  "edit": "Редактировать",
+  "@edit": {
+    "description": "Edit button"
+  },
+  "save": "Сохранить",
+  "@save": {
+    "description": "Save button"
+  },
+  "messages": "Сообщения",
+  "@messages": {
+    "description": "Messages tab"
+  },
+  "discover": "Обзор",
+  "@discover": {
+    "description": "Discover tab"
+  },
+  "searchConversations": "Поиск диалогов",
+  "@searchConversations": {
+    "description": "Search conversations placeholder"
+  },
+  "pinConversation": "Закрепить диалог",
+  "@pinConversation": {
+    "description": "Pin conversation action"
+  },
+  "allConversations": "Все диалоги",
+  "@allConversations": {
+    "description": "All conversations label"
+  },
+  "noConversations": "Нет диалогов",
+  "@noConversations": {
+    "description": "No conversations empty state"
+  },
+  "discovery": "Обзор",
+  "@discovery": {
+    "description": "Discovery screen title"
+  },
+  "text": "Текст",
+  "@text": {
+    "description": "Text message type"
+  },
+  "voice": "Голос",
+  "@voice": {
+    "description": "Voice message type"
+  },
+  "yesterday": "Вчера",
+  "@yesterday": {
+    "description": "Yesterday label"
+  },
+  "language": "Язык",
+  "@language": {
+    "description": "Language selector label"
+  },
+  "createNewConversation": "Нажмите + чтобы создать новый диалог",
+  "@createNewConversation": {
+    "description": "Empty state instruction to create new conversation"
+  },
+  "deleted": "удалено",
+  "@deleted": {
+    "description": "Deleted confirmation suffix"
+  },
+  "undo": "Отменить",
+  "@undo": {
+    "description": "Undo action"
+  },
+  "unpinConversation": "Открепить диалог",
+  "@unpinConversation": {
+    "description": "Unpin conversation action"
+  },
+  "deleteConversation": "Удалить диалог",
+  "@deleteConversation": {
+    "description": "Delete conversation action"
+  },
+  "weekday1": "Пн",
+  "@weekday1": {
+    "description": "Monday"
+  },
+  "weekday2": "Вт",
+  "@weekday2": {
+    "description": "Tuesday"
+  },
+  "weekday3": "Ср",
+  "@weekday3": {
+    "description": "Wednesday"
+  },
+  "weekday4": "Чт",
+  "@weekday4": {
+    "description": "Thursday"
+  },
+  "weekday5": "Пт",
+  "@weekday5": {
+    "description": "Friday"
+  },
+  "weekday6": "Сб",
+  "@weekday6": {
+    "description": "Saturday"
+  },
+  "weekday7": "Вс",
+  "@weekday7": {
+    "description": "Sunday"
+  },
+  "practicalTools": "Практические инструменты",
+  "@practicalTools": {
+    "description": "Practical tools section header"
+  },
+  "featuredRecommendations": "Рекомендуемые",
+  "@featuredRecommendations": {
+    "description": "Featured recommendations section header"
+  },
+  "readingAssistant": "Ассистент чтения",
+  "@readingAssistant": {
+    "description": "Reading assistant card title"
+  },
+  "readingAssistantDesc": "Эффективное понимание и обобщение статей",
+  "@readingAssistantDesc": {
+    "description": "Reading assistant description"
+  },
+  "translationTool": "Инструмент перевода",
+  "@translationTool": {
+    "description": "Translation tool card title"
+  },
+  "translationToolDesc": "Мгновенный многоязычный перевод",
+  "@translationToolDesc": {
+    "description": "Translation tool description"
+  },
+  "voiceAssistant": "Голосовой ассистент",
+  "@voiceAssistant": {
+    "description": "Voice assistant card title"
+  },
+  "voiceAssistantDesc": "Интеллектуальное голосовое взаимодействие",
+  "@voiceAssistantDesc": {
+    "description": "Voice assistant description"
+  },
+  "documentParser": "Анализатор документов",
+  "@documentParser": {
+    "description": "Document parser card title"
+  },
+  "documentParserDesc": "Интеллектуальный анализ содержимого документов",
+  "@documentParserDesc": {
+    "description": "Document parser description"
+  },
+  "aiWritingAssistant": "AI-ассистент написания",
+  "@aiWritingAssistant": {
+    "description": "AI writing assistant card title"
+  },
+  "aiWritingAssistantDesc": "Сделайте ваши статьи более профессиональными",
+  "@aiWritingAssistantDesc": {
+    "description": "AI writing assistant description"
+  },
+  "smartReminder": "Умный напоминатель",
+  "@smartReminder": {
+    "description": "Smart reminder card title"
+  },
+  "smartReminderDesc": "Не пропустите важные дела",
+  "@smartReminderDesc": {
+    "description": "Smart reminder description"
+  },
+  "voiceNotes": "Голосовые заметки",
+  "@voiceNotes": {
+    "description": "Voice notes card title"
+  },
+  "voiceNotesDesc": "Записывайте идеи в любой момент",
+  "@voiceNotesDesc": {
+    "description": "Voice notes description"
+  },
+  "underDevelopment": "В разработке",
+  "@underDevelopment": {
+    "description": "Under development suffix for feature cards"
+  },
+  "appearance": "Внешний вид",
+  "@appearance": {
+    "description": "appearance string"
+  },
+  "appearanceSettingsSubtitle": "Настройка внешнего вида приложения",
+  "@appearanceSettingsSubtitle": {
+    "description": "appearanceSettingsSubtitle string"
+  },
+  "fillAllFields": "Пожалуйста, заполните все поля",
+  "@fillAllFields": {
+    "description": "fillAllFields string"
+  },
+  "difyConfigAdded": "Конфиг Dify добавлен",
+  "@difyConfigAdded": {
+    "description": "difyConfigAdded string"
+  },
+  "addNewDifyConfig": "Добавить новый конфиг Dify API",
+  "@addNewDifyConfig": {
+    "description": "addNewDifyConfig string"
+  },
+  "editDifyConfig": "Редактировать конфиг Dify",
+  "@editDifyConfig": {
+    "description": "editDifyConfig string"
+  },
+  "apiAddress": "Адрес API",
+  "@apiAddress": {
+    "description": "apiAddress string"
+  },
+  "apiKey": "Ключ API",
+  "@apiKey": {
+    "description": "apiKey string"
+  },
+  "configName": "Название конфига",
+  "@configName": {
+    "description": "configName string"
+  },
+  "inputConfigName": "Введите название конфига",
+  "@inputConfigName": {
+    "description": "inputConfigName string"
+  },
+  "difyConfigUpdated": "Конфиг Dify обновлён",
+  "@difyConfigUpdated": {
+    "description": "difyConfigUpdated string"
+  },
+  "deleteDifyConfig": "Удалить конфиг Dify",
+  "@deleteDifyConfig": {
+    "description": "deleteDifyConfig string"
+  },
+  "confirmDeleteDify": "Удалить этот конфиг? Это действие нельзя отменить.",
+  "@confirmDeleteDify": {
+    "description": "confirmDeleteDify string"
+  },
+  "configDeleted": "Конфиг удалён",
+  "@configDeleted": {
+    "description": "configDeleted string"
+  },
+  "noDifyConfig": "Нет конфига Dify, нажмите +",
+  "@noDifyConfig": {
+    "description": "noDifyConfig string"
+  },
+  "minimaxConfigAdded": "Конфиг MiniMax добавлен",
+  "@minimaxConfigAdded": {
+    "description": "minimaxConfigAdded string"
+  },
+  "addNewMinimaxConfig": "Добавить новый конфиг MiniMax AI",
+  "@addNewMinimaxConfig": {
+    "description": "addNewMinimaxConfig string"
+  },
+  "editMinimaxConfig": "Редактировать конфиг MiniMax",
+  "@editMinimaxConfig": {
+    "description": "editMinimaxConfig string"
+  },
+  "minimaxConfigUpdated": "Конфиг MiniMax обновлён",
+  "@minimaxConfigUpdated": {
+    "description": "minimaxConfigUpdated string"
+  },
+  "deleteMinimaxConfig": "Удалить конфиг MiniMax",
+  "@deleteMinimaxConfig": {
+    "description": "deleteMinimaxConfig string"
+  },
+  "confirmDeleteMinimax": "Удалить этот конфиг?",
+  "@confirmDeleteMinimax": {
+    "description": "confirmDeleteMinimax string"
+  },
+  "noMinimaxConfig": "Нет конфига MiniMax, нажмите +",
+  "@noMinimaxConfig": {
+    "description": "noMinimaxConfig string"
+  },
+  "model": "Модель",
+  "@model": {
+    "description": "model string"
+  },
+  "xiaozhiServiceConfig": "Конфиг сервиса Xiaozhi",
+  "@xiaozhiServiceConfig": {
+    "description": "xiaozhiServiceConfig string"
+  },
+  "xiaozhiServiceConfigSubtitle": "Управление конфигом голосового сервиса Xiaozhi",
+  "@xiaozhiServiceConfigSubtitle": {
+    "description": "xiaozhiServiceConfigSubtitle string"
+  },
+  "addXiaozhiService": "Добавить сервис Xiaozhi",
+  "@addXiaozhiService": {
+    "description": "addXiaozhiService string"
+  },
+  "addNewXiaozhiServiceConfig": "Добавить новый конфиг голосового сервиса Xiaozhi",
+  "@addNewXiaozhiServiceConfig": {
+    "description": "addNewXiaozhiServiceConfig string"
+  },
+  "editXiaozhiService": "Редактировать сервис Xiaozhi",
+  "@editXiaozhiService": {
+    "description": "editXiaozhiService string"
+  },
+  "modifyXiaozhiServiceConfig": "Изменить конфиг голосового сервиса Xiaozhi",
+  "@modifyXiaozhiServiceConfig": {
+    "description": "modifyXiaozhiServiceConfig string"
+  },
+  "serviceName": "Название сервиса",
+  "@serviceName": {
+    "description": "serviceName string"
+  },
+  "inputServiceName": "напр. Домашний Xiaozhi",
+  "@inputServiceName": {
+    "description": "inputServiceName string"
+  },
+  "websocketAddress": "WebSocket адрес",
+  "@websocketAddress": {
+    "description": "websocketAddress string"
+  },
+  "inputWebsocketAddress": "напр. wss://example.com",
+  "@inputWebsocketAddress": {
+    "description": "inputWebsocketAddress string"
+  },
+  "macAddress": "MAC адрес",
+  "@macAddress": {
+    "description": "macAddress string"
+  },
+  "macAddressOptional": "MAC адрес (опц.)",
+  "@macAddressOptional": {
+    "description": "macAddressOptional string"
+  },
+  "autoGenerate": "Оставьте пустым для автогенерации",
+  "@autoGenerate": {
+    "description": "autoGenerate string"
+  },
+  "autoGenerateDesc": "Автогенерация из ID устройства",
+  "@autoGenerateDesc": {
+    "description": "autoGenerateDesc string"
+  },
+  "token": "Токен",
+  "@token": {
+    "description": "token string"
+  },
+  "enabledByDefault": "Включено по умолчанию",
+  "@enabledByDefault": {
+    "description": "enabledByDefault string"
+  },
+  "fillRequiredFields": "Пожалуйста, заполните все обязательные поля",
+  "@fillRequiredFields": {
+    "description": "fillRequiredFields string"
+  },
+  "xiaozhiServiceAdded": "Сервис Xiaozhi добавлен",
+  "@xiaozhiServiceAdded": {
+    "description": "xiaozhiServiceAdded string"
+  },
+  "xiaozhiServiceUpdated": "Сервис Xiaozhi обновлён",
+  "@xiaozhiServiceUpdated": {
+    "description": "xiaozhiServiceUpdated string"
+  },
+  "deleteXiaozhiService": "Удалить сервис Xiaozhi",
+  "@deleteXiaozhiService": {
+    "description": "deleteXiaozhiService string"
+  },
+  "confirmDeleteXiaozhi": "Удалить этот сервис?",
+  "@confirmDeleteXiaozhi": {
+    "description": "confirmDeleteXiaozhi string"
+  },
+  "xiaozhiServiceDeleted": "Сервис Xiaozhi удалён",
+  "@xiaozhiServiceDeleted": {
+    "description": "xiaozhiServiceDeleted string"
+  },
+  "addService": "Добавить сервис",
+  "@addService": {
+    "description": "addService string"
+  },
+  "noXiaozhiService": "Нет сервиса Xiaozhi, нажмите +",
+  "@noXiaozhiService": {
+    "description": "noXiaozhiService string"
+  },
+  "unconfigured": "Не настроено",
+  "@unconfigured": {
+    "description": "unconfigured string"
+  },
+  "difyApiConfig": "Конфиг Dify API",
+  "@difyApiConfig": {
+    "description": "difyApiConfig string"
+  },
+  "difyApiConfigSubtitle": "Настройка и управление несколькими сервисами Dify API",
+  "@difyApiConfigSubtitle": {
+    "description": "difyApiConfigSubtitle string"
+  },
+  "minimaxAiConfig": "Конфиг MiniMax AI",
+  "@minimaxAiConfig": {
+    "description": "minimaxAiConfig string"
+  },
+  "minimaxAiConfigSubtitle": "Настройка и управление сервисами MiniMax API",
+  "@minimaxAiConfigSubtitle": {
+    "description": "minimaxAiConfigSubtitle string"
+  },
+  "add": "Добавить",
+  "@add": {
+    "description": "Add button"
+  },
+  "addDifyConfig": "Добавить конфиг Dify",
+  "@addDifyConfig": {
+    "description": "addDifyConfig string"
+  },
+  "addMinimaxConfig": "Добавить конфиг MiniMax",
+  "@addMinimaxConfig": {
+    "description": "addMinimaxConfig string"
+  },
+  "enterApiKey": "Введите API-ключ",
+  "@enterApiKey": {"description": "Hint text for API Key input field"},
+  "enterMinimaxApiKey": "Введите API-ключ MiniMax",
+  "@enterMinimaxApiKey": {"description": "Hint text for MiniMax API Key input"},
+  "wsExample": "например: wss://example.com",
+  "@wsExample": {"description": "Example WebSocket address hint"}
+}
