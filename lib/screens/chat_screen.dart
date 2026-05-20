@@ -212,8 +212,8 @@ class _ChatScreenState extends State<ChatScreen> {
       String content = event.data as String;
       print('收到消息内容: $content');
 
-      // 忽略空消息
-      if (content.isNotEmpty) {
+      // 忽略空消息和OTA相关错误
+      if (content.isNotEmpty && !content.contains('OTA') && !content.contains('版本信息')) {
         conversationProvider.addMessage(
           conversationId: widget.conversation.id,
           role: MessageRole.assistant,

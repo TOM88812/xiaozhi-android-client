@@ -39,7 +39,7 @@ typedef MessageListener = void Function(dynamic message);
 /// 小智服务
 class XiaozhiService {
   static const String TAG = "XiaozhiService";
-  static const String DEFAULT_SERVER = "wss://ws.xiaozhi.ai";
+  static const String DEFAULT_SERVER = "wss://api.tenclass.net/xiaozhi/v1/";
 
   // 单例实例
   static XiaozhiService? _instance;
