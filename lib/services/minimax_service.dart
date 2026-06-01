@@ -6,7 +6,7 @@ import 'package:http/http.dart' as http;
 /// MiniMax AI service using OpenAI-compatible Chat Completions API.
 ///
 /// API Base URL: https://api.minimax.io/v1
-/// Supported models: MiniMax-M2.7, MiniMax-M2.5, MiniMax-M2.5-highspeed
+/// Supported models: MiniMax-M3 (default), MiniMax-M2.7
 class MiniMaxService {
   final String apiKey;
   final String model;

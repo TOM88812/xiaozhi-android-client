@@ -15,7 +15,7 @@ void main() {
       expect(config.id, 'test-id');
       expect(config.name, 'Test Config');
       expect(config.apiKey, 'test-api-key');
-      expect(config.model, 'MiniMax-M2.7');
+      expect(config.model, 'MiniMax-M3');
     });
 
     test('should create config with custom model', () {
@@ -23,10 +23,10 @@ void main() {
         id: 'test-id',
         name: 'Test Config',
         apiKey: 'test-api-key',
-        model: 'MiniMax-M2.5-highspeed',
+        model: 'MiniMax-M2.7',
       );
 
-      expect(config.model, 'MiniMax-M2.5-highspeed');
+      expect(config.model, 'MiniMax-M2.7');
     });
 
     test('should serialize to JSON', () {
@@ -34,7 +34,7 @@ void main() {
         id: 'test-id',
         name: 'Test Config',
         apiKey: 'test-api-key',
-        model: 'MiniMax-M2.7',
+        model: 'MiniMax-M3',
       );
 
       final json = config.toJson();
@@ -42,7 +42,7 @@ void main() {
       expect(json['id'], 'test-id');
       expect(json['name'], 'Test Config');
       expect(json['apiKey'], 'test-api-key');
-      expect(json['model'], 'MiniMax-M2.7');
+      expect(json['model'], 'MiniMax-M3');
     });
 
     test('should deserialize from JSON', () {
@@ -50,7 +50,7 @@ void main() {
         'id': 'test-id',
         'name': 'Test Config',
         'apiKey': 'test-api-key',
-        'model': 'MiniMax-M2.5',
+        'model': 'MiniMax-M2.7',
       };
 
       final config = MiniMaxConfig.fromJson(json);
@@ -58,7 +58,7 @@ void main() {
       expect(config.id, 'test-id');
       expect(config.name, 'Test Config');
       expect(config.apiKey, 'test-api-key');
-      expect(config.model, 'MiniMax-M2.5');
+      expect(config.model, 'MiniMax-M2.7');
     });
 
     test('should deserialize from JSON with missing model field', () {
@@ -70,7 +70,7 @@ void main() {
 
       final config = MiniMaxConfig.fromJson(json);
 
-      expect(config.model, 'MiniMax-M2.7');
+      expect(config.model, 'MiniMax-M3');
     });
 
     test('should create copy with updated fields', () {
@@ -78,18 +78,18 @@ void main() {
         id: 'test-id',
         name: 'Original',
         apiKey: 'original-key',
-        model: 'MiniMax-M2.7',
+        model: 'MiniMax-M3',
       );
 
       final updated = config.copyWith(
         name: 'Updated',
-        model: 'MiniMax-M2.5',
+        model: 'MiniMax-M2.7',
       );
 
       expect(updated.id, 'test-id');
       expect(updated.name, 'Updated');
       expect(updated.apiKey, 'original-key');
-      expect(updated.model, 'MiniMax-M2.5');
+      expect(updated.model, 'MiniMax-M2.7');
     });
 
     test('should roundtrip through JSON', () {
@@ -97,7 +97,7 @@ void main() {
         id: 'roundtrip-id',
         name: 'Roundtrip Test',
         apiKey: 'roundtrip-key',
-        model: 'MiniMax-M2.5-highspeed',
+        model: 'MiniMax-M2.7',
       );
 
       final json = original.toJson();
@@ -177,7 +177,7 @@ void main() {
     test('should create service with correct parameters', () {
       final service = MiniMaxService(
         apiKey: 'test-key',
-        model: 'MiniMax-M2.7',
+        model: 'MiniMax-M3',
       );
 
       // Service should be created without errors
@@ -187,7 +187,7 @@ void main() {
     test('should strip thinking tags from content', () {
       final service = MiniMaxService(
         apiKey: 'test-key',
-        model: 'MiniMax-M2.7',
+        model: 'MiniMax-M3',
       );
 
       // Access the private method via public behavior
@@ -199,7 +199,7 @@ void main() {
     test('should clear specific session history', () {
       final service = MiniMaxService(
         apiKey: 'test-key',
-        model: 'MiniMax-M2.7',
+        model: 'MiniMax-M3',
       );
 
       service.clearConversation('session-1');
@@ -210,7 +210,7 @@ void main() {
     test('should clear all session histories', () {
       final service = MiniMaxService(
         apiKey: 'test-key',
-        model: 'MiniMax-M2.7',
+        model: 'MiniMax-M3',
       );
 
       service.clearAllConversations();
