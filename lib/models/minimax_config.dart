@@ -8,7 +8,7 @@ class MiniMaxConfig {
     required this.id,
     required this.name,
     required this.apiKey,
-    this.model = 'MiniMax-M2.7',
+    this.model = 'MiniMax-M3',
   });
 
   factory MiniMaxConfig.fromJson(Map<String, dynamic> json) {
@@ -16,7 +16,7 @@ class MiniMaxConfig {
       id: json['id'],
       name: json['name'],
       apiKey: json['apiKey'],
-      model: json['model'] ?? 'MiniMax-M2.7',
+      model: json['model'] ?? 'MiniMax-M3',
     );
   }
 
