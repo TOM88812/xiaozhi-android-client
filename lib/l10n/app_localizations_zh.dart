@@ -1,0 +1,340 @@
+// ignore: unused_import
+import 'package:intl/intl.dart' as intl;
+import 'app_localizations.dart';
+
+// ignore_for_file: type=lint
+
+/// The translations for Chinese (`zh`).
+class SZh extends S {
+  SZh([String locale = 'zh']) : super(locale);
+
+  @override
+  String get settings => '设置';
+
+  @override
+  String get general => '通用';
+
+  @override
+  String get darkMode => '深色模式';
+
+  @override
+  String get addConfig => '添加配置';
+
+  @override
+  String get dify => 'Dify';
+
+  @override
+  String get minimax => 'MiniMax';
+
+  @override
+  String get xiaozhi => '小智';
+
+  @override
+  String get cancel => '取消';
+
+  @override
+  String get confirm => '确认';
+
+  @override
+  String get delete => '删除';
+
+  @override
+  String get edit => '编辑';
+
+  @override
+  String get save => '保存';
+
+  @override
+  String get messages => '消息';
+
+  @override
+  String get discover => '发现';
+
+  @override
+  String get searchConversations => '搜索对话';
+
+  @override
+  String get pinConversation => '置顶对话';
+
+  @override
+  String get allConversations => '全部对话';
+
+  @override
+  String get noConversations => '没有对话';
+
+  @override
+  String get discovery => '发现';
+
+  @override
+  String get text => '文本';
+
+  @override
+  String get voice => '语音';
+
+  @override
+  String get yesterday => '昨天';
+
+  @override
+  String get language => '语言';
+
+  @override
+  String get createNewConversation => '点击 + 创建新对话';
+
+  @override
+  String get deleted => '已删除';
+
+  @override
+  String get undo => '撤销';
+
+  @override
+  String get unpinConversation => '取消置顶';
+
+  @override
+  String get deleteConversation => '删除对话';
+
+  @override
+  String get weekday1 => '一';
+
+  @override
+  String get weekday2 => '二';
+
+  @override
+  String get weekday3 => '三';
+
+  @override
+  String get weekday4 => '四';
+
+  @override
+  String get weekday5 => '五';
+
+  @override
+  String get weekday6 => '六';
+
+  @override
+  String get weekday7 => '日';
+
+  @override
+  String get practicalTools => '实用工具';
+
+  @override
+  String get featuredRecommendations => '精选推荐';
+
+  @override
+  String get readingAssistant => '阅读助手';
+
+  @override
+  String get readingAssistantDesc => '高效理解和总结文章';
+
+  @override
+  String get translationTool => '翻译工具';
+
+  @override
+  String get translationToolDesc => '多语言实时翻译';
+
+  @override
+  String get voiceAssistant => '语音助手';
+
+  @override
+  String get voiceAssistantDesc => '智能语音交互';
+
+  @override
+  String get documentParser => '文档解析';
+
+  @override
+  String get documentParserDesc => '智能分析文档内容';
+
+  @override
+  String get aiWritingAssistant => 'AI写作助手';
+
+  @override
+  String get aiWritingAssistantDesc => '让你的文章更专业';
+
+  @override
+  String get smartReminder => '智能提醒';
+
+  @override
+  String get smartReminderDesc => '不错过重要事项';
+
+  @override
+  String get voiceNotes => '语音笔记';
+
+  @override
+  String get voiceNotesDesc => '随时随地记录灵感';
+
+  @override
+  String get underDevelopment => '功能开发中';
+
+  @override
+  String get appearance => '外观';
+
+  @override
+  String get appearanceSettingsSubtitle => '调整应用的外观设置';
+
+  @override
+  String get fillAllFields => '请填写所有字段';
+
+  @override
+  String get difyConfigAdded => '已添加Dify配置';
+
+  @override
+  String get addNewDifyConfig => '添加新的Dify API配置';
+
+  @override
+  String get editDifyConfig => '编辑Dify配置';
+
+  @override
+  String get apiAddress => 'API地址';
+
+  @override
+  String get apiKey => 'API密钥';
+
+  @override
+  String get configName => '配置名称';
+
+  @override
+  String get inputConfigName => '输入配置名称';
+
+  @override
+  String get difyConfigUpdated => '已更新Dify配置';
+
+  @override
+  String get deleteDifyConfig => '删除Dify配置';
+
+  @override
+  String get confirmDeleteDify => '确定要删除配置吗？这个操作不可撤销。';
+
+  @override
+  String get configDeleted => '已删除配置';
+
+  @override
+  String get noDifyConfig => '暂无Dify配置，点击右上角添加';
+
+  @override
+  String get minimaxConfigAdded => '已添加MiniMax配置';
+
+  @override
+  String get addNewMinimaxConfig => '添加新的MiniMax AI配置';
+
+  @override
+  String get editMinimaxConfig => '编辑MiniMax配置';
+
+  @override
+  String get minimaxConfigUpdated => '已更新MiniMax配置';
+
+  @override
+  String get deleteMinimaxConfig => '删除MiniMax配置';
+
+  @override
+  String get confirmDeleteMinimax => '确定要删除配置吗？';
+
+  @override
+  String get noMinimaxConfig => '暂无MiniMax配置，点击右上角添加';
+
+  @override
+  String get model => '模型';
+
+  @override
+  String get xiaozhiServiceConfig => '小智服务配置';
+
+  @override
+  String get xiaozhiServiceConfigSubtitle => '管理小智语音服务配置';
+
+  @override
+  String get addXiaozhiService => '添加小智服务';
+
+  @override
+  String get addNewXiaozhiServiceConfig => '添加新的小智语音服务配置';
+
+  @override
+  String get editXiaozhiService => '编辑小智服务';
+
+  @override
+  String get modifyXiaozhiServiceConfig => '修改小智语音服务配置';
+
+  @override
+  String get serviceName => '服务名称';
+
+  @override
+  String get inputServiceName => '例如：家庭小智';
+
+  @override
+  String get websocketAddress => 'WebSocket地址';
+
+  @override
+  String get inputWebsocketAddress => '例如：wss://example.com';
+
+  @override
+  String get macAddress => 'MAC地址';
+
+  @override
+  String get macAddressOptional => 'MAC地址 (可选)';
+
+  @override
+  String get autoGenerate => '留空将自动生成';
+
+  @override
+  String get autoGenerateDesc => '留空将根据设备ID自动生成';
+
+  @override
+  String get token => 'Token';
+
+  @override
+  String get enabledByDefault => '默认开启';
+
+  @override
+  String get fillRequiredFields => '请填写所有必填字段';
+
+  @override
+  String get xiaozhiServiceAdded => '小智服务已添加';
+
+  @override
+  String get xiaozhiServiceUpdated => '小智服务已更新';
+
+  @override
+  String get deleteXiaozhiService => '删除小智服务';
+
+  @override
+  String get confirmDeleteXiaozhi => '确定要删除服务吗？';
+
+  @override
+  String get xiaozhiServiceDeleted => '小智服务已删除';
+
+  @override
+  String get addService => '添加服务';
+
+  @override
+  String get noXiaozhiService => '暂无小智服务，点击右上角添加';
+
+  @override
+  String get unconfigured => '未设置';
+
+  @override
+  String get difyApiConfig => 'Dify API配置';
+
+  @override
+  String get difyApiConfigSubtitle => '配置并管理多个Dify API服务';
+
+  @override
+  String get minimaxAiConfig => 'MiniMax AI配置';
+
+  @override
+  String get minimaxAiConfigSubtitle => '配置并管理MiniMax API服务';
+
+  @override
+  String get add => '添加';
+
+  @override
+  String get addDifyConfig => '添加Dify配置';
+
+  @override
+  String get addMinimaxConfig => '添加MiniMax配置';
+
+  @override
+  String get enterApiKey => '输入API Key';
+
+  @override
+  String get enterMinimaxApiKey => '输入MiniMax API Key';
+
+  @override
+  String get wsExample => '例如：wss://example.com';
+}

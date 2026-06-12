@@ -5,6 +5,7 @@ import 'package:ai_assistant/models/conversation.dart';
 import 'package:ai_assistant/models/xiaozhi_config.dart';
 import 'package:ai_assistant/models/dify_config.dart';
 import 'package:ai_assistant/providers/config_provider.dart';
+import 'package:ai_assistant/l10n/app_localizations.dart';
 
 class ConversationTile extends StatelessWidget {
   final Conversation conversation;
@@ -70,7 +71,7 @@ class ConversationTile extends StatelessWidget {
                             ),
                           ),
                           Text(
-                            _formatTime(conversation.lastMessageTime),
+                            _formatTime(context, conversation.lastMessageTime),
                             style: TextStyle(
                               fontSize: 14,
                               color: Colors.grey.shade500,
@@ -109,7 +110,7 @@ class ConversationTile extends StatelessWidget {
 
   Widget _buildTypeTag(BuildContext context) {
     final bool isDify = conversation.type == ConversationType.dify;
-    String label = isDify ? '文本' : '语音';
+    String label = isDify ? S.of(context)!.text : S.of(context)!.voice;
 
     // 如果有配置ID且不为空，则显示配置名称
     if (conversation.configId.isNotEmpty) {
@@ -175,14 +176,14 @@ class ConversationTile extends StatelessWidget {
     }
   }
 
-  String _formatTime(DateTime dateTime) {
+  String _formatTime(BuildContext context, DateTime dateTime) {
     final now = DateTime.now();
     final difference = now.difference(dateTime);
 
     if (difference.inDays > 0 && difference.inDays <= 1) {
-      return '昨天';
+      return S.of(context)!.yesterday;
     } else if (difference.inDays > 1 && difference.inDays <= 7) {
-      return '周${_getWeekday(dateTime.weekday)}';
+      return '周${_getWeekday(context, dateTime.weekday)}';
     } else {
       // 当天显示时间
       final hour = dateTime.hour.toString().padLeft(2, '0');
@@ -191,24 +192,26 @@ class ConversationTile extends StatelessWidget {
     }
   }
 
-  String _getWeekday(int weekday) {
+
+  String _getWeekday(BuildContext context, int weekday) {
     switch (weekday) {
       case 1:
-        return '一';
+        return S.of(context)!.weekday1;
       case 2:
-        return '二';
+        return S.of(context)!.weekday2;
       case 3:
-        return '三';
+        return S.of(context)!.weekday3;
       case 4:
-        return '四';
+        return S.of(context)!.weekday4;
       case 5:
-        return '五';
+        return S.of(context)!.weekday5;
       case 6:
-        return '六';
+        return S.of(context)!.weekday6;
       case 7:
-        return '日';
+        return S.of(context)!.weekday7;
       default:
         return '';
     }
   }
+
 }
