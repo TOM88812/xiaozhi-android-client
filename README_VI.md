@@ -127,4 +127,4 @@ Mỗi ngôi sao⭐ hoặc sự ủng hộ💖 của bạn là động lực đ�
 
 ## Star History
 
-[![Star History Chart](https://api.star-history.com/svg?repos=TOM88812/xiaozhi-android-client&type=Date)](https://star-history.com/#TOM88812/xiaozhi-android-client&Date)
+[![Star History Chart](https://star-history.dera.page/svg?repos=TOM88812/xiaozhi-android-client&type=Date)](https://star-history.dera.page/#TOM88812/xiaozhi-android-client&Date)

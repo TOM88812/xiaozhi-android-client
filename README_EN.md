@@ -127,4 +127,4 @@ Your every star⭐ or donation💖 is our motivation to keep moving forward🛸.
 
 ## Star History
 
-[![Star History Chart](https://api.star-history.com/svg?repos=TOM88812/xiaozhi-android-client&type=Date)](https://star-history.com/#TOM88812/xiaozhi-android-client&Date)
+[![Star History Chart](https://star-history.dera.page/svg?repos=TOM88812/xiaozhi-android-client&type=Date)](https://star-history.dera.page/#TOM88812/xiaozhi-android-client&Date)
