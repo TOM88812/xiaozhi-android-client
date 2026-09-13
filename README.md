@@ -41,20 +41,37 @@
 
 <table>
   <tr>
-    <td align="center" valign="bottom" height="500">
+    <!-- 左侧卡片 -->
+    <td align="center" valign="top" style="padding-right: 20px;">
       <table>
         <tr>
-          <td align="center">
+          <td align="center" valign="middle" height="300">
             <a href="https://www.bilibili.com/video/BV178EqzAEFf" target="_blank">
-              <img src="1234.jpg" alt="新版" width="200" height="430"/>
+              <img src="v3.jpg" alt="新版" style="height: 300px; width: auto; max-width: 100%;"/>
             </a>
           </td>
         </tr>
         <tr>
-          <td align="center">
+          <td align="center" valign="top">
             <small>
-              新版 IOS、安卓端（可自行打包 WEB、PC、鸿蒙 HAP 版本）<br>
+              可自行打包APK、IOS、WEB、PC、鸿蒙 HAP 版本<br>
               <a href="https://www.bilibili.com/video/BV1fgXvYqE61" style="color: red; text-decoration: none;">观看 demo 视频点击跳转</a>
+            </small>
+          </td>
+        </tr>
+      </table>
+    </td>
+    <td align="center" valign="top">
+      <table>
+        <tr>
+          <td align="center" valign="middle" height="300">
+            <img src="ohos-v1.jpg" alt="ohos-v1" style="height: 300px; width: auto; max-width: 100%;"/>
+          </td>
+        </tr>
+        <tr>
+          <td align="center" valign="top">
+            <small>
+              V1 原生客户端 · 纯血鸿蒙<br>&nbsp;
             </small>
           </td>
         </tr>
