@@ -2,10 +2,16 @@
   <a href="./README.md">中文</a> | 
   <a href="./README_EN.md">English</a> | 
   <a href="./README_VI.md">Tiếng Việt</a> |
-  <a href="./yuandan-update.md">元旦更新</a> |
+  <a href="./yuandan-update.md">元旦更新</a>
 </div>
 
-# 小智AI助手 Android IOS 客户端
+<h1 align="center">小智 AI 助手 · 全端客户端</h1>
+
+<p align="center">
+  <b>Android · iOS · HarmonyOS · Web · Windows · macOS · Linux</b><br>
+  <sub>基于小智AI的实时语音对话应用 · 支持实时语音交互与文字对话</sub>
+</p>
+
 <p align="center">
   <a href="https://github.com/TOM88812/xiaozhi-android-client/releases/latest">
     <img src="https://img.shields.io/github/v/release/TOM88812/xiaozhi-android-client?style=flat-square&logo=github&color=blue" alt="Release"/>
@@ -17,20 +23,21 @@
     <img src="https://img.shields.io/github/stars/TOM88812/xiaozhi-android-client?style=flat-square&logo=github" alt="Stars"/>
   </a>
   <a href="https://github.com/TOM88812/xiaozhi-android-client/releases/latest">
-    <img src="https://img.shields.io/github/downloads/TOM88812/xiaozhi-android-client/total?style=flat-square&logo=github&color=52c41a1&maxAge=86400" alt="Download"/>
+    <img src="https://img.shields.io/github/downloads/TOM88812/xiaozhi-android-client/total?style=flat-square&logo=github&color=52c41a&maxAge=86400" alt="Download"/>
   </a>
   <a href="https://wiki.lhht.cc">
-    <img src="https://img.shields.io/badge/文档-Wiki-yellow?logo=wikipedia">
+    <img src="https://img.shields.io/badge/文档-Wiki-yellow?style=flat-square&logo=wikipedia">
   </a>
-
 </p>
 
-> 目前已经发布新版本，敬请体验！flutter IOS与安卓回音消除已实现，~~欢迎大家PR~~。
-> 觉得项目对您有用的，可以赞赏一下，您的每一次赞赏都是我前进的动力。
-> Dify支持发送图片交互。可以添加多个小智智能体到聊天列表。
+> **🎉 新版本已发布，敬请体验！**
+> Flutter iOS 与 Android 回音消除已实现，~~欢迎大家 PR~~。
+> Dify 支持发送图片交互，可添加多个小智智能体到聊天列表。
+> 觉得项目对您有用的，可以赞赏一下 —— 您的每一次赞赏都是我前进的动力。
 
-一个基于WebSocket的Android语音对话应用,支持实时语音交互和文字对话。
-基于Flutter框架开发的小智AI助手，支持多平台（iOS、Android、Web、Windows、macOS、Linux）部署，提供实时语音交互和文字对话功能。
+---
+
+## 📌 版本导览
 
 <table>
   <tr>
@@ -39,16 +46,16 @@
         <tr>
           <td align="center">
             <a href="https://www.bilibili.com/video/BV178EqzAEFf" target="_blank">
-              <img src="1234.jpg" alt="新版"  width="200" height="430"/>
+              <img src="1234.jpg" alt="新版" width="200" height="430"/>
             </a>
           </td>
         </tr>
         <tr>
           <td align="center">
             <small>
-  新版IOS、安卓端（可以自行打包WEB、PC版本)<br>
-  <a href="https://www.bilibili.com/video/BV1fgXvYqE61" style="color: red; text-decoration: none;">观看demo视频点击跳转</a>
-</small>
+              新版 IOS、安卓端（可自行打包 WEB、PC、鸿蒙 HAP 版本）<br>
+              <a href="https://www.bilibili.com/video/BV1fgXvYqE61" style="color: red; text-decoration: none;">观看 demo 视频点击跳转</a>
+            </small>
           </td>
         </tr>
       </table>
@@ -56,77 +63,175 @@
   </tr>
 </table>
 
-### V3 版本 商业版功能（深度适配自研服务端） 💼 
-| 功能模块 | 状态 | 描述 |
-|---------|------|------|
-| **自适应主题** | ✅ | 深色/浅色主题适配/跟随设备切换主题 |
-| **AI服务提供商** | ✅ | 支持Openai、MiniMax等服务，手机上也能用大模型 |
-| **思考模式** | ✅ | 支持Openai思考模式 |
-| **HTML代码预览** | ✅ | 模型写简单HTML代码进行预览，手机也能ai编程 |
-| **MCP_Client** | ✅ | 支持MCP能力调用，接口数据都能DIY|
-| **OpenAI接口联网搜索** | ✅ | 支持Oenai 接口服务联网搜索|
-| **视频播放** | ✅ | 支持播放模型返回的视频 |
-| **OpenAI 测速** | ✅ | openai接口响应测速，服务快不快一眼见|
-| **Live2D** | ✅ | 多模型切换、支持导入自己心爱的模型人物 |
-| **Iot** | ✅ | 支持调用手机功能、导航、听歌等 |
-| **创新性心情模式** | ✅ | 支持实时打断模式 |
-| **MQTT-UDP** | ✅ | 支持MQTT协议服务，长连接 |
-| **WS** | ✅ | 支持ws协议服务 |
-| **语音实时打断** | ✅ | 能在小智说话的期间随意打断，说您想说无人能挡 |
-| **多小智服务** | ✅ | 添加多个小智服务，轻松实现每人多助手 |
-| **打通硬件端** | ✅ | 可与硬件端互通，记忆不串 |
-| **深度适配服务端** | ✅ | 适配商业版服务端 |
-| **用户信息** | ✅ | 展示会员到期时间，对话数量、绑定设备数量、声纹数量、配额使用情况、最近活动设备|
-| **设备管理** | ✅ | 支持手机端查看当前登录用户的所有设备、新增设备 |
-| **角色管理** | ✅ | 支持手机端管理您当前角色、新建角色|
-| **声纹管理** | ✅ | 支持手机端录制声纹，让您的AI更懂您|
-| **对话记录** | ✅ | 支持展示最近的对话记录|
-| **记忆管理** | ✅ | 支持展示记忆|
-| **预留页面** | ✅ | 预留记账、代办、日记等页面UI，可集成小智后端能力扩展，协同小智，打造了解您的助手|
+当前项目包含两条产品线，定位不同，可按场景选择：
 
-### 服务端 商业版功能 💼 
+- **🟦 V1 原生客户端 · 纯血安卓 + 纯血鸿蒙（商业版赠送）**  
+  面向 **AI 终端 / AI 硬件 / 智能体方向**，包含两个原生版本：**纯血安卓版**、**纯血鸿蒙版**。购买商业版即可获赠。
+
+- **💼 V3 商业版 · 全功能跨平台客户端**  
+  基于 Flutter，覆盖 Android、iOS、HarmonyOS、Web、Windows、macOS、Linux，**也适配鸿蒙，支持编译 HAP 包**。主打 **全功能、全平台**，深度适配自研服务端。
+
+---
+
+## 🟦 V1 原生客户端 · 纯血安卓 + 纯血鸿蒙（商业版赠送）
+
+> **推荐场景：AI 终端设备 · AI 硬件产品 · 智能体设备 · 折叠屏 / 副屏设备**
+>
+> 购买商业版即可获赠 V1 原生客户端，包含两个原生版本：
+>
+> - **纯血安卓版** — 基于 Android 原生开发，适配安卓手机、平板、折叠屏及各类安卓 AI 硬件。
+> - **纯血鸿蒙版** — 基于 HarmonyOS NEXT 原生开发，适配鸿蒙生态设备、折叠屏、副屏设备。
+
+<details open>
+<summary><b>📱 原生体验</b></summary>
+
+- ✅ **纯血安卓 + 纯血鸿蒙** — 两个版本均为原生开发，不做套壳，启动快、功耗低、体验顺滑
+- ✅ **折叠屏适配** — 展开态 / 折叠态双布局自适应，展开大屏充分释放信息密度
+- ✅ **副屏适配** — 副屏卡片与主屏联动，与折叠屏、双屏设备更搭配
+- ✅ **商业版服务端适配** — 与 V3 共用同一套商业版服务端能力
+
+</details>
+
+<details open>
+<summary><b>🤖 AI 终端 / AI 硬件 / 智能体能力</b></summary>
+
+- ✅ **实时语音交互** — 实时语音对话与文字对话，支持实时打断
+- ✅ **多小智服务** — 支持添加多个小智服务，轻松实现每人多助手
+- ✅ **硬件端互通** — 可与硬件端互通，记忆不串
+- ✅ **IoT 控制** — 支持调用设备功能，适合作为 AI 终端中控
+- ✅ **智能体方向扩展** — 可结合小智后端能力，扩展为面向 AI 硬件的智能体入口
+
+</details>
+
+<details open>
+<summary><b>🧩 适合的 AI 硬件形态</b></summary>
+
+- AI 桌面终端 / AI 音箱
+- AI 学习机 / AI 陪伴设备
+- 鸿蒙折叠屏手机 / 平板
+- 带副屏的 AI 硬件设备
+- 智能体中控屏 / 家庭 AI 终端
+
+</details>
+
+---
+
+## 💼 V3 商业版 · 全功能跨平台客户端
+
+> **推荐场景：全功能手机客户端 · 全平台覆盖 · 办公大屏 · 需要完整商业功能的场景**
+>
+> 基于 Flutter 框架，一套代码覆盖 Android、iOS、HarmonyOS、Web、Windows、macOS、Linux，深度适配自研服务端。
+> **V3 也适配鸿蒙，支持编译 HAP 包。**
+
+<details open>
+<summary><b>📱 平台与适配</b></summary>
+
+- ✅ **全平台覆盖** — Android / iOS / HarmonyOS / Web / Windows / macOS / Linux
+- ✅ **鸿蒙适配** — 支持编译 HAP 包，可运行于 HarmonyOS
+- ✅ **回音消除** — Flutter iOS 与 Android 回音消除已实现
+- ✅ **商业版服务端适配** — 深度适配自研服务端
+
+</details>
+
+<details open>
+<summary><b>🎨 交互体验</b></summary>
+
+- ✅ **自适应主题** — 深色 / 浅色主题适配，跟随设备自动切换
+- ✅ **创新性心情模式** — 支持实时打断模式
+- ✅ **语音实时打断** — 小智说话期间可随意打断，说您想说无人能挡
+- ✅ **OpenAI 测速** — OpenAI 接口响应测速，服务快不快一眼可见
+
+</details>
+
+<details open>
+<summary><b>🧠 AI 能力</b></summary>
+
+- ✅ **AI 服务提供商** — 支持 OpenAI 等服务，手机上也能用大模型
+- ✅ **思考模式** — 支持 OpenAI 思考模式
+- ✅ **OpenAI 接口联网搜索** — 支持 OpenAI 接口服务联网搜索
+- ✅ **HTML 代码预览** — 模型写简单 HTML 代码即可预览，手机也能 AI 编程
+- ✅ **MCP_Client** — 支持 MCP 能力调用，接口数据都能 DIY
+- ✅ **视频播放** — 支持播放模型返回的视频
+- ✅ **Live2D** — 多模型切换，支持导入自己心爱的模型人物
+
+</details>
+
+<details open>
+<summary><b>🔗 连接与协议</b></summary>
+
+- ✅ **WS** — 支持 WS 协议服务
+- ✅ **MQTT-UDP** — 支持 MQTT 协议服务，长连接
+- ✅ **多小智服务** — 添加多个小智服务，轻松实现每人多助手
+- ✅ **打通硬件端** — 可与硬件端互通，记忆不串
+- ✅ **IoT** — 支持调用手机功能、导航、听歌等
+
+</details>
+
+<details open>
+<summary><b>👤 账号与数据</b></summary>
+
+- ✅ **用户信息** — 展示会员到期时间、对话数量、绑定设备数量、声纹数量、配额使用情况、最近活动设备
+- ✅ **设备管理** — 手机端查看当前登录用户的所有设备、新增设备
+- ✅ **角色管理** — 手机端管理当前角色、新建角色
+- ✅ **声纹管理** — 手机端录制声纹，让您的 AI 更懂您
+- ✅ **对话记录** — 支持展示最近的对话记录
+- ✅ **记忆管理** — 支持展示记忆
+- ✅ **预留页面** — 预留记账、待办、日记等页面 UI，可集成小智后端能力扩展
+
+</details>
+
+---
+
+## 🖥 服务端 商业版功能
+
 | 功能模块 | 状态 | 描述 |
-|---------|------|------|
-| **首句响应** | ✅ | 唤醒词响应时间 <1秒，极速响应体验 |
-| **平均响应速度** | ✅ | 平均对话响应时间 <2秒（公网CDN网络）（本地内网极限800ms内），流畅对话体验 |
-| **MQTT协议** | ✅ | 支持MQTT通信协议，长连接、服务端主动唤醒 |
+|:---|:---:|:---|
+| **首句响应** | ✅ | 唤醒词响应时间 < 1 秒，极速响应体验 |
+| **平均响应速度** | ✅ | 平均对话响应时间 < 2 秒（公网 CDN 网络），本地内网极限 800ms 内 |
+| **MQTT 协议** | ✅ | 支持 MQTT 通信协议，长连接、服务端主动唤醒 |
 | **音色克隆** | ✅ | 支持火山引擎音色克隆，实现个性化声音定制 |
 | **声纹识别** | ✅ | 支持声纹识别功能，实现个性化语音助手 |
 | **双向流式交互** | ✅ | 支持火山流式播放，实时语音输入和回复输出 |
 | **用户端** | ✅ | 友好的用户端操作界面，原生卡片方式设备管理页面 |
-| **MCP接入点** | ✅ | 基于角色的MCP工具接入点，扩展功能接入（同步虾哥服务） |
-| **MCP Hub服务** | ✅ | SSE/HTTP MCP Hub支持更多第三方服务集成 |
-| **ESP32 设备主题自定义** | ✅ | 支持在线配置esp32设备的主题、表情包 |
+| **MCP 接入点** | ✅ | 基于角色的 MCP 工具接入点，扩展功能接入（同步虾哥服务） |
+| **MCP Hub 服务** | ✅ | SSE / HTTP MCP Hub，支持更多第三方服务集成 |
+| **ESP32 设备主题自定义** | ✅ | 支持在线配置 ESP32 设备的主题、表情包 |
 | **Function Call** | ✅ | 工具调用，提升用户体验 |
-| **长期记忆** | ✅ | 根据用户对话，提取关键信息记录，智能记忆管理 |
-| **监控面板** | ✅ | 监控日、周、月不同维度Token，对话时长，设备活跃等数据 |
-| **OTA固件升级** | ✅ | 固件上传，自动升级，远程设备管理 |
+| **长期记忆** | ✅ | 根据用户对话提取关键信息记录，智能记忆管理 |
+| **监控面板** | ✅ | 监控日、周、月不同维度 Token、对话时长、设备活跃等数据 |
+| **OTA 固件升级** | ✅ | 固件上传，自动升级，远程设备管理 |
 | **聊天数据可视化** | ✅ | 聊天频率统计图表等数据可视化功能，监控对话数据趋势 |
-| **用户会员制** | ✅ | 支持更具会员等级设置Token数，支持包月/年，在线支付（支付宝、微信、PayPal） |
+| **用户会员制** | ✅ | 支持按会员等级设置 Token 数，支持包月 / 年，在线支付（支付宝、微信、PayPal） |
 
+---
 
-## 联系方式
-- ## **email**
-> tang@lhht.cc
+## 📞 联系方式
 
-- **wechat**
-> Tang_xs-xk
+| 渠道 | 信息 |
+|:---|:---|
+| **Email** | tang@lhht.cc |
+| **WeChat** | Tang_xs-xk |
+| **定制开发** | 支持提供定制化开发客户端，欢迎联系 WeChat |
 
-# 支持提供定制化开发客户端可以联系WeChat
+### 服务端图形化部署工具
 
-## 服务端图形化部署工具
-- https://space.bilibili.com/298384872
-- https://znhblog.com/
+- <https://space.bilibili.com/298384872>
+- <https://znhblog.com/>
 
-## 🌟支持
+---
 
-您的每一个start⭐或赞赏💖，都是我们不断前进的动力🛸。
+## 🌟 支持
+
+您的每一个 Star ⭐ 或赞赏 💖，都是我们不断前进的动力 🛸
+
 <div style="display: flex;">
-<img src="zsm.jpg" width="260" height="280" alt="赞助" style="border-radius: 12px;" />
+  <img src="zsm.jpg" width="260" height="280" alt="赞助" style="border-radius: 12px;" />
 </div>
 
 [![ko-fi](https://ko-fi.com/img/githubbutton_sm.svg)](https://ko-fi.com/V7V71I0TE0)
 
-## Star History
+---
+
+## ⭐ Star History
 
 [![Star History Chart](https://api.star-history.com/svg?repos=TOM88812/xiaozhi-android-client&type=Date)](https://star-history.com/#TOM88812/xiaozhi-android-client&Date)
