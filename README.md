@@ -25,7 +25,7 @@
   <a href="https://github.com/TOM88812/xiaozhi-android-client/releases/latest">
     <img src="https://img.shields.io/github/downloads/TOM88812/xiaozhi-android-client/total?style=flat-square&logo=github&color=52c41a&maxAge=86400" alt="Download"/>
   </a>
-  <a href="https://wiki.lhht.cc">
+  <a href="https://jtai.lhht.cc/wiki.html">
     <img src="https://img.shields.io/badge/文档-Wiki-yellow?style=flat-square&logo=wikipedia">
   </a>
 </p>
