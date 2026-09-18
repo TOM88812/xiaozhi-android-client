@@ -71,7 +71,8 @@
         <tr>
           <td align="center" valign="top">
             <small>
-              V1 原生客户端 · 纯血鸿蒙<br>&nbsp;
+              V1 原生客户端 · 纯血鸿蒙<br>
+              <a href="https://www.bilibili.com/video/BV1raeP6iE9b/?share_source=copy_web&vd_source=0be74d46855cad8157a2b5c9788c327a" style="color: red; text-decoration: none;">观看视频点击跳转</a>
             </small>
           </td>
         </tr>
@@ -106,7 +107,6 @@
 - ✅ **折叠屏适配** — 展开态 / 折叠态双布局自适应，展开大屏充分释放信息密度
 - ✅ **副屏适配** — 副屏卡片与主屏联动，与折叠屏、双屏设备更搭配
 - ✅ **商业版服务端适配** — 与 V3 共用同一套商业版服务端能力
-
 </details>
 
 <details open>
@@ -117,7 +117,8 @@
 - ✅ **硬件端互通** — 可与硬件端互通，记忆不串
 - ✅ **IoT 控制** — 支持调用设备功能，适合作为 AI 终端中控
 - ✅ **智能体方向扩展** — 可结合小智后端能力，扩展为面向 AI 硬件的智能体入口
-
+- ✅ **支持3D模型** — LiV2D + 3D模型双兼容
+- ✅ **AI驱动模型** — AI驱动3D模型能唱歌跳舞，及表达情绪，更加贴合数字生命
 </details>
 
 <details open>
