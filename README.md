@@ -71,7 +71,7 @@
         <tr>
           <td align="center" valign="top">
             <small>
-              V1 原生客户端 · 纯血鸿蒙<br>
+              V1 原生客户端 · 纯血鸿蒙（支持3D模型）<br>
               <a href="https://www.bilibili.com/video/BV1raeP6iE9b/?share_source=copy_web&vd_source=0be74d46855cad8157a2b5c9788c327a" style="color: red; text-decoration: none;">观看视频点击跳转</a>
             </small>
           </td>
@@ -117,7 +117,7 @@
 - ✅ **硬件端互通** — 可与硬件端互通，记忆不串
 - ✅ **IoT 控制** — 支持调用设备功能，适合作为 AI 终端中控
 - ✅ **智能体方向扩展** — 可结合小智后端能力，扩展为面向 AI 硬件的智能体入口
-- ✅ **支持3D模型** — LiV2D + 3D模型双兼容
+- ✅ **支持3D模型** — Live2D + 3D模型（非webview）双兼容
 - ✅ **AI驱动模型** — AI驱动3D模型能唱歌跳舞，及表达情绪，更加贴合数字生命
 </details>
 
