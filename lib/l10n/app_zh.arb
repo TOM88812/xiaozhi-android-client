@@ -1,0 +1,437 @@
+{
+  "@@locale": "zh",
+  "settings": "设置",
+  "@settings": {
+    "description": "Settings screen title"
+  },
+  "general": "通用",
+  "@general": {
+    "description": "General settings tab"
+  },
+  "darkMode": "深色模式",
+  "@darkMode": {
+    "description": "Dark mode toggle"
+  },
+  "addConfig": "添加配置",
+  "@addConfig": {
+    "description": "Add configuration button"
+  },
+  "dify": "Dify",
+  "@dify": {
+    "description": "Dify tab label"
+  },
+  "minimax": "MiniMax",
+  "@minimax": {
+    "description": "MiniMax tab label"
+  },
+  "xiaozhi": "小智",
+  "@xiaozhi": {
+    "description": "Xiaozhi tab label"
+  },
+  "cancel": "取消",
+  "@cancel": {
+    "description": "Cancel button"
+  },
+  "confirm": "确认",
+  "@confirm": {
+    "description": "Confirm button"
+  },
+  "delete": "删除",
+  "@delete": {
+    "description": "Delete button"
+  },
+  "edit": "编辑",
+  "@edit": {
+    "description": "Edit button"
+  },
+  "save": "保存",
+  "@save": {
+    "description": "Save button"
+  },
+  "messages": "消息",
+  "@messages": {
+    "description": "Messages tab"
+  },
+  "discover": "发现",
+  "@discover": {
+    "description": "Discover tab"
+  },
+  "searchConversations": "搜索对话",
+  "@searchConversations": {
+    "description": "Search conversations placeholder"
+  },
+  "pinConversation": "置顶对话",
+  "@pinConversation": {
+    "description": "Pin conversation action"
+  },
+  "allConversations": "全部对话",
+  "@allConversations": {
+    "description": "All conversations label"
+  },
+  "noConversations": "没有对话",
+  "@noConversations": {
+    "description": "No conversations empty state"
+  },
+  "discovery": "发现",
+  "@discovery": {
+    "description": "Discovery screen title"
+  },
+  "text": "文本",
+  "@text": {
+    "description": "Text message type"
+  },
+  "voice": "语音",
+  "@voice": {
+    "description": "Voice message type"
+  },
+  "yesterday": "昨天",
+  "@yesterday": {
+    "description": "Yesterday label"
+  },
+  "language": "语言",
+  "@language": {
+    "description": "Language selector label"
+  },
+  "createNewConversation": "点击 + 创建新对话",
+  "@createNewConversation": {
+    "description": "Empty state instruction to create new conversation"
+  },
+  "deleted": "已删除",
+  "@deleted": {
+    "description": "Deleted confirmation suffix"
+  },
+  "undo": "撤销",
+  "@undo": {
+    "description": "Undo action"
+  },
+  "unpinConversation": "取消置顶",
+  "@unpinConversation": {
+    "description": "Unpin conversation action"
+  },
+  "deleteConversation": "删除对话",
+  "@deleteConversation": {
+    "description": "Delete conversation action"
+  },
+  "weekday1": "一",
+  "@weekday1": {
+    "description": "Monday"
+  },
+  "weekday2": "二",
+  "@weekday2": {
+    "description": "Tuesday"
+  },
+  "weekday3": "三",
+  "@weekday3": {
+    "description": "Wednesday"
+  },
+  "weekday4": "四",
+  "@weekday4": {
+    "description": "Thursday"
+  },
+  "weekday5": "五",
+  "@weekday5": {
+    "description": "Friday"
+  },
+  "weekday6": "六",
+  "@weekday6": {
+    "description": "Saturday"
+  },
+  "weekday7": "日",
+  "@weekday7": {
+    "description": "Sunday"
+  },
+  "practicalTools": "实用工具",
+  "@practicalTools": {
+    "description": "Practical tools section header"
+  },
+  "featuredRecommendations": "精选推荐",
+  "@featuredRecommendations": {
+    "description": "Featured recommendations section header"
+  },
+  "readingAssistant": "阅读助手",
+  "@readingAssistant": {
+    "description": "Reading assistant card title"
+  },
+  "readingAssistantDesc": "高效理解和总结文章",
+  "@readingAssistantDesc": {
+    "description": "Reading assistant description"
+  },
+  "translationTool": "翻译工具",
+  "@translationTool": {
+    "description": "Translation tool card title"
+  },
+  "translationToolDesc": "多语言实时翻译",
+  "@translationToolDesc": {
+    "description": "Translation tool description"
+  },
+  "voiceAssistant": "语音助手",
+  "@voiceAssistant": {
+    "description": "Voice assistant card title"
+  },
+  "voiceAssistantDesc": "智能语音交互",
+  "@voiceAssistantDesc": {
+    "description": "Voice assistant description"
+  },
+  "documentParser": "文档解析",
+  "@documentParser": {
+    "description": "Document parser card title"
+  },
+  "documentParserDesc": "智能分析文档内容",
+  "@documentParserDesc": {
+    "description": "Document parser description"
+  },
+  "aiWritingAssistant": "AI写作助手",
+  "@aiWritingAssistant": {
+    "description": "AI writing assistant card title"
+  },
+  "aiWritingAssistantDesc": "让你的文章更专业",
+  "@aiWritingAssistantDesc": {
+    "description": "AI writing assistant description"
+  },
+  "smartReminder": "智能提醒",
+  "@smartReminder": {
+    "description": "Smart reminder card title"
+  },
+  "smartReminderDesc": "不错过重要事项",
+  "@smartReminderDesc": {
+    "description": "Smart reminder description"
+  },
+  "voiceNotes": "语音笔记",
+  "@voiceNotes": {
+    "description": "Voice notes card title"
+  },
+  "voiceNotesDesc": "随时随地记录灵感",
+  "@voiceNotesDesc": {
+    "description": "Voice notes description"
+  },
+  "underDevelopment": "功能开发中",
+  "@underDevelopment": {
+    "description": "Under development suffix for feature cards"
+  },
+  "appearance": "外观",
+  "@appearance": {
+    "description": "appearance string"
+  },
+  "appearanceSettingsSubtitle": "调整应用的外观设置",
+  "@appearanceSettingsSubtitle": {
+    "description": "appearanceSettingsSubtitle string"
+  },
+  "fillAllFields": "请填写所有字段",
+  "@fillAllFields": {
+    "description": "fillAllFields string"
+  },
+  "difyConfigAdded": "已添加Dify配置",
+  "@difyConfigAdded": {
+    "description": "difyConfigAdded string"
+  },
+  "addNewDifyConfig": "添加新的Dify API配置",
+  "@addNewDifyConfig": {
+    "description": "addNewDifyConfig string"
+  },
+  "editDifyConfig": "编辑Dify配置",
+  "@editDifyConfig": {
+    "description": "editDifyConfig string"
+  },
+  "apiAddress": "API地址",
+  "@apiAddress": {
+    "description": "apiAddress string"
+  },
+  "apiKey": "API密钥",
+  "@apiKey": {
+    "description": "apiKey string"
+  },
+  "configName": "配置名称",
+  "@configName": {
+    "description": "configName string"
+  },
+  "inputConfigName": "输入配置名称",
+  "@inputConfigName": {
+    "description": "inputConfigName string"
+  },
+  "difyConfigUpdated": "已更新Dify配置",
+  "@difyConfigUpdated": {
+    "description": "difyConfigUpdated string"
+  },
+  "deleteDifyConfig": "删除Dify配置",
+  "@deleteDifyConfig": {
+    "description": "deleteDifyConfig string"
+  },
+  "confirmDeleteDify": "确定要删除配置吗？这个操作不可撤销。",
+  "@confirmDeleteDify": {
+    "description": "confirmDeleteDify string"
+  },
+  "configDeleted": "已删除配置",
+  "@configDeleted": {
+    "description": "configDeleted string"
+  },
+  "noDifyConfig": "暂无Dify配置，点击右上角添加",
+  "@noDifyConfig": {
+    "description": "noDifyConfig string"
+  },
+  "minimaxConfigAdded": "已添加MiniMax配置",
+  "@minimaxConfigAdded": {
+    "description": "minimaxConfigAdded string"
+  },
+  "addNewMinimaxConfig": "添加新的MiniMax AI配置",
+  "@addNewMinimaxConfig": {
+    "description": "addNewMinimaxConfig string"
+  },
+  "editMinimaxConfig": "编辑MiniMax配置",
+  "@editMinimaxConfig": {
+    "description": "editMinimaxConfig string"
+  },
+  "minimaxConfigUpdated": "已更新MiniMax配置",
+  "@minimaxConfigUpdated": {
+    "description": "minimaxConfigUpdated string"
+  },
+  "deleteMinimaxConfig": "删除MiniMax配置",
+  "@deleteMinimaxConfig": {
+    "description": "deleteMinimaxConfig string"
+  },
+  "confirmDeleteMinimax": "确定要删除配置吗？",
+  "@confirmDeleteMinimax": {
+    "description": "confirmDeleteMinimax string"
+  },
+  "noMinimaxConfig": "暂无MiniMax配置，点击右上角添加",
+  "@noMinimaxConfig": {
+    "description": "noMinimaxConfig string"
+  },
+  "model": "模型",
+  "@model": {
+    "description": "model string"
+  },
+  "xiaozhiServiceConfig": "小智服务配置",
+  "@xiaozhiServiceConfig": {
+    "description": "xiaozhiServiceConfig string"
+  },
+  "xiaozhiServiceConfigSubtitle": "管理小智语音服务配置",
+  "@xiaozhiServiceConfigSubtitle": {
+    "description": "xiaozhiServiceConfigSubtitle string"
+  },
+  "addXiaozhiService": "添加小智服务",
+  "@addXiaozhiService": {
+    "description": "addXiaozhiService string"
+  },
+  "addNewXiaozhiServiceConfig": "添加新的小智语音服务配置",
+  "@addNewXiaozhiServiceConfig": {
+    "description": "addNewXiaozhiServiceConfig string"
+  },
+  "editXiaozhiService": "编辑小智服务",
+  "@editXiaozhiService": {
+    "description": "editXiaozhiService string"
+  },
+  "modifyXiaozhiServiceConfig": "修改小智语音服务配置",
+  "@modifyXiaozhiServiceConfig": {
+    "description": "modifyXiaozhiServiceConfig string"
+  },
+  "serviceName": "服务名称",
+  "@serviceName": {
+    "description": "serviceName string"
+  },
+  "inputServiceName": "例如：家庭小智",
+  "@inputServiceName": {
+    "description": "inputServiceName string"
+  },
+  "websocketAddress": "WebSocket地址",
+  "@websocketAddress": {
+    "description": "websocketAddress string"
+  },
+  "inputWebsocketAddress": "例如：wss://example.com",
+  "@inputWebsocketAddress": {
+    "description": "inputWebsocketAddress string"
+  },
+  "macAddress": "MAC地址",
+  "@macAddress": {
+    "description": "macAddress string"
+  },
+  "macAddressOptional": "MAC地址 (可选)",
+  "@macAddressOptional": {
+    "description": "macAddressOptional string"
+  },
+  "autoGenerate": "留空将自动生成",
+  "@autoGenerate": {
+    "description": "autoGenerate string"
+  },
+  "autoGenerateDesc": "留空将根据设备ID自动生成",
+  "@autoGenerateDesc": {
+    "description": "autoGenerateDesc string"
+  },
+  "token": "Token",
+  "@token": {
+    "description": "token string"
+  },
+  "enabledByDefault": "默认开启",
+  "@enabledByDefault": {
+    "description": "enabledByDefault string"
+  },
+  "fillRequiredFields": "请填写所有必填字段",
+  "@fillRequiredFields": {
+    "description": "fillRequiredFields string"
+  },
+  "xiaozhiServiceAdded": "小智服务已添加",
+  "@xiaozhiServiceAdded": {
+    "description": "xiaozhiServiceAdded string"
+  },
+  "xiaozhiServiceUpdated": "小智服务已更新",
+  "@xiaozhiServiceUpdated": {
+    "description": "xiaozhiServiceUpdated string"
+  },
+  "deleteXiaozhiService": "删除小智服务",
+  "@deleteXiaozhiService": {
+    "description": "deleteXiaozhiService string"
+  },
+  "confirmDeleteXiaozhi": "确定要删除服务吗？",
+  "@confirmDeleteXiaozhi": {
+    "description": "confirmDeleteXiaozhi string"
+  },
+  "xiaozhiServiceDeleted": "小智服务已删除",
+  "@xiaozhiServiceDeleted": {
+    "description": "xiaozhiServiceDeleted string"
+  },
+  "addService": "添加服务",
+  "@addService": {
+    "description": "addService string"
+  },
+  "noXiaozhiService": "暂无小智服务，点击右上角添加",
+  "@noXiaozhiService": {
+    "description": "noXiaozhiService string"
+  },
+  "unconfigured": "未设置",
+  "@unconfigured": {
+    "description": "unconfigured string"
+  },
+  "difyApiConfig": "Dify API配置",
+  "@difyApiConfig": {
+    "description": "difyApiConfig string"
+  },
+  "difyApiConfigSubtitle": "配置并管理多个Dify API服务",
+  "@difyApiConfigSubtitle": {
+    "description": "difyApiConfigSubtitle string"
+  },
+  "minimaxAiConfig": "MiniMax AI配置",
+  "@minimaxAiConfig": {
+    "description": "minimaxAiConfig string"
+  },
+  "minimaxAiConfigSubtitle": "配置并管理MiniMax API服务",
+  "@minimaxAiConfigSubtitle": {
+    "description": "minimaxAiConfigSubtitle string"
+  },
+  "add": "添加",
+  "@add": {
+    "description": "Add button"
+  },
+  "addDifyConfig": "添加Dify配置",
+  "@addDifyConfig": {
+    "description": "addDifyConfig string"
+  },
+  "addMinimaxConfig": "添加MiniMax配置",
+  "@addMinimaxConfig": {
+    "description": "addMinimaxConfig string"
+  },
+  "enterApiKey": "输入API Key",
+  "@enterApiKey": {"description": "Hint text for API Key input field"},
+  "enterMinimaxApiKey": "输入MiniMax API Key",
+  "@enterMinimaxApiKey": {"description": "Hint text for MiniMax API Key input"},
+  "wsExample": "例如：wss://example.com",
+  "@wsExample": {"description": "Example WebSocket address hint"}
+}
