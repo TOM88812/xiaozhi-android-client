@@ -2729,7 +2729,7 @@ class _SettingsScreenState extends State<SettingsScreen>
                               macAddress.isNotEmpty
                                   ? macAddress
                                   : config.macAddress,
-                          token: token.isNotEmpty ? token : config.token,
+                          token: token,
                         );
 
                         Provider.of<ConfigProvider>(
