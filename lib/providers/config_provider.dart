@@ -166,7 +166,7 @@ class ConfigProvider extends ChangeNotifier {
   Future<void> addMiniMaxConfig(
     String name,
     String apiKey, {
-    String model = 'MiniMax-M2.7',
+    String model = 'MiniMax-M3',
   }) async {
     final newConfig = MiniMaxConfig(
       id: const Uuid().v4(),

@@ -1299,7 +1299,7 @@ class _SettingsScreenState extends State<SettingsScreen>
   void _showAddMiniMaxDialog() {
     final nameController = TextEditingController();
     final apiKeyController = TextEditingController();
-    String selectedModel = 'MiniMax-M2.7';
+    String selectedModel = 'MiniMax-M3';
 
     showDialog(
       context: context,
@@ -1437,21 +1437,17 @@ class _SettingsScreenState extends State<SettingsScreen>
                             isExpanded: true,
                             items: const [
                               DropdownMenuItem(
+                                value: 'MiniMax-M3',
+                                child: Text('MiniMax-M3'),
+                              ),
+                              DropdownMenuItem(
                                 value: 'MiniMax-M2.7',
                                 child: Text('MiniMax-M2.7'),
-                              ),
-                              DropdownMenuItem(
-                                value: 'MiniMax-M2.5',
-                                child: Text('MiniMax-M2.5'),
-                              ),
-                              DropdownMenuItem(
-                                value: 'MiniMax-M2.5-highspeed',
-                                child: Text('MiniMax-M2.5-highspeed'),
                               ),
                             ],
                             onChanged: (value) {
                               setDialogState(() {
-                                selectedModel = value ?? 'MiniMax-M2.7';
+                                selectedModel = value ?? 'MiniMax-M3';
                               });
                             },
                           ),
@@ -1536,7 +1532,10 @@ class _SettingsScreenState extends State<SettingsScreen>
   void _showEditMiniMaxDialog(MiniMaxConfig config) {
     final nameController = TextEditingController(text: config.name);
     final apiKeyController = TextEditingController(text: config.apiKey);
-    String selectedModel = config.model;
+    // Migrate deprecated models (M2.5 / M2.5-highspeed / M2.1 / M2 / M1) to M3
+    const supportedModels = {'MiniMax-M3', 'MiniMax-M2.7'};
+    String selectedModel =
+        supportedModels.contains(config.model) ? config.model : 'MiniMax-M3';
 
     showDialog(
       context: context,
@@ -1651,21 +1650,17 @@ class _SettingsScreenState extends State<SettingsScreen>
                             isExpanded: true,
                             items: const [
                               DropdownMenuItem(
+                                value: 'MiniMax-M3',
+                                child: Text('MiniMax-M3'),
+                              ),
+                              DropdownMenuItem(
                                 value: 'MiniMax-M2.7',
                                 child: Text('MiniMax-M2.7'),
-                              ),
-                              DropdownMenuItem(
-                                value: 'MiniMax-M2.5',
-                                child: Text('MiniMax-M2.5'),
-                              ),
-                              DropdownMenuItem(
-                                value: 'MiniMax-M2.5-highspeed',
-                                child: Text('MiniMax-M2.5-highspeed'),
                               ),
                             ],
                             onChanged: (value) {
                               setDialogState(() {
-                                selectedModel = value ?? config.model;
+                                selectedModel = value ?? selectedModel;
                               });
                             },
                           ),

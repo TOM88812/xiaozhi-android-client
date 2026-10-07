@@ -21,7 +21,7 @@ void main() {
       if (apiKey.isEmpty) return;
       service = MiniMaxService(
         apiKey: apiKey,
-        model: 'MiniMax-M2.7',
+        model: 'MiniMax-M3',
       );
     });
 
