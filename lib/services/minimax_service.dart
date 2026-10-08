@@ -10,6 +10,7 @@ import 'package:http/http.dart' as http;
 class MiniMaxService {
   final String apiKey;
   final String model;
+  final String? systemPrompt;
 
   static const String _baseUrl = 'https://api.minimax.io/v1';
 
@@ -19,6 +20,7 @@ class MiniMaxService {
   MiniMaxService({
     required this.apiKey,
     required this.model,
+    this.systemPrompt,
   });
 
   /// Send a message and get a blocking response.
@@ -34,7 +36,10 @@ class MiniMaxService {
       }
 
       // Get or create history for this session
-      final history = _sessionHistory.putIfAbsent(sessionId, () => []);
+      final history = _sessionHistory.putIfAbsent(
+        sessionId,
+        _initialMessages,
+      );
 
       // Add user message to history
       history.add({'role': 'user', 'content': message});
@@ -107,7 +112,10 @@ class MiniMaxService {
       }
 
       // Get or create history for this session
-      final history = _sessionHistory.putIfAbsent(sessionId, () => []);
+      final history = _sessionHistory.putIfAbsent(
+        sessionId,
+        _initialMessages,
+      );
 
       // Add user message to history
       history.add({'role': 'user', 'content': message});
@@ -208,4 +216,11 @@ class MiniMaxService {
   String _stripThinkingTags(String content) {
     return content.replaceAll(RegExp(r'<think>[\s\S]*?</think>'), '').trim();
   }
+
+  List<Map<String, String>> _initialMessages() =>
+      systemPrompt == null
+          ? []
+          : [
+            {'role': 'system', 'content': systemPrompt!},
+          ];
 }

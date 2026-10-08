@@ -1,4 +1,5 @@
-import 'package:flutter/material.dart';
+import 'package:flutter/material.dart' hide Text;
+import 'package:ai_assistant/l10n/localized_text.dart';
 import 'package:ai_assistant/providers/config_provider.dart';
 import 'package:ai_assistant/services/dify_service.dart';
 import 'package:provider/provider.dart';

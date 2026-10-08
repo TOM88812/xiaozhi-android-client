@@ -1,4 +1,6 @@
-import 'package:flutter/material.dart';
+import 'package:flutter/material.dart' hide Text;
+import 'package:ai_assistant/l10n/localized_text.dart';
+import 'package:ai_assistant/l10n/app_localizations.dart';
 import 'dart:math' as math;
 import 'package:provider/provider.dart';
 import 'package:ai_assistant/providers/theme_provider.dart';
@@ -344,6 +346,7 @@ class _SettingsScreenState extends State<SettingsScreen>
                     children: [
                       Text(
                         config.name,
+                        localize: false,
                         style: const TextStyle(
                           fontWeight: FontWeight.bold,
                           fontSize: 16,
@@ -529,7 +532,7 @@ class _SettingsScreenState extends State<SettingsScreen>
                       child: TextField(
                         controller: _newDifyNameController,
                         decoration: InputDecoration(
-                          hintText: '输入配置名称',
+                          hintText: context.tr('输入配置名称'),
                           hintStyle: TextStyle(color: Colors.grey.shade400),
                           contentPadding: const EdgeInsets.symmetric(
                             horizontal: 16,
@@ -565,7 +568,7 @@ class _SettingsScreenState extends State<SettingsScreen>
                       child: TextField(
                         controller: _newDifyApiUrlController,
                         decoration: InputDecoration(
-                          hintText: 'https://api.dify.ai/v1',
+                          hintText: context.tr('https://api.dify.ai/v1'),
                           hintStyle: TextStyle(color: Colors.grey.shade400),
                           contentPadding: const EdgeInsets.symmetric(
                             horizontal: 16,
@@ -602,7 +605,7 @@ class _SettingsScreenState extends State<SettingsScreen>
                         controller: _newDifyApiKeyController,
                         obscureText: true,
                         decoration: InputDecoration(
-                          hintText: '输入API Key',
+                          hintText: context.tr('输入API Key'),
                           hintStyle: TextStyle(color: Colors.grey.shade400),
                           contentPadding: const EdgeInsets.symmetric(
                             horizontal: 16,
@@ -783,7 +786,7 @@ class _SettingsScreenState extends State<SettingsScreen>
                       child: TextField(
                         controller: _newDifyNameController,
                         decoration: InputDecoration(
-                          hintText: '输入配置名称',
+                          hintText: context.tr('输入配置名称'),
                           hintStyle: TextStyle(color: Colors.grey.shade400),
                           contentPadding: const EdgeInsets.symmetric(
                             horizontal: 16,
@@ -819,7 +822,7 @@ class _SettingsScreenState extends State<SettingsScreen>
                       child: TextField(
                         controller: _newDifyApiUrlController,
                         decoration: InputDecoration(
-                          hintText: 'https://api.dify.ai/v1',
+                          hintText: context.tr('https://api.dify.ai/v1'),
                           hintStyle: TextStyle(color: Colors.grey.shade400),
                           contentPadding: const EdgeInsets.symmetric(
                             horizontal: 16,
@@ -856,7 +859,7 @@ class _SettingsScreenState extends State<SettingsScreen>
                         controller: _newDifyApiKeyController,
                         obscureText: true,
                         decoration: InputDecoration(
-                          hintText: '输入API Key',
+                          hintText: context.tr('输入API Key'),
                           hintStyle: TextStyle(color: Colors.grey.shade400),
                           contentPadding: const EdgeInsets.symmetric(
                             horizontal: 16,
@@ -1205,6 +1208,7 @@ class _SettingsScreenState extends State<SettingsScreen>
                     children: [
                       Text(
                         config.name,
+                        localize: false,
                         style: const TextStyle(
                           fontWeight: FontWeight.bold,
                           fontSize: 16,
@@ -1376,7 +1380,7 @@ class _SettingsScreenState extends State<SettingsScreen>
                         child: TextField(
                           controller: nameController,
                           decoration: InputDecoration(
-                            hintText: '例如：MiniMax AI',
+                            hintText: context.tr('例如：MiniMax AI'),
                             hintStyle: TextStyle(color: Colors.grey.shade400),
                             contentPadding: const EdgeInsets.symmetric(
                               horizontal: 16,
@@ -1405,7 +1409,7 @@ class _SettingsScreenState extends State<SettingsScreen>
                           controller: apiKeyController,
                           obscureText: true,
                           decoration: InputDecoration(
-                            hintText: '输入MiniMax API Key',
+                            hintText: context.tr('输入MiniMax API Key'),
                             hintStyle: TextStyle(color: Colors.grey.shade400),
                             contentPadding: const EdgeInsets.symmetric(
                               horizontal: 16,
@@ -1984,6 +1988,7 @@ class _SettingsScreenState extends State<SettingsScreen>
                     children: [
                       Text(
                         config.name,
+                        localize: false,
                         style: const TextStyle(
                           fontWeight: FontWeight.bold,
                           fontSize: 16,
@@ -2245,7 +2250,7 @@ class _SettingsScreenState extends State<SettingsScreen>
                       child: TextField(
                         controller: nameController,
                         decoration: InputDecoration(
-                          hintText: '例如：家庭小智',
+                          hintText: context.tr('例如：家庭小智'),
                           hintStyle: TextStyle(color: Colors.grey.shade400),
                           contentPadding: const EdgeInsets.symmetric(
                             horizontal: 16,
@@ -2281,7 +2286,7 @@ class _SettingsScreenState extends State<SettingsScreen>
                       child: TextField(
                         controller: websocketUrlController,
                         decoration: InputDecoration(
-                          hintText: '例如：wss://example.com',
+                          hintText: context.tr('例如：wss://example.com'),
                           hintStyle: TextStyle(color: Colors.grey.shade400),
                           contentPadding: const EdgeInsets.symmetric(
                             horizontal: 16,
@@ -2323,7 +2328,7 @@ class _SettingsScreenState extends State<SettingsScreen>
                         enabled: true,
                         controller: macAddressController,
                         decoration: InputDecoration(
-                          hintText: '留空将自动生成',
+                          hintText: context.tr('留空将自动生成'),
                           hintStyle: TextStyle(color: Colors.grey.shade400),
                           contentPadding: const EdgeInsets.symmetric(
                             horizontal: 16,
@@ -2566,7 +2571,7 @@ class _SettingsScreenState extends State<SettingsScreen>
                       child: TextField(
                         controller: nameController,
                         decoration: InputDecoration(
-                          hintText: '例如：家庭小智',
+                          hintText: context.tr('例如：家庭小智'),
                           hintStyle: TextStyle(color: Colors.grey.shade400),
                           contentPadding: const EdgeInsets.symmetric(
                             horizontal: 16,
@@ -2602,7 +2607,7 @@ class _SettingsScreenState extends State<SettingsScreen>
                       child: TextField(
                         controller: websocketUrlController,
                         decoration: InputDecoration(
-                          hintText: '例如：wss://example.com',
+                          hintText: context.tr('例如：wss://example.com'),
                           hintStyle: TextStyle(color: Colors.grey.shade400),
                           contentPadding: const EdgeInsets.symmetric(
                             horizontal: 16,
@@ -2631,7 +2636,7 @@ class _SettingsScreenState extends State<SettingsScreen>
                         controller: macAddressController,
                         enabled: true,
                         decoration: InputDecoration(
-                          hintText: '留空将自动生成',
+                          hintText: context.tr('留空将自动生成'),
                           hintStyle: TextStyle(color: Colors.grey.shade400),
                           contentPadding: const EdgeInsets.symmetric(
                             horizontal: 16,

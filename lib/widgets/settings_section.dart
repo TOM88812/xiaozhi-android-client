@@ -1,4 +1,5 @@
-import 'package:flutter/material.dart';
+import 'package:flutter/material.dart' hide Text;
+import 'package:ai_assistant/l10n/localized_text.dart';
 
 class SettingsSection extends StatelessWidget {
   final String title;
@@ -39,4 +40,3 @@ class SettingsSection extends StatelessWidget {
     );
   }
 }
-

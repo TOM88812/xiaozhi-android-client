@@ -1,11 +1,12 @@
 {
-    "name": "ai_assistant",
-    "short_name": "ai_assistant",
-    "start_url": ".",
+    "name": "Xiaozhi AI · Pembantu Perbualan",
+    "short_name": "Xiaozhi AI",
+    "start_url": "./",
+    "scope": "./",
     "display": "standalone",
-    "background_color": "#FFFFFF",
-    "theme_color": "#FFFFFF",
-    "description": "A new Flutter project.",
+    "background_color": "#f6f7f9",
+    "theme_color": "#f8f9fb",
+    "description": "Pembantu AI untuk perbualan teks dengan Xiaozhi Server, Dify dan MiniMax.",
     "orientation": "portrait-primary",
     "prefer_related_applications": false,
     "icons": [

@@ -1,4 +1,5 @@
-import 'package:flutter/material.dart';
+import 'package:flutter/material.dart' hide Text;
+import 'package:ai_assistant/l10n/localized_text.dart';
 import 'package:provider/provider.dart';
 import 'package:ai_assistant/providers/config_provider.dart';
 import 'package:ai_assistant/providers/conversation_provider.dart';
@@ -31,6 +32,7 @@ class XiaozhiConfigSelectorScreen extends StatelessWidget {
               contentPadding: const EdgeInsets.symmetric(horizontal: 16, vertical: 8),
               title: Text(
                 config.name,
+                localize: false,
                 style: const TextStyle(fontWeight: FontWeight.bold),
               ),
               subtitle: Column(
@@ -67,4 +69,3 @@ class XiaozhiConfigSelectorScreen extends StatelessWidget {
     }
   }
 }
-

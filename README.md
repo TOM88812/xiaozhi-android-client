@@ -87,7 +87,7 @@
   面向 **AI 终端 / AI 硬件 / 智能体方向**，包含两个原生版本：**纯血安卓版**、**纯血鸿蒙版**。购买商业版即可获赠。
 
 - **💼 V3 商业版 · 全功能跨平台客户端**  
-  基于 Flutter，覆盖 Android、iOS、HarmonyOS、Web、Windows、macOS、Linux，**也适配鸿蒙，支持编译 HAP 包**。主打 **全功能、全平台**，深度适配自研服务端。
+  Flutter 客户端覆盖 Android、iOS、HarmonyOS、Windows、macOS、Linux，**也适配鸿蒙，支持编译 HAP 包**；Web 端使用 `web/` 中独立的 PWA。主打 **全功能、多平台**，深度适配自研服务端。
 
 ---
 
@@ -138,7 +138,7 @@
 
 > **推荐场景：全功能手机客户端 · 全平台覆盖 · 办公大屏 · 需要完整商业功能的场景**
 >
-> 基于 Flutter 框架，一套代码覆盖 Android、iOS、HarmonyOS、Web、Windows、macOS、Linux，深度适配自研服务端。
+> Android、iOS、HarmonyOS、Windows、macOS、Linux 客户端基于 Flutter；Web 客户端为 `web/` 中独立可安装的 PWA，支持 Dify、MiniMax 和基于 `AnimeAIChat/xiaozhi-server-go` 的小智纯文本对话。小智连接配置需要 API URL、`AuthorToken`、WebSocket URL 和已绑定设备 ID；浏览器需能跨域访问 API，WebSocket URL 支持 `device-id` 查询参数。HTTPS 部署时请使用 `wss://`。PWA 不提供录音或语音播放。请通过 HTTPS（或 localhost）托管 `web/` 目录以启用安装和离线应用外壳。
 > **V3 也适配鸿蒙，支持编译 HAP 包。**
 
 <details open>

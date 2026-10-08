@@ -1,6 +1,7 @@
 import 'dart:math';
 import 'dart:io';
-import 'package:flutter/material.dart';
+import 'package:flutter/material.dart' hide Text;
+import 'package:ai_assistant/l10n/localized_text.dart';
 import 'package:intl/intl.dart';
 import 'package:ai_assistant/models/message.dart';
 import 'package:provider/provider.dart';
@@ -68,6 +69,7 @@ class MessageBubble extends StatelessWidget {
                           ? _buildImageContent(context)
                           : Text(
                             message.content,
+                            localize: false,
                             style: TextStyle(
                               color: isUser ? Colors.white : Colors.black87,
                               fontSize: 15,
@@ -81,6 +83,7 @@ class MessageBubble extends StatelessWidget {
                 if (message.timestamp != null)
                   Text(
                     _formatTime(message.timestamp),
+                    localize: false,
                     style: TextStyle(fontSize: 12, color: Colors.grey.shade500),
                   ),
               ],
@@ -156,6 +159,7 @@ class MessageBubble extends StatelessWidget {
           ),
           child: Text(
             message.content,
+            localize: false,
             style: TextStyle(fontSize: 12, color: Colors.grey.shade600),
           ),
         ),
@@ -196,6 +200,7 @@ class MessageBubble extends StatelessWidget {
               padding: const EdgeInsets.only(top: 8, left: 8, right: 8),
               child: Text(
                 message.content,
+                localize: false,
                 style: TextStyle(
                   color: isUser ? Colors.white : Colors.black87,
                   fontSize: 13,
@@ -206,10 +211,18 @@ class MessageBubble extends StatelessWidget {
       );
     }
 
-    return _buildImagePlaceholder(isUser, message.content);
+    return _buildImagePlaceholder(
+      isUser,
+      message.content,
+      localize: false,
+    );
   }
 
-  Widget _buildImagePlaceholder(bool isUser, String message) {
+  Widget _buildImagePlaceholder(
+    bool isUser,
+    String message, {
+    bool localize = true,
+  }) {
     return Container(
       padding: const EdgeInsets.all(8),
       width: 150,
@@ -230,6 +243,7 @@ class MessageBubble extends StatelessWidget {
             const SizedBox(height: 8),
             Text(
               message,
+              localize: localize,
               textAlign: TextAlign.center,
               style: TextStyle(
                 color: isUser ? Colors.white70 : Colors.black45,

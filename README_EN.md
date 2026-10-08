@@ -28,7 +28,7 @@
 > If you find this project useful, feel free to donate. Every donation is my motivation to move forward.
 > Dify supports sending image interactions. Multiple Xiaozhi agents can be added to the chat list.
 
-Xiaozhi AI Assistant developed based on the Flutter framework, supporting multi-platform (iOS, Android, Web, Windows, macOS, Linux) deployment, providing real-time voice interaction and text conversation functions.
+Xiaozhi AI Assistant provides Flutter clients for Android, iOS, Windows, macOS and Linux. The Web client is a standalone installable Progressive Web App (PWA) in `web/`, with text conversations for Dify, MiniMax and `AnimeAIChat/xiaozhi-server-go`. Configure Xiaozhi with its API URL, `AuthorToken`, WebSocket URL, and a bound device ID; the browser uses the server-supported `device-id` query parameter for WebSocket connections. Use `wss://` when the PWA is hosted over HTTPS. The PWA has no audio recording or playback controls. Serve `web/` over HTTPS (or localhost) to enable installation and offline app-shell caching; provider APIs still require a network connection and browser-compatible CORS configuration.
 
 <table>
   <tr>

@@ -1,4 +1,5 @@
-import 'package:flutter/material.dart';
+import 'package:flutter/material.dart' hide Text;
+import 'package:ai_assistant/l10n/localized_text.dart';
 import 'package:provider/provider.dart';
 import 'package:timeago/timeago.dart' as timeago;
 import 'package:ai_assistant/models/conversation.dart';
@@ -58,6 +59,7 @@ class ConversationTile extends StatelessWidget {
                               children: [
                                 Text(
                                   conversation.title,
+                                  localize: false,
                                   style: const TextStyle(
                                     fontWeight: FontWeight.bold,
                                     fontSize: 16,
@@ -71,6 +73,7 @@ class ConversationTile extends StatelessWidget {
                           ),
                           Text(
                             _formatTime(conversation.lastMessageTime),
+                            localize: false,
                             style: TextStyle(
                               fontSize: 14,
                               color: Colors.grey.shade500,
@@ -81,6 +84,7 @@ class ConversationTile extends StatelessWidget {
                       const SizedBox(height: 6),
                       Text(
                         conversation.lastMessage,
+                        localize: false,
                         maxLines: 1,
                         overflow: TextOverflow.ellipsis,
                         style: TextStyle(
@@ -147,6 +151,7 @@ class ConversationTile extends StatelessWidget {
       ),
       child: Text(
         label,
+        localize: conversation.configId.isEmpty,
         style: TextStyle(
           fontSize: 12,
           color: isDify ? Colors.blue.shade600 : Colors.purple.shade600,

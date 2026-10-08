@@ -1,4 +1,6 @@
-import 'package:flutter/material.dart';
+import 'package:flutter/material.dart' hide Text;
+import 'package:ai_assistant/l10n/localized_text.dart';
+import 'package:ai_assistant/l10n/app_localizations.dart';
 import 'package:flutter/services.dart';
 import 'package:provider/provider.dart';
 import 'package:ai_assistant/models/conversation.dart';
@@ -389,6 +391,7 @@ class _VoiceCallScreenState extends State<VoiceCallScreen>
                 // 名称显示
                 Text(
                   widget.conversation.title,
+                  localize: false,
                   style: const TextStyle(
                     color: Colors.white,
                     fontSize: 28,
@@ -437,7 +440,9 @@ class _VoiceCallScreenState extends State<VoiceCallScreen>
                       ),
                       const SizedBox(width: 8),
                       Text(
-                        _isSpeaking ? '$_statusText (正在录音)' : _statusText,
+                        _isSpeaking
+                            ? '${context.tr(_statusText)} (${context.tr("正在录音")})'
+                            : context.tr(_statusText),
                         style: TextStyle(
                           color: _isConnected ? Colors.green : Colors.red,
                           fontSize: 16,

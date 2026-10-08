@@ -1,4 +1,5 @@
-import 'package:flutter/material.dart';
+import 'package:flutter/material.dart' hide Text;
+import 'package:ai_assistant/l10n/localized_text.dart';
 import 'package:provider/provider.dart';
 import 'package:ai_assistant/providers/config_provider.dart';
 import 'package:ai_assistant/providers/conversation_provider.dart';
@@ -571,6 +572,7 @@ class _ConversationTypeScreenState extends State<ConversationTypeScreen> {
                             children: [
                               Text(
                                 config.name,
+                                localize: false,
                                 style: const TextStyle(
                                   fontSize: 16,
                                   fontWeight: FontWeight.w600,
@@ -840,6 +842,7 @@ class _ConversationTypeScreenState extends State<ConversationTypeScreen> {
                             children: [
                               Text(
                                 config.name,
+                                localize: false,
                                 style: const TextStyle(
                                   fontSize: 16,
                                   fontWeight: FontWeight.w600,
@@ -1148,6 +1151,7 @@ class _ConversationTypeScreenState extends State<ConversationTypeScreen> {
                             children: [
                               Text(
                                 config.name,
+                                localize: false,
                                 style: const TextStyle(
                                   fontSize: 16,
                                   fontWeight: FontWeight.w600,

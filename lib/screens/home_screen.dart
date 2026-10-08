@@ -1,4 +1,6 @@
-import 'package:flutter/material.dart';
+import 'package:flutter/material.dart' hide Text;
+import 'package:ai_assistant/l10n/localized_text.dart';
+import 'package:ai_assistant/l10n/app_localizations.dart';
 import 'package:flutter/services.dart';
 import 'package:provider/provider.dart';
 import 'package:ai_assistant/providers/conversation_provider.dart';
@@ -225,7 +227,7 @@ class _HomeScreenState extends State<HomeScreen> {
                           ),
                         ),
                       ),
-                      label: '消息',
+                      label: context.tr('消息'),
                     ),
                     BottomNavigationBarItem(
                       icon: Material(
@@ -257,7 +259,7 @@ class _HomeScreenState extends State<HomeScreen> {
                           ),
                         ),
                       ),
-                      label: '发现',
+                      label: context.tr('发现'),
                     ),
                   ],
                 ),
@@ -295,7 +297,9 @@ class _HomeScreenState extends State<HomeScreen> {
           child: TextField(
             focusNode: _searchFocusNode,
             decoration: InputDecoration(
-              hintText: '搜索对话',
+              hintText:
+                  AppLocalizations.of(context)?.translate('搜索对话') ??
+                  '搜索对话',
               hintStyle: TextStyle(color: Colors.grey.shade400, fontSize: 16),
               prefixIcon: Container(
                 padding: const EdgeInsets.all(12),
@@ -512,7 +516,7 @@ class _HomeScreenState extends State<HomeScreen> {
               borderRadius: BorderRadius.circular(10),
             ),
             action: SnackBarAction(
-              label: '撤销',
+              label: context.tr('撤销'),
               textColor: Colors.white,
               onPressed: () {
                 // 恢复被删除的对话

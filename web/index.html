@@ -1,38 +1,847 @@
-<!DOCTYPE html>
-<html>
+<!doctype html>
+<html lang="ms-MY">
 <head>
-  <!--
-    If you are serving your web app in a path other than the root, change the
-    href value below to reflect the base path you are serving from.
-
-    The path provided below has to start and end with a slash "/" in order for
-    it to work correctly.
-
-    For more details:
-    * https://developer.mozilla.org/en-US/docs/Web/HTML/Element/base
-
-    This is a placeholder for base href that will be replaced by the value of
-    the `--base-href` argument provided to `flutter build`.
-  -->
-  <base href="$FLUTTER_BASE_HREF">
-
-  <meta charset="UTF-8">
-  <meta content="IE=Edge" http-equiv="X-UA-Compatible">
-  <meta name="description" content="A new Flutter project.">
-
-  <!-- iOS meta tags & icons -->
-  <meta name="mobile-web-app-capable" content="yes">
-  <meta name="apple-mobile-web-app-status-bar-style" content="black">
-  <meta name="apple-mobile-web-app-title" content="ai_assistant">
-  <link rel="apple-touch-icon" href="icons/Icon-192.png">
-
-  <!-- Favicon -->
-  <link rel="icon" type="image/png" href="favicon.png"/>
-
-  <title>ai_assistant</title>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+  <meta name="theme-color" content="#f8f9fb">
+  <meta name="description" content="Pembantu AI untuk perbualan teks dengan Xiaozhi, Dify dan MiniMax.">
+  <meta name="application-name" content="Xiaozhi AI">
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-status-bar-style" content="default">
+  <meta name="apple-mobile-web-app-title" content="Xiaozhi AI">
   <link rel="manifest" href="manifest.json">
+  <link rel="apple-touch-icon" href="icons/Icon-192.png">
+  <link rel="icon" href="icons/Icon-192.png" type="image/png">
+  <title>Xiaozhi AI · Pembantu Perbualan</title>
+  <style>
+    :root {
+      color-scheme: light;
+      --bg: #f6f7f9;
+      --panel: #fff;
+      --ink: #18202b;
+      --muted: #7a8492;
+      --line: #e9edf1;
+      --accent: #316cf4;
+      --accent-soft: #edf3ff;
+      --danger: #d84444;
+      --shadow: 0 12px 38px #16233b0d;
+      font-family: Inter, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+    }
+    * { box-sizing: border-box; }
+    body { margin: 0; min-width: 320px; min-height: 100vh; background: var(--bg); color: var(--ink); }
+    button, input, select, textarea { font: inherit; }
+    button { cursor: pointer; }
+    .app { min-height: 100vh; display: grid; grid-template-columns: 290px minmax(0, 1fr); }
+    .sidebar { display: flex; flex-direction: column; gap: 20px; padding: 24px 16px; background: var(--panel); border-right: 1px solid var(--line); }
+    .brand { display: flex; align-items: center; gap: 11px; padding: 0 7px; }
+    .brand-mark { width: 40px; height: 40px; display: grid; place-items: center; border-radius: 14px; color: white; font-size: 21px; font-weight: 800; background: linear-gradient(145deg, #5188ff, #2857d8); box-shadow: 0 6px 16px #316cf433; }
+    .brand-title { font-size: 16px; font-weight: 760; letter-spacing: -.3px; }
+    .brand-sub { margin-top: 2px; color: var(--muted); font-size: 11px; }
+    .primary, .secondary, .icon-btn, .danger-btn { display: inline-flex; align-items: center; justify-content: center; gap: 8px; border: 0; border-radius: 12px; transition: .16s ease; }
+    .primary { min-height: 44px; padding: 0 16px; color: #fff; background: var(--accent); font-weight: 670; box-shadow: 0 5px 12px #316cf426; }
+    .primary:hover { background: #205de9; transform: translateY(-1px); }
+    .secondary { min-height: 40px; padding: 0 13px; color: var(--ink); background: #f1f3f6; font-weight: 620; }
+    .secondary:hover, .icon-btn:hover { background: #e8ebf0; }
+    .danger-btn { min-height: 38px; padding: 0 12px; background: #fff0f0; color: var(--danger); font-weight: 650; }
+    .icon-btn { width: 38px; height: 38px; color: #667080; background: transparent; font-size: 18px; }
+    .sidebar .primary { width: 100%; justify-content: flex-start; padding-left: 17px; }
+    .search-wrap { position: relative; }
+    .search-wrap span { position: absolute; left: 13px; top: 11px; color: #8992a0; }
+    .search-wrap input, .field input, .field select, .composer textarea { width: 100%; border: 1px solid var(--line); border-radius: 11px; outline: none; background: #fff; color: var(--ink); }
+    .search-wrap input { height: 42px; padding: 0 12px 0 38px; background: #f8f9fb; }
+    .search-wrap input:focus, .field input:focus, .field select:focus, .composer textarea:focus { border-color: #89aaf9; box-shadow: 0 0 0 3px #316cf414; }
+    .section-label { display: flex; justify-content: space-between; padding: 0 8px; color: var(--muted); font-size: 11px; font-weight: 750; text-transform: uppercase; letter-spacing: .09em; }
+    .conversation-list { display: flex; flex: 1; flex-direction: column; gap: 5px; min-height: 70px; overflow: auto; }
+    .conversation-item { display: flex; align-items: flex-start; gap: 9px; padding: 11px 9px; border-radius: 12px; cursor: pointer; }
+    .conversation-item:hover { background: #f5f7fa; }
+    .conversation-item.active { background: var(--accent-soft); }
+    .conversation-icon { width: 31px; height: 31px; flex: 0 0 31px; display: grid; place-items: center; border-radius: 10px; color: var(--accent); background: white; }
+    .conversation-item.active .conversation-icon { color: #fff; background: var(--accent); }
+    .conversation-meta { min-width: 0; flex: 1; }
+    .conversation-name { overflow: hidden; font-size: 13px; font-weight: 650; text-overflow: ellipsis; white-space: nowrap; }
+    .conversation-preview { overflow: hidden; margin-top: 4px; color: var(--muted); font-size: 11px; text-overflow: ellipsis; white-space: nowrap; }
+    .conversation-item .pin { color: #d99a17; font-size: 12px; }
+    .sidebar-footer { display: flex; align-items: center; justify-content: space-between; gap: 8px; padding: 10px 5px 0; border-top: 1px solid var(--line); }
+    .connection-note { display: flex; align-items: center; gap: 7px; color: var(--muted); font-size: 11px; }
+    .online-dot { width: 8px; height: 8px; border-radius: 50%; background: #2dbb77; }
+    .main { display: flex; min-width: 0; min-height: 100vh; flex-direction: column; }
+    .topbar { display: flex; height: 72px; align-items: center; justify-content: space-between; gap: 14px; padding: 0 30px; border-bottom: 1px solid var(--line); background: #ffffffc9; backdrop-filter: blur(12px); }
+    .top-title { min-width: 0; font-size: 16px; font-weight: 720; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
+    .top-subtitle { margin-top: 4px; color: var(--muted); font-size: 11px; }
+    .top-actions { display: flex; align-items: center; gap: 7px; }
+    .content { width: min(920px, 100%); flex: 1; margin: 0 auto; padding: 28px 32px 14px; }
+    .welcome { max-width: 700px; margin: 9vh auto 0; text-align: center; }
+    .welcome-orb { width: 68px; height: 68px; display: grid; place-items: center; margin: 0 auto 22px; border-radius: 23px; color: white; font-size: 29px; background: linear-gradient(140deg, #6794ff, #3c64df); box-shadow: 0 14px 30px #316cf42c; }
+    .welcome h1 { margin: 0; font-size: clamp(26px, 4vw, 38px); letter-spacing: -1.2px; }
+    .welcome p { max-width: 510px; margin: 12px auto 28px; color: var(--muted); line-height: 1.7; }
+    .welcome-cards { display: grid; grid-template-columns: repeat(3, 1fr); gap: 12px; margin-top: 30px; text-align: left; }
+    .welcome-card { padding: 15px; border: 1px solid var(--line); border-radius: 14px; background: white; }
+    .welcome-card strong { display: block; font-size: 13px; }
+    .welcome-card span { display: block; margin-top: 5px; color: var(--muted); font-size: 11px; line-height: 1.5; }
+    .messages { display: flex; flex-direction: column; gap: 23px; padding-bottom: 22px; }
+    .message { display: flex; align-items: flex-start; gap: 12px; }
+    .message.user { flex-direction: row-reverse; }
+    .avatar { width: 33px; height: 33px; flex: 0 0 33px; display: grid; place-items: center; border-radius: 11px; color: white; background: #6c7787; font-size: 14px; font-weight: 700; }
+    .message.assistant .avatar { background: linear-gradient(145deg, #5188ff, #2857d8); }
+    .bubble-wrap { max-width: min(78%, 710px); }
+    .message.user .bubble-wrap { text-align: right; }
+    .bubble { display: inline-block; padding: 13px 15px; border: 1px solid var(--line); border-radius: 4px 15px 15px; background: white; text-align: left; line-height: 1.65; overflow-wrap: anywhere; white-space: pre-wrap; }
+    .message.user .bubble { border: 0; border-radius: 15px 4px 15px 15px; color: white; background: #316cf4; }
+    .message-time { margin-top: 5px; color: #9aa2ad; font-size: 10px; }
+    .typing { display: flex; align-items: center; gap: 5px; height: 20px; }
+    .typing i { width: 6px; height: 6px; border-radius: 50%; background: #8593aa; animation: bounce 1s infinite alternate; }
+    .typing i:nth-child(2) { animation-delay: .18s; }
+    .typing i:nth-child(3) { animation-delay: .36s; }
+    @keyframes bounce { to { opacity: .35; transform: translateY(-4px); } }
+    .composer-area { position: sticky; bottom: 0; padding: 12px 24px max(17px, env(safe-area-inset-bottom)); background: linear-gradient(transparent, var(--bg) 18%); }
+    .composer { display: flex; width: min(860px, 100%); align-items: flex-end; gap: 10px; margin: 0 auto; padding: 10px; border: 1px solid #e1e6ed; border-radius: 17px; background: white; box-shadow: var(--shadow); }
+    .composer textarea { min-height: 42px; max-height: 150px; resize: none; padding: 10px 8px; border: 0; box-shadow: none !important; line-height: 1.45; }
+    .composer textarea:focus { border: 0; }
+    .send-btn { width: 42px; height: 42px; flex: 0 0 42px; border: 0; border-radius: 12px; color: white; background: var(--accent); font-size: 18px; }
+    .send-btn:disabled { cursor: not-allowed; opacity: .45; }
+    .composer-hint { width: min(860px, 100%); margin: 8px auto 0; color: #9199a5; font-size: 10px; text-align: center; }
+    .mobile-menu { display: none; }
+    .empty-list { padding: 14px 9px; color: var(--muted); font-size: 12px; line-height: 1.5; }
+    .overlay { position: fixed; z-index: 5; inset: 0; display: none; align-items: center; justify-content: center; padding: 18px; background: #18202b66; backdrop-filter: blur(4px); }
+    .overlay.open { display: flex; }
+    .dialog { width: min(620px, 100%); max-height: min(820px, 92vh); overflow: auto; border: 1px solid #ffffffa6; border-radius: 20px; background: white; box-shadow: 0 25px 80px #11182733; }
+    .dialog-head { position: sticky; top: 0; z-index: 1; display: flex; align-items: center; justify-content: space-between; padding: 19px 22px; border-bottom: 1px solid var(--line); background: #fff; }
+    .dialog-head h2 { margin: 0; font-size: 18px; }
+    .dialog-body { padding: 20px 22px 24px; }
+    .dialog-intro { margin: 0 0 18px; color: var(--muted); font-size: 12px; line-height: 1.6; }
+    .settings-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 14px; }
+    .field { display: flex; min-width: 0; flex-direction: column; gap: 7px; }
+    .field.full { grid-column: 1 / -1; }
+    .field label { color: #525d6c; font-size: 12px; font-weight: 650; }
+    .field input, .field select { height: 42px; padding: 0 11px; }
+    .field small { color: var(--muted); font-size: 10px; line-height: 1.5; }
+    .config-list { display: grid; gap: 8px; margin: 18px 0; }
+    .config-row { display: flex; align-items: center; justify-content: space-between; gap: 10px; padding: 11px 12px; border: 1px solid var(--line); border-radius: 12px; }
+    .config-row strong { display: block; font-size: 12px; }
+    .config-row small { display: block; margin-top: 3px; color: var(--muted); font-size: 10px; }
+    .dialog-actions { display: flex; justify-content: flex-end; gap: 9px; margin-top: 19px; }
+    .notice { margin-top: 15px; padding: 11px 12px; border-radius: 11px; color: #786021; background: #fff8e7; font-size: 11px; line-height: 1.55; }
+    .toast { position: fixed; z-index: 10; right: 20px; bottom: 20px; max-width: min(390px, calc(100vw - 40px)); padding: 12px 16px; border-radius: 12px; color: white; background: #202938; box-shadow: var(--shadow); font-size: 13px; opacity: 0; pointer-events: none; transform: translateY(8px); transition: .2s; }
+    .toast.show { opacity: 1; transform: translateY(0); }
+    .confirm-text { margin: 0; line-height: 1.6; }
+    @media (max-width: 760px) {
+      .app { display: block; }
+      .sidebar { position: fixed; z-index: 4; inset: 0 auto 0 0; width: min(310px, 86vw); box-shadow: 12px 0 40px #1018281a; transform: translateX(-105%); transition: transform .2s ease; }
+      .sidebar.open { transform: translateX(0); }
+      .main { min-height: 100dvh; }
+      .topbar { height: 64px; padding: 0 13px; }
+      .mobile-menu { display: inline-flex; }
+      .content { padding: 20px 15px 8px; }
+      .welcome { margin-top: 8vh; }
+      .welcome-cards { grid-template-columns: 1fr; text-align: center; }
+      .composer-area { padding-right: 12px; padding-left: 12px; }
+      .top-subtitle { font-size: 10px; }
+      .bubble-wrap { max-width: 84%; }
+      .settings-grid { grid-template-columns: 1fr; }
+      .field.full { grid-column: auto; }
+    }
+    @media (prefers-reduced-motion: reduce) { *, *::before, *::after { scroll-behavior: auto !important; animation-duration: .01ms !important; transition-duration: .01ms !important; } }
+  </style>
 </head>
 <body>
-  <script src="flutter_bootstrap.js" async></script>
+  <div class="app">
+    <aside class="sidebar" id="sidebar" aria-label="Navigasi perbualan">
+      <div class="brand">
+        <div class="brand-mark" aria-hidden="true">✦</div>
+        <div><div class="brand-title">Xiaozhi AI</div><div class="brand-sub">Pembantu perbualan anda</div></div>
+      </div>
+      <button class="primary" id="newChatBtn" type="button"><span aria-hidden="true">＋</span> Perbualan baharu</button>
+      <label class="search-wrap"><span aria-hidden="true">⌕</span><input id="searchInput" type="search" placeholder="Cari perbualan" aria-label="Cari perbualan"></label>
+      <div class="section-label"><span>Perbualan anda</span><span id="chatCount">0</span></div>
+      <div class="conversation-list" id="conversationList"></div>
+      <div class="sidebar-footer">
+        <div class="connection-note"><i class="online-dot"></i><span>Aplikasi web aktif</span></div>
+        <button class="icon-btn" id="settingsBtn" type="button" aria-label="Tetapan" title="Tetapan">⚙</button>
+      </div>
+    </aside>
+
+    <main class="main">
+      <header class="topbar">
+        <div style="display:flex;align-items:center;gap:10px;min-width:0">
+          <button class="icon-btn mobile-menu" id="menuBtn" type="button" aria-label="Buka menu">☰</button>
+          <div style="min-width:0"><div class="top-title" id="headerTitle">Selamat datang</div><div class="top-subtitle" id="headerSubtitle">Pilih penyedia AI untuk memulakan perbualan</div></div>
+        </div>
+        <div class="top-actions">
+          <button class="secondary" id="installBtn" type="button" hidden>Pasang aplikasi</button>
+          <button class="icon-btn" id="pinChatBtn" type="button" aria-label="Pin perbualan" title="Pin perbualan" hidden>◇</button>
+          <button class="icon-btn" id="deleteChatBtn" type="button" aria-label="Padam perbualan" title="Padam perbualan" hidden>⌫</button>
+        </div>
+      </header>
+
+      <section class="content" id="content" aria-live="polite"></section>
+      <div class="composer-area" id="composerArea" hidden>
+        <form class="composer" id="messageForm">
+          <textarea id="messageInput" rows="1" placeholder="Taip mesej dalam Bahasa Melayu..." aria-label="Mesej anda"></textarea>
+          <button class="send-btn" id="sendBtn" type="submit" aria-label="Hantar mesej">➤</button>
+        </form>
+        <div class="composer-hint">Enter untuk menghantar · Shift + Enter untuk baris baharu</div>
+      </div>
+    </main>
+  </div>
+
+  <div class="overlay" id="settingsOverlay" role="presentation">
+    <section class="dialog" role="dialog" aria-modal="true" aria-labelledby="settingsTitle">
+      <div class="dialog-head"><h2 id="settingsTitle">Tetapan penyedia AI</h2><button class="icon-btn close-dialog" type="button" aria-label="Tutup">×</button></div>
+      <div class="dialog-body">
+        <p class="dialog-intro">Simpan sambungan penyedia AI pada pelayar ini. Pilih jenis perkhidmatan, kemudian masukkan butiran sambungan.</p>
+        <div class="field full"><label for="providerType">Jenis perkhidmatan</label><select id="providerType"><option value="dify">Dify · aplikasi chatbot</option><option value="minimax">MiniMax · API serasi OpenAI</option><option value="xiaozhi">Xiaozhi · WebSocket teks</option></select></div>
+        <div class="config-list" id="configList"></div>
+        <div class="settings-grid" id="configFields"></div>
+        <div class="notice">Kunci API disimpan dalam storan setempat pelayar dan dihantar terus kepada penyedia yang anda tetapkan. Gunakan peranti peribadi dan HTTPS; jangan kongsi peranti ini jika kunci API disimpan.</div>
+        <div class="dialog-actions"><button class="secondary close-dialog" type="button">Tutup</button><button class="primary" id="saveConfigBtn" type="button">Simpan perkhidmatan</button></div>
+      </div>
+    </section>
+  </div>
+  <div class="overlay" id="newChatOverlay" role="presentation">
+    <section class="dialog" role="dialog" aria-modal="true" aria-labelledby="newChatTitle">
+      <div class="dialog-head"><h2 id="newChatTitle">Mulakan perbualan</h2><button class="icon-btn close-dialog" type="button" aria-label="Tutup">×</button></div>
+      <form class="dialog-body" id="newChatForm">
+        <p class="dialog-intro">Pilih perkhidmatan AI untuk perbualan ini.</p>
+        <div class="settings-grid">
+          <div class="field full"><label for="chatProvider">Perkhidmatan</label><select id="chatProvider"></select></div>
+          <div class="field full"><label for="chatTitle">Nama perbualan (pilihan)</label><input id="chatTitle" maxlength="80" placeholder="Contohnya: Idea projek"></div>
+        </div>
+        <div class="dialog-actions"><button class="secondary close-dialog" type="button">Batal</button><button class="primary" type="submit">Mulakan</button></div>
+      </form>
+    </section>
+  </div>
+  <div class="overlay" id="confirmOverlay" role="presentation">
+    <section class="dialog" role="dialog" aria-modal="true" aria-labelledby="confirmTitle">
+      <div class="dialog-head"><h2 id="confirmTitle">Padam perbualan</h2><button class="icon-btn close-dialog" type="button" aria-label="Tutup">×</button></div>
+      <div class="dialog-body"><p class="confirm-text" id="confirmMessage">Padam perbualan ini?</p><div class="dialog-actions"><button class="secondary close-dialog" type="button">Batal</button><button class="danger-btn" id="confirmDeleteBtn" type="button">Padam</button></div></div>
+    </section>
+  </div>
+  <div class="toast" id="toast" role="status"></div>
+
+  <script>
+    (() => {
+      'use strict';
+      const STORE = 'xiaozhi-pwa-v1';
+      const MINIMAX_URL = 'https://api.minimax.io/v1/chat/completions';
+      const $ = (selector) => document.querySelector(selector);
+      const state = loadState();
+      let activeId = state.activeId;
+      let busy = false;
+      let pendingInstall = null;
+      let socket = null;
+      let socketConversationId = null;
+      let toastTimer;
+      let pendingDeleteId = null;
+
+      function loadState() {
+        const fallback = { configs: [], conversations: [], activeId: null, userId: cryptoId() };
+        try {
+          const saved = JSON.parse(localStorage.getItem(STORE) || 'null');
+          if (!saved || typeof saved !== 'object') return fallback;
+          return {
+            configs: Array.isArray(saved.configs) ? saved.configs : [],
+            conversations: Array.isArray(saved.conversations) ? saved.conversations : [],
+            activeId: saved.activeId || null,
+            userId: saved.userId || fallback.userId
+          };
+        } catch (error) {
+          console.error('Gagal membaca storan aplikasi', error);
+          return fallback;
+        }
+      }
+
+      function cryptoId() {
+        return globalThis.crypto?.randomUUID?.() || `${Date.now()}-${Math.random().toString(16).slice(2)}`;
+      }
+
+      function persist() {
+        try {
+          state.activeId = activeId;
+          localStorage.setItem(STORE, JSON.stringify(state));
+        } catch (error) {
+          console.error('Gagal menyimpan data aplikasi', error);
+          notify('Storan pelayar penuh atau tidak tersedia. Eksport/bersihkan data pelayar dan cuba lagi.');
+        }
+      }
+
+      function esc(value) {
+        return String(value ?? '').replace(/[&<>"']/g, (char) => ({
+          '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;', "'": '&#39;'
+        })[char]);
+      }
+
+      function providerName(type) {
+        return ({ dify: 'Dify', minimax: 'MiniMax', xiaozhi: 'Xiaozhi' })[type] || 'AI';
+      }
+
+      function iconFor(type) {
+        return ({ dify: '✉', minimax: '✦', xiaozhi: '◉' })[type] || '✦';
+      }
+
+      function currentChat() {
+        return state.conversations.find((chat) => chat.id === activeId) || null;
+      }
+
+      function currentConfig(chat) {
+        return state.configs.find((config) => config.id === chat?.configId) || null;
+      }
+
+      function timeLabel(iso) {
+        if (!iso) return '';
+        const date = new Date(iso);
+        if (Number.isNaN(date.getTime())) return '';
+        return new Intl.DateTimeFormat('ms-MY', { hour: '2-digit', minute: '2-digit' }).format(date);
+      }
+
+      function notify(message) {
+        const toast = $('#toast');
+        toast.textContent = message;
+        toast.classList.add('show');
+        clearTimeout(toastTimer);
+        toastTimer = setTimeout(() => toast.classList.remove('show'), 3200);
+      }
+
+      function openDialog(id) {
+        $(id).classList.add('open');
+        const focusable = $(id).querySelector('input, select, button');
+        focusable?.focus();
+      }
+
+      function closeDialog(event) {
+        const overlay = event.currentTarget.closest('.overlay');
+        overlay?.classList.remove('open');
+      }
+
+      function render() {
+        renderSidebar();
+        renderChat();
+        renderProviderOptions();
+      }
+
+      function renderSidebar() {
+        const query = $('#searchInput').value.trim().toLocaleLowerCase('ms-MY');
+        const list = [...state.conversations]
+          .sort((a, b) => Number(b.pinned) - Number(a.pinned) || new Date(b.updatedAt) - new Date(a.updatedAt))
+          .filter((chat) => `${chat.title} ${chat.lastMessage || ''}`.toLocaleLowerCase('ms-MY').includes(query));
+        $('#chatCount').textContent = String(state.conversations.length);
+        const target = $('#conversationList');
+        target.replaceChildren();
+        if (!list.length) {
+          const empty = document.createElement('div');
+          empty.className = 'empty-list';
+          empty.textContent = query ? 'Tiada perbualan yang sepadan.' : 'Perbualan anda akan dipaparkan di sini.';
+          target.append(empty);
+          return;
+        }
+        list.forEach((chat) => {
+          const item = document.createElement('div');
+          item.className = `conversation-item${chat.id === activeId ? ' active' : ''}`;
+          item.setAttribute('role', 'button');
+          item.setAttribute('tabindex', '0');
+          item.innerHTML = `<div class="conversation-icon" aria-hidden="true">${iconFor(chat.type)}</div>
+            <div class="conversation-meta"><div class="conversation-name">${esc(chat.title)}</div><div class="conversation-preview">${esc(chat.lastMessage || providerName(chat.type))}</div></div>
+            ${chat.pinned ? '<span class="pin" title="Dipinkan">◆</span>' : ''}`;
+          const activate = () => {
+            activeId = chat.id;
+            closeSocket();
+            persist();
+            render();
+            $('#sidebar').classList.remove('open');
+          };
+          item.addEventListener('click', activate);
+          item.addEventListener('keydown', (event) => {
+            if (event.key === 'Enter' || event.key === ' ') { event.preventDefault(); activate(); }
+          });
+          target.append(item);
+        });
+      }
+
+      function renderChat() {
+        const chat = currentChat();
+        const content = $('#content');
+        content.replaceChildren();
+        $('#composerArea').hidden = !chat;
+        $('#deleteChatBtn').hidden = !chat;
+        $('#pinChatBtn').hidden = !chat;
+        $('#pinChatBtn').textContent = chat?.pinned ? '◆' : '◇';
+        $('#pinChatBtn').title = chat?.pinned ? 'Buang pin' : 'Pin perbualan';
+        $('#pinChatBtn').setAttribute('aria-label', $('#pinChatBtn').title);
+        if (!chat) {
+          $('#headerTitle').textContent = 'Selamat datang';
+          $('#headerSubtitle').textContent = 'Pilih penyedia AI untuk memulakan perbualan';
+          const setupNeeded = !state.configs.length;
+          content.innerHTML = `<div class="welcome">
+            <div class="welcome-orb" aria-hidden="true">✦</div>
+            <h1>Perbualan AI, lebih mudah.</h1>
+            <p>Berbual dengan pembantu AI anda dalam Bahasa Melayu. Mulakan dengan menyediakan sambungan penyedia AI, kemudian cipta perbualan baharu.</p>
+            <button class="primary" id="welcomeAction" type="button">${setupNeeded ? '＋ Sediakan perkhidmatan' : '＋ Mulakan perbualan'}</button>
+            <div class="welcome-cards">
+              <div class="welcome-card"><strong>✉ Dify</strong><span>Sambungkan aplikasi chatbot anda menggunakan API.</span></div>
+              <div class="welcome-card"><strong>✦ MiniMax</strong><span>Gunakan API sembang serasi OpenAI.</span></div>
+              <div class="welcome-card"><strong>◉ Xiaozhi Server</strong><span>Sembang teks melalui server Go dengan pengesahan API AuthorToken.</span></div>
+            </div>
+          </div>`;
+          $('#welcomeAction').addEventListener('click', () => setupNeeded ? openSettings() : openNewChat());
+          return;
+        }
+        const config = currentConfig(chat);
+        $('#headerTitle').textContent = chat.title;
+        $('#headerSubtitle').textContent = `${providerName(chat.type)}${config ? ` · ${config.name}` : ''}${chat.pinned ? ' · Dipinkan' : ''}`;
+        const messages = document.createElement('div');
+        messages.className = 'messages';
+        (chat.messages || []).forEach((message) => messages.append(makeMessage(message)));
+        if (busy) messages.append(makeTyping());
+        content.append(messages);
+        requestAnimationFrame(() => {
+          window.scrollTo({ top: document.body.scrollHeight, behavior: 'smooth' });
+          $('#messageInput').focus({ preventScroll: true });
+        });
+      }
+
+      function makeMessage(message) {
+        const row = document.createElement('article');
+        row.className = `message ${message.role === 'user' ? 'user' : 'assistant'}`;
+        const avatar = message.role === 'user' ? 'A' : iconFor(currentChat()?.type);
+        const bubble = document.createElement('div');
+        bubble.className = 'bubble';
+        bubble.textContent = message.content || '';
+        const wrap = document.createElement('div');
+        wrap.className = 'bubble-wrap';
+        wrap.append(bubble);
+        if (message.createdAt) {
+          const time = document.createElement('div');
+          time.className = 'message-time';
+          time.textContent = timeLabel(message.createdAt);
+          wrap.append(time);
+        }
+        const icon = document.createElement('div');
+        icon.className = 'avatar';
+        icon.textContent = avatar;
+        row.append(icon, wrap);
+        return row;
+      }
+
+      function makeTyping() {
+        const row = document.createElement('article');
+        row.className = 'message assistant';
+        row.innerHTML = `<div class="avatar">✦</div><div class="bubble-wrap"><div class="bubble"><span class="typing" aria-label="AI sedang berfikir"><i></i><i></i><i></i></span></div></div>`;
+        return row;
+      }
+
+      function openSettings() {
+        renderConfigSettings();
+        openDialog('#settingsOverlay');
+      }
+
+      function renderConfigSettings() {
+        const type = $('#providerType').value;
+        const configs = state.configs.filter((config) => config.type === type);
+        const list = $('#configList');
+        list.replaceChildren();
+        if (!configs.length) {
+          const empty = document.createElement('div');
+          empty.className = 'empty-list';
+          empty.textContent = `Belum ada konfigurasi ${providerName(type)}. Isi butiran di bawah untuk menambahkannya.`;
+          list.append(empty);
+        } else {
+          configs.forEach((config) => {
+            const row = document.createElement('div');
+            row.className = 'config-row';
+            const info = document.createElement('div');
+            const title = document.createElement('strong');
+            title.textContent = config.name;
+            const detail = document.createElement('small');
+            detail.textContent = type === 'dify' ? config.apiUrl : type === 'minimax' ? config.model : config.websocketUrl;
+            info.append(title, detail);
+            const remove = document.createElement('button');
+            remove.type = 'button';
+            remove.className = 'icon-btn';
+            remove.setAttribute('aria-label', `Padam ${config.name}`);
+            remove.textContent = '×';
+            remove.addEventListener('click', () => {
+              state.configs = state.configs.filter((item) => item.id !== config.id);
+              state.conversations.forEach((chat) => {
+                if (chat.configId === config.id) chat.configId = '';
+              });
+              persist();
+              renderConfigSettings();
+              render();
+              notify('Konfigurasi dipadamkan.');
+            });
+            row.append(info, remove);
+            list.append(row);
+          });
+        }
+
+        const fields = $('#configFields');
+        fields.replaceChildren();
+        fields.innerHTML = `<div class="field"><label for="configName">Nama perkhidmatan</label><input id="configName" required maxlength="60" placeholder="${type === 'xiaozhi' ? 'Xiaozhi rumah' : providerName(type)}"></div>`;
+        if (type === 'dify') {
+          fields.insertAdjacentHTML('beforeend', `<div class="field"><label for="configUrl">URL asas Dify</label><input id="configUrl" required type="url" placeholder="https://api.dify.ai/v1"></div>
+            <div class="field full"><label for="configKey">Kunci API Dify</label><input id="configKey" required type="password" autocomplete="new-password" placeholder="app-..."></div>`);
+        } else if (type === 'minimax') {
+          fields.insertAdjacentHTML('beforeend', `<div class="field"><label for="configModel">Model</label><select id="configModel"><option>MiniMax-M2.7</option><option>MiniMax-M2.5</option><option>MiniMax-M2.5-highspeed</option></select></div>
+            <div class="field"><label for="configUrl">URL API (pilihan)</label><input id="configUrl" type="url" placeholder="${MINIMAX_URL}"></div>
+            <div class="field full"><label for="configKey">Kunci API MiniMax</label><input id="configKey" required type="password" autocomplete="new-password"></div>
+            <div class="field full"><small>Jika pelayar menyekat CORS untuk API terus, gunakan URL proksi HTTPS yang anda uruskan.</small></div>`);
+        } else {
+          fields.insertAdjacentHTML('beforeend', `<div class="field full"><label for="configApiUrl">URL asas API server Go</label><input id="configApiUrl" required type="url" placeholder="http://localhost:8080/api/v1"></div>
+            <div class="field full"><label for="configKey">Token API (AuthorToken)</label><input id="configKey" required type="password" autocomplete="new-password"></div>
+            <div class="field"><label for="configUrl">URL WebSocket</label><input id="configUrl" required type="url" placeholder="ws://localhost:8000"></div>
+            <div class="field"><label for="configDevice">ID peranti / alamat MAC</label><input id="configDevice" required placeholder="AA:BB:CC:DD:EE:FF"></div>
+            <div class="field full"><label for="configInstruction">Arahan jawapan (pilihan)</label><input id="configInstruction" maxlength="300" value="Balas dalam Bahasa Melayu yang jelas dan semula jadi."></div>
+            <div class="field full"><small>Token dihantar kepada API HTTP melalui pengepala AuthorToken. WebSocket menggunakan parameter device-id yang disokong oleh server; teks sahaja dipaparkan dan audio server diabaikan. Untuk aplikasi HTTPS, gunakan URL WebSocket wss://.</small></div>
+            <div class="field full"><button class="secondary" id="testServerApiBtn" type="button">Uji sambungan API</button></div>`);
+        }
+      }
+
+      function saveConfig() {
+        const type = $('#providerType').value;
+        const name = $('#configName').value.trim();
+        if (!name) { $('#configName').focus(); notify('Masukkan nama perkhidmatan.'); return; }
+        const config = { id: cryptoId(), type, name };
+        if (type === 'dify') {
+          config.apiUrl = $('#configUrl').value.trim().replace(/\/+$/, '');
+          config.apiKey = $('#configKey').value.trim();
+          if (!validHttpUrl(config.apiUrl) || !config.apiKey) { notify('Masukkan URL Dify dan kunci API yang sah.'); return; }
+        } else if (type === 'minimax') {
+          config.apiUrl = $('#configUrl').value.trim() || MINIMAX_URL;
+          config.model = $('#configModel').value;
+          config.apiKey = $('#configKey').value.trim();
+          if (!validHttpUrl(config.apiUrl) || !config.apiKey) { notify('Masukkan URL API dan kunci API yang sah.'); return; }
+        } else {
+          config.apiUrl = $('#configApiUrl').value.trim().replace(/\/+$/, '');
+          config.websocketUrl = $('#configUrl').value.trim();
+          config.deviceId = $('#configDevice').value.trim();
+          config.token = $('#configKey').value.trim();
+          config.systemPrompt = $('#configInstruction').value.trim() || 'Balas dalam Bahasa Melayu yang jelas dan semula jadi.';
+          if (!validHttpUrl(config.apiUrl) || !config.token || !/^wss?:\/\//i.test(config.websocketUrl) || !config.deviceId) {
+            notify('Masukkan URL API, AuthorToken, URL WebSocket dan ID peranti yang sah.');
+            return;
+          }
+        }
+        state.configs.push(config);
+        persist();
+        renderConfigSettings();
+        renderProviderOptions();
+        render();
+        notify(`Perkhidmatan ${providerName(type)} disimpan.`);
+      }
+
+      function validHttpUrl(value) {
+        try { return ['http:', 'https:'].includes(new URL(value).protocol); } catch { return false; }
+      }
+
+      function renderProviderOptions() {
+        const select = $('#chatProvider');
+        const previous = select.value;
+        select.replaceChildren();
+        state.configs.forEach((config) => {
+          const option = document.createElement('option');
+          option.value = config.id;
+          option.textContent = `${providerName(config.type)} · ${config.name}`;
+          select.append(option);
+        });
+        if ([...select.options].some((option) => option.value === previous)) select.value = previous;
+        $('#newChatBtn').disabled = !state.configs.length;
+        $('#newChatBtn').title = state.configs.length ? '' : 'Sediakan konfigurasi perkhidmatan dahulu';
+      }
+
+      function openNewChat() {
+        if (!state.configs.length) {
+          openSettings();
+          notify('Sediakan konfigurasi perkhidmatan terlebih dahulu.');
+          return;
+        }
+        $('#chatTitle').value = '';
+        renderProviderOptions();
+        openDialog('#newChatOverlay');
+      }
+
+      function createChat(event) {
+        event.preventDefault();
+        const config = state.configs.find((item) => item.id === $('#chatProvider').value);
+        if (!config) { notify('Pilih perkhidmatan yang sah.'); return; }
+        const chat = {
+          id: cryptoId(),
+          title: $('#chatTitle').value.trim() || config.name,
+          type: config.type,
+          configId: config.id,
+          messages: [],
+          lastMessage: '',
+          updatedAt: new Date().toISOString(),
+          pinned: false,
+          difyConversationId: ''
+        };
+        state.conversations.unshift(chat);
+        activeId = chat.id;
+        persist();
+        render();
+        $('#newChatOverlay').classList.remove('open');
+        $('#messageInput').focus();
+        $('#sidebar').classList.remove('open');
+      }
+
+      function closeSocket() {
+        if (socket) {
+          socket.onclose = null;
+          socket.onerror = null;
+          socket.close();
+          socket = null;
+          socketConversationId = null;
+        }
+      }
+
+      async function connectXiaozhi(config, chat) {
+        if (socket?.readyState === WebSocket.OPEN && socketConversationId === chat.id) return socket;
+        closeSocket();
+        const url = new URL(config.websocketUrl);
+        url.searchParams.set('device-id', config.deviceId);
+        const ws = new WebSocket(url);
+        socket = ws;
+        socketConversationId = chat.id;
+        const opened = new Promise((resolve, reject) => {
+          const timeout = setTimeout(() => reject(new Error('Masa sambungan WebSocket tamat.')), 12000);
+          ws.addEventListener('open', () => {
+            clearTimeout(timeout);
+            resolve();
+          }, { once: true });
+          ws.addEventListener('error', () => {
+            clearTimeout(timeout);
+            reject(new Error('Tidak dapat menyambung. Semak URL, rangkaian dan sokongan WebSocket pelayan.'));
+          }, { once: true });
+        });
+        ws.addEventListener('close', () => {
+          if (socket === ws) { socket = null; socketConversationId = null; }
+        });
+        await opened;
+        ws.send(JSON.stringify({
+          type: 'hello', version: 1, transport: 'websocket',
+          audio_params: { format: 'opus', sample_rate: 16000, channels: 1, frame_duration: 60 }
+        }));
+        return ws;
+      }
+
+      function addMessage(chat, role, content) {
+        chat.messages.push({ role, content, createdAt: new Date().toISOString() });
+        chat.lastMessage = content;
+        chat.updatedAt = new Date().toISOString();
+        persist();
+        if (chat.id === activeId) render();
+      }
+
+      async function sendMessage(event) {
+        event.preventDefault();
+        const chat = currentChat();
+        const text = $('#messageInput').value.trim();
+        if (!chat || !text || busy) return;
+        const config = currentConfig(chat);
+        if (!config) { notify('Konfigurasi penyedia ini tiada. Sila kemas kini dalam Tetapan.'); return; }
+        $('#messageInput').value = '';
+        resizeComposer();
+        addMessage(chat, 'user', text);
+        busy = true;
+        $('#sendBtn').disabled = true;
+        renderChat();
+        try {
+          const reply = chat.type === 'dify'
+            ? await sendDify(config, chat, text)
+            : chat.type === 'minimax'
+              ? await sendMiniMax(config, chat, text)
+              : await sendXiaozhi(config, chat, text);
+          if (typeof reply === 'string' && reply.trim()) addMessage(chat, 'assistant', reply);
+        } catch (error) {
+          addMessage(chat, 'assistant', `Ralat: ${error.message || 'Permintaan tidak berjaya.'}`);
+          notify(error.message || 'Permintaan tidak berjaya.');
+        } finally {
+          busy = false;
+          $('#sendBtn').disabled = false;
+          renderChat();
+          $('#messageInput').focus({ preventScroll: true });
+        }
+      }
+
+      async function sendDify(config, chat, text) {
+        const response = await fetch(`${config.apiUrl}/chat-messages`, {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json', 'Authorization': `Bearer ${config.apiKey}` },
+          body: JSON.stringify({
+            inputs: {}, query: text, response_mode: 'blocking', user: state.userId,
+            ...(chat.difyConversationId ? { conversation_id: chat.difyConversationId } : {})
+          })
+        });
+        const data = await response.json().catch(() => ({}));
+        if (!response.ok) throw new Error(data.message || data.error || `Dify memulangkan HTTP ${response.status}.`);
+        if (data.conversation_id) { chat.difyConversationId = data.conversation_id; persist(); }
+        return data.answer || 'Tiada jawapan diterima.';
+      }
+
+      async function sendMiniMax(config, chat, text) {
+        const history = (chat.messages || []).filter((item) => item.role === 'user' || item.role === 'assistant')
+          .map((item) => ({ role: item.role, content: item.content }));
+        const response = await fetch(config.apiUrl || MINIMAX_URL, {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json', 'Authorization': `Bearer ${config.apiKey}` },
+          body: JSON.stringify({
+            model: config.model || 'MiniMax-M2.7',
+            messages: [
+              { role: 'system', content: 'Balas dalam Bahasa Melayu yang jelas dan semula jadi. Kekalkan nama khas, kod, URL dan istilah teknikal apabila sesuai.' },
+              ...history
+            ],
+            temperature: 0.7,
+            max_tokens: 4096
+          })
+        });
+        const data = await response.json().catch(() => ({}));
+        if (!response.ok) throw new Error(data.error?.message || `MiniMax memulangkan HTTP ${response.status}. Jika ralat CORS berlaku, konfigurasikan proksi API HTTPS.`);
+        return data.choices?.[0]?.message?.content || 'Tiada jawapan diterima.';
+      }
+
+      async function sendXiaozhi(config, chat, text) {
+        const ws = await connectXiaozhi(config, chat);
+        if (ws.readyState !== WebSocket.OPEN) throw new Error('Sambungan Xiaozhi terputus.');
+        const reply = new Promise((resolve, reject) => {
+          let answer = '';
+          const timeout = setTimeout(() => {
+            ws.removeEventListener('message', receive);
+            reject(new Error('Server tidak membalas dalam masa 60 saat.'));
+          }, 60000);
+          function receive(event) {
+            if (typeof event.data !== 'string') return;
+            let data;
+            try { data = JSON.parse(event.data); } catch { return; }
+            if (data.type !== 'tts') return;
+            if (data.state === 'sentence_start' && typeof data.text === 'string') answer += data.text;
+            if (data.state === 'stop') {
+              clearTimeout(timeout);
+              ws.removeEventListener('message', receive);
+              resolve(answer.trim() || 'Server tidak menghantar jawapan teks.');
+            }
+          }
+          ws.addEventListener('message', receive);
+        });
+        const prompt = config.systemPrompt ? `${config.systemPrompt}\n\n${text}` : text;
+        ws.send(JSON.stringify({ type: 'listen', state: 'detect', text: prompt, source: 'text' }));
+        return reply;
+      }
+
+      async function testXiaozhiApi() {
+        const button = $('#testServerApiBtn');
+        const apiUrl = $('#configApiUrl').value.trim().replace(/\/+$/, '');
+        const token = $('#configKey').value.trim();
+        if (!validHttpUrl(apiUrl) || !token) {
+          notify('Masukkan URL API dan AuthorToken terlebih dahulu.');
+          return;
+        }
+        button.disabled = true;
+        try {
+          const response = await fetch(`${apiUrl}/user/profile`, {
+            headers: { 'AuthorToken': token, 'Accept': 'application/json' }
+          });
+          const data = await response.json().catch(() => ({}));
+          if (!response.ok) {
+            throw new Error(data.message || `Server memulangkan HTTP ${response.status}.`);
+          }
+          notify('Sambungan API server dan AuthorToken berjaya.');
+        } catch (error) {
+          notify(error.message || 'Ujian API gagal. Semak URL, token dan tetapan CORS server.');
+        } finally {
+          button.disabled = false;
+        }
+      }
+
+      function togglePin() {
+        const chat = currentChat();
+        if (!chat) return;
+        chat.pinned = !chat.pinned;
+        persist();
+        render();
+        notify(chat.pinned ? 'Perbualan dipinkan.' : 'Pin perbualan dibuang.');
+      }
+
+      function askDelete() {
+        const chat = currentChat();
+        if (!chat) return;
+        pendingDeleteId = chat.id;
+        $('#confirmMessage').textContent = `Padam “${chat.title}” daripada pelayar ini? Tindakan ini tidak boleh dibuat asal.`;
+        openDialog('#confirmOverlay');
+      }
+
+      function deleteChat() {
+        const deleted = state.conversations.find((chat) => chat.id === pendingDeleteId);
+        if (!deleted) return;
+        state.conversations = state.conversations.filter((chat) => chat.id !== pendingDeleteId);
+        if (activeId === pendingDeleteId) activeId = null;
+        pendingDeleteId = null;
+        closeSocket();
+        persist();
+        $('#confirmOverlay').classList.remove('open');
+        render();
+        notify('Perbualan dipadamkan.');
+      }
+
+      function resizeComposer() {
+        const input = $('#messageInput');
+        input.style.height = 'auto';
+        input.style.height = `${Math.min(input.scrollHeight, 150)}px`;
+      }
+
+      function installPrompt() {
+        if (!pendingInstall) return;
+        pendingInstall.prompt();
+        pendingInstall.userChoice.finally(() => {
+          pendingInstall = null;
+          $('#installBtn').hidden = true;
+        });
+      }
+
+      function bindEvents() {
+        $('#newChatBtn').addEventListener('click', openNewChat);
+        $('#settingsBtn').addEventListener('click', openSettings);
+        $('#providerType').addEventListener('change', renderConfigSettings);
+        $('#saveConfigBtn').addEventListener('click', saveConfig);
+        $('#configFields').addEventListener('click', (event) => {
+          if (event.target.id === 'testServerApiBtn') testXiaozhiApi();
+        });
+        $('#newChatForm').addEventListener('submit', createChat);
+        $('#messageForm').addEventListener('submit', sendMessage);
+        $('#messageInput').addEventListener('input', resizeComposer);
+        $('#messageInput').addEventListener('keydown', (event) => {
+          if (event.key === 'Enter' && !event.shiftKey) { event.preventDefault(); $('#messageForm').requestSubmit(); }
+        });
+        $('#searchInput').addEventListener('input', renderSidebar);
+        $('#deleteChatBtn').addEventListener('click', askDelete);
+        $('#pinChatBtn').addEventListener('click', togglePin);
+        $('#confirmDeleteBtn').addEventListener('click', deleteChat);
+        $('#menuBtn').addEventListener('click', () => $('#sidebar').classList.toggle('open'));
+        document.querySelectorAll('.close-dialog').forEach((button) => button.addEventListener('click', closeDialog));
+        document.querySelectorAll('.overlay').forEach((overlay) => overlay.addEventListener('click', (event) => {
+          if (event.target === overlay) overlay.classList.remove('open');
+        }));
+        document.addEventListener('keydown', (event) => {
+          if (event.key === 'Escape') {
+            document.querySelectorAll('.overlay.open').forEach((overlay) => overlay.classList.remove('open'));
+            $('#sidebar').classList.remove('open');
+          }
+        });
+        window.addEventListener('beforeinstallprompt', (event) => {
+          event.preventDefault();
+          pendingInstall = event;
+          $('#installBtn').hidden = false;
+        });
+        $('#installBtn').addEventListener('click', installPrompt);
+        window.addEventListener('appinstalled', () => notify('PWA berjaya dipasang.'));
+      }
+
+      if (currentChat() && !state.configs.some((config) => config.id === currentChat().configId)) activeId = null;
+      bindEvents();
+      render();
+      if ('serviceWorker' in navigator && location.protocol !== 'file:') {
+        window.addEventListener('load', () => navigator.serviceWorker.register('./service-worker.js').catch((error) => {
+          console.warn('Pendaftaran service worker gagal', error);
+        }));
+      }
+    })();
+  </script>
 </body>
 </html>

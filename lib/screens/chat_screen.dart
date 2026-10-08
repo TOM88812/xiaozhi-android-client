@@ -1,4 +1,6 @@
-import 'package:flutter/material.dart';
+import 'package:flutter/material.dart' hide Text;
+import 'package:ai_assistant/l10n/localized_text.dart';
+import 'package:ai_assistant/l10n/app_localizations.dart';
 import 'package:flutter/services.dart';
 import 'dart:math' as math;
 import 'dart:math';
@@ -292,6 +294,10 @@ class _ChatScreenState extends State<ChatScreen> {
     _minimaxService = MiniMaxService(
       apiKey: minimaxConfig.apiKey,
       model: minimaxConfig.model,
+      systemPrompt:
+          Localizations.localeOf(context).languageCode == 'ms'
+              ? 'Balas dalam Bahasa Melayu yang jelas dan semula jadi. Kekalkan nama khas, kod, URL dan istilah teknikal apabila sesuai.'
+              : null,
     );
   }
 
@@ -325,7 +331,7 @@ class _ChatScreenState extends State<ChatScreen> {
               widget.conversation.type == ConversationType.minimax)
             IconButton(
               icon: const Icon(Icons.refresh, color: Colors.black, size: 24),
-              tooltip: '开始新对话',
+              tooltip: context.tr('开始新对话'),
               onPressed: _resetConversation,
             ),
           if (widget.conversation.type == ConversationType.xiaozhi)
@@ -401,6 +407,7 @@ class _ChatScreenState extends State<ChatScreen> {
                       children: [
                         Text(
                           widget.conversation.title,
+                          localize: false,
                           style: const TextStyle(
                             color: Colors.black,
                             fontWeight: FontWeight.bold,
@@ -495,6 +502,7 @@ class _ChatScreenState extends State<ChatScreen> {
                           children: [
                             Text(
                               configName,
+                              localize: false,
                               style: const TextStyle(
                                 color: Colors.black,
                                 fontWeight: FontWeight.bold,
@@ -787,7 +795,8 @@ class _ChatScreenState extends State<ChatScreen> {
                   child: TextField(
                     controller: _textController,
                     decoration: const InputDecoration(
-                      hintText: '输入消息...',
+                      hintText:
+                          context.tr('输入消息...'),
                       hintStyle: TextStyle(
                         color: Color(0xFF9CA3AF),
                         fontSize: 16,
@@ -1166,7 +1175,7 @@ class _ChatScreenState extends State<ChatScreen> {
       await conversationProvider.addMessage(
         conversationId: widget.conversation.id,
         role: MessageRole.system,
-        content: '--- 开始新对话 ---',
+        content: context.tr('--- 开始新对话 ---'),
       );
 
       _showCustomSnackbar('已开始新对话');
@@ -1181,7 +1190,7 @@ class _ChatScreenState extends State<ChatScreen> {
       await conversationProvider.addMessage(
         conversationId: widget.conversation.id,
         role: MessageRole.system,
-        content: '--- 开始新对话 ---',
+        content: context.tr('--- 开始新对话 ---'),
       );
 
       _showCustomSnackbar('已开始新对话');
@@ -1675,7 +1684,7 @@ class _ChatScreenState extends State<ChatScreen> {
           imageLocalPath: localPath,
         );
 
-        final textPrompt = "分析这张图片";
+        final textPrompt = context.tr('分析这张图片');
         final chatResponse = await _difyService!.sendMessage(
           textPrompt,
           sessionId: sessionId,
